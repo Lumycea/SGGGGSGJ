@@ -5,19 +5,20 @@ public class Crop : SimulationEntity
 {
     [SerializeField] private int GrowthProbability;
     [SerializeField] private Sprite[] Sprites;
+    [SerializeField] private SpriteRenderer cropRenderer, groundRenderer;
+    [SerializeField] private Field Field;
 
-    public FarmItem? Item { get; private set; } = null;
-    public bool IsTiled { get; private set; } = false;
+    public FarmItem? Item { get; private set; }
+    
+    private bool isTiled = false;
     private uint growthStage = 0;
-
-    void Start() { }
 
     void Update()
     {
-        GetComponent<SpriteRenderer>().enabled = Item != null;
-        GetComponent<SpriteRenderer>().sprite = Sprites[growthStage];
+        cropRenderer.enabled = Item != null;
+        cropRenderer.sprite = Sprites[growthStage];
 
-        GetComponentInChildren<SpriteRenderer>().enabled = IsTiled;
+        groundRenderer.enabled = isTiled;
     }
 
     public override void Tick()
@@ -33,9 +34,9 @@ public class Crop : SimulationEntity
     public void Harvest() { growthStage = 0; }
 
 
-    public bool IsTileable() { return !IsTiled; }
-    public void Tile() { IsTiled = true; }
+    public bool IsTileable() { return !isTiled; }
+    public void Tile() { isTiled = true; }
 
-    public bool CanPlant(FarmItem item) { return IsTiled && Item == null; }
+    public bool CanPlant(FarmItem item) { return isTiled && Item == null && Field.CanPlant(item); }
     public void Plant(FarmItem item) { Item = item; }
 }
