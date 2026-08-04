@@ -288,7 +288,7 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "4cd038e8-2b2e-4f0b-9cf2-5af34828d356",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false,
@@ -781,6 +781,46 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player Select",
+            "id": "c1046823-99d8-4b55-a71f-e769f294831e",
+            "actions": [
+                {
+                    "name": "Disconnect",
+                    "type": "Button",
+                    "id": "03e8fee1-b662-4be2-9e58-aea5be160b73",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0a7924a4-dcfa-47e9-98c2-f154489f2a66",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Disconnect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "39da348c-74dc-417d-ae0c-edb77e5c2002",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Disconnect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
