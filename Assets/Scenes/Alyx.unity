@@ -507,8 +507,8 @@ GameObject:
   - component: {fileID: 1012894764}
   - component: {fileID: 1012894766}
   m_Layer: 0
-  m_Name: Player Input manager
-  m_TagString: Untagged
+  m_Name: Game Manager
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
