@@ -2,11 +2,14 @@ using UnityEngine;
 
 public abstract class SimulationEntity : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start() { }
+    public Farm Farm { get; private set; }
 
-    // Update is called once per frame
-    void Update() { }
+    void Start()
+    {
+        Farm = GameObject.FindWithTag("GameManager").GetComponent<Farm>();
+    }
 
+    public virtual void PreTick() { }
     public abstract void Tick();
+    public virtual void PostTick() { }
 }

@@ -27,18 +27,23 @@ public class Simulation : MonoBehaviour
     {
         print("Ticking");
 
-        var simEntities = GetComponentsInChildren<SimulationEntity>();
+        var simEntities = FindObjectsByType<SimulationEntity>(FindObjectsSortMode.None);
 
+        foreach (var e in simEntities)
+        {
+            e.PreTick();
+        }
         foreach (var e in simEntities)
         {
             e.Tick();
         }
+        foreach (var e in simEntities)
+        {
+            e.PostTick();
+        }
     }
 
-    public int SimulationTime
-    {
-        get; private set;
-    }
+    public int SimulationTime { get; private set; }
 
     [SerializeField] private int TickTime;
     private float timeBeforeNextTick;
