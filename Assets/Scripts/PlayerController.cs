@@ -9,21 +9,19 @@ public class PlayerController : MonoBehaviour
     public float playerSpeed = 5f;
     Vector2 moveVector;
     PlayerManager playerManager;
-    public bool inPlayerSelect = false;
-    public bool inGame = false;
-    public float playerScrollCooldown = 0.5f;
-    float lastScrollTime = 0f;
+    private StateManager stateManager;
 
     void Start()
     {
         playerId = GetComponent<PlayerInput>().playerIndex;
         playerManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerManager>();
         GetComponent<SpriteRenderer>().color = playerManager.players[playerId].playerColor;
+        stateManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<StateManager>();
     }
 
     void FixedUpdate()
     {
-        if (inGame)
+        if (stateManager.isInGame)
         {
             transform.Translate(playerSpeed * Time.fixedDeltaTime * moveVector);
         }
@@ -32,43 +30,6 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputValue value)
     {
         moveVector = value.Get<Vector2>().normalized;
-    }
-
-    public void OnNavigate(InputValue value)
-    {
-        Vector2 inputVector = value.Get<Vector2>().normalized;
-
-        if (inPlayerSelect)
-        {
-            if (Time.time - lastScrollTime >= playerScrollCooldown)
-            {
-                Player player = playerManager.players[playerId];
-                if (inputVector.x > 0.5f)
-                {
-                    player.playerColor = Random.ColorHSV(0f, 1f, 0.5f, 1f, 0.5f, 1f);
-                    Debug.Log("Navigate Right");
-                    lastScrollTime = Time.time;
-                }
-                else if (inputVector.x < -0.5f)
-                {
-                    player.playerColor = Random.ColorHSV(0f, 1f, 0.5f, 1f, 0.5f, 1f);
-                    Debug.Log("Navigate Left");
-                    lastScrollTime = Time.time;
-                }
-            }
-        }
-    }
-
-    public void OnDisconnect(InputValue value)
-    {
-        if (inPlayerSelect && value.isPressed)
-        {
-            DisconnectPlayer();
-        }
-    }
-
-    public void DisconnectPlayer()
-    {
-        Destroy(gameObject);
+        Debug.Log("Player " + (playerId + 1) + " Move: " + moveVector);
     }
 }
