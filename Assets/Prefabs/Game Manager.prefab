@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6745209975108869409}
   - component: {fileID: 234019846251565624}
   - component: {fileID: 7875262404953089523}
+  - component: {fileID: 3806894866652327319}
+  - component: {fileID: 947242558661508006}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameManager
@@ -91,7 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de3f1f3786b85c19ae3930294e3a87c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  playerCountText: {fileID: 0}
 --- !u!114 &7875262404953089523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,3 +105,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b93fbc90ee24933093825bba4545768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DontDestroyOnLoad
+--- !u!114 &3806894866652327319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3193263519694696686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa0205e59207c3c4b5de92f0ee7e639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemManager
+--- !u!114 &947242558661508006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3193263519694696686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7f7678f98e36f99b398522b50d2cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
