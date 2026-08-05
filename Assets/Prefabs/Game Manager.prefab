@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 947242558661508006}
   - component: {fileID: 4693202401136362293}
   - component: {fileID: 3925996181716058493}
+  - component: {fileID: 1784911124420027498}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameManager
@@ -95,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de3f1f3786b85c19ae3930294e3a87c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  playerPanelsParent: {fileID: 0}
+  playerPanelPrefab: {fileID: 6871152735604017801, guid: 8936177fe79c9b679bd697a9744e8bf0, type: 3}
 --- !u!114 &7875262404953089523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,3 +164,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Simulation
   TickTime: 2
+--- !u!114 &1784911124420027498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3193263519694696686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c5ecce6ca414beb810ac14a0ec441b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  isInPlayerSelect: 0
+  isInGame: 0
