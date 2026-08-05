@@ -160,4 +160,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585e3105e28caed1e85a6f8eb710ec3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Simulation
-  TickTime: 0
+  TickTime: 2

@@ -85,6 +85,7 @@ public class ItemManager : MonoBehaviour
     }
 }
 
+[Serializable]
 public struct ItemStack
 {
     public FarmItem item;

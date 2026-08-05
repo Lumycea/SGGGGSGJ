@@ -45,6 +45,6 @@ public class Simulation : MonoBehaviour
 
     public int SimulationTime { get; private set; }
 
-    [SerializeField] private int TickTime;
+    [SerializeField] private int TickTime = 2;
     private float timeBeforeNextTick;
 }
