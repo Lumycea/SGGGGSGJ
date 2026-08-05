@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7875262404953089523}
   - component: {fileID: 3806894866652327319}
   - component: {fileID: 947242558661508006}
+  - component: {fileID: 4693202401136362293}
+  - component: {fileID: 3925996181716058493}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameManager
@@ -129,3 +131,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7f7678f98e36f99b398522b50d2cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  maxQuests: 
+  minWeights: 
+  maxWeights: 
+--- !u!114 &4693202401136362293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3193263519694696686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076c2128d00ab55cfa3707cbaa2a8900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Farm
+--- !u!114 &3925996181716058493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3193263519694696686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585e3105e28caed1e85a6f8eb710ec3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Simulation
+  TickTime: 0
