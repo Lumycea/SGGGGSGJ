@@ -25,7 +25,7 @@ public enum FarmItem
 
 static class FarmItemMethods
 {
-    public static uint GetTier(this FarmItem i)
+    public static int GetTier(this FarmItem i)
     {
         switch (i)
         {
@@ -54,27 +54,45 @@ static class FarmItemMethods
                 return 3;
         }
 
-        return 0;
+        return -1;
     }
 }
 
 public class ItemManager : MonoBehaviour
 {
+    public List<FarmItem> AvailableItems { get; private set; }
     public Dictionary<FarmItem, Sprite> Sprites { get; private set; }
+
+    public int ItemPrice(FarmItem item)
+    {
+        return item.GetTier();
+    }
 
     void Start()
     {
         Sprites = new Dictionary<FarmItem, Sprite>();
 
-        foreach(var i in Enum.GetValues(typeof(FarmItem)).Cast<FarmItem>())
+        foreach (var i in Enum.GetValues(typeof(FarmItem)).Cast<FarmItem>())
         {
             var sprite = Resources.Load<Sprite>("Items/" + i.ToString().ToLower());
-            if(sprite == null)
+            if (sprite == null)
             {
                 print($"Unable to get sprite for {i}");
             }
 
             Sprites.Add(i, sprite);
         }
+    }
+}
+
+public struct ItemStack
+{
+    public FarmItem item;
+    public int count;
+
+    public ItemStack(FarmItem i, int c)
+    {
+        item = i;
+        count = c;
     }
 }

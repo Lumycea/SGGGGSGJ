@@ -131,9 +131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7f7678f98e36f99b398522b50d2cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxQuests: 
-  minWeights: 
-  maxWeights: 
+  maxQuests: 01000000020000000200000003000000
+  minWeights: 01000000030000000600000008000000
+  maxWeights: 01000000060000000c00000010000000
+  minQuestDelay: 0a000000080000000500000002000000
+  maxQuestDelay: 140000000f0000000a00000006000000
 --- !u!114 &4693202401136362293
 MonoBehaviour:
   m_ObjectHideFlags: 0

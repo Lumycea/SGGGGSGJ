@@ -4,6 +4,18 @@ using System.Linq;
 
 public class Farm : SimulationEntity
 {
+    public uint Tier { get; private set; }
+
+    private int _wheat = 0;
+    public int Wheat
+    {
+        get => _wheat; set
+        {
+            if (value < 0) { return; }
+            _wheat = value;
+        }
+    }
+
     public void AddItem(FarmItem item, uint count)
     {
         if (!Inventory.ContainsKey(item)) { Inventory.Add(item, count); }
