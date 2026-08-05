@@ -1,10 +1,16 @@
+using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class ItemStackDisplay : MonoBehaviour
 {
-    public ItemStack Stack = new(FarmItem.Sugar, 3);
+    public ItemStack Stack = new(FarmItem.Sugar, 1);
+    public bool ForceBackground = false;
 
-    [SerializeField] private SpriteRenderer[] cells;
+    [SerializeField] private SpriteRenderer backgroundRenderer;
+    [SerializeField] private SpriteRenderer itemRenderer;
+    [SerializeField] private TMP_Text countText;
+
     private ItemManager itemManager;
 
 
@@ -15,12 +21,11 @@ public class ItemStackDisplay : MonoBehaviour
 
     void Update()
     {
-        var sprite = itemManager.Sprites[Stack.item];
+        itemRenderer.sprite = itemManager.Sprites[Stack.item];
 
-        for (int i = 0; i < cells.Length; ++i)
-        {
-            cells[i].enabled = i < Stack.count;
-            cells[i].sprite = sprite;
-        }
+        countText.enabled = Stack.count > 1;
+        countText.text = Stack.count.ToString();
+
+        backgroundRenderer.enabled = Stack.count > 1 || ForceBackground;
     }
 }
