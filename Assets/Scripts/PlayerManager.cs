@@ -34,8 +34,12 @@ public class PlayerManager : MonoBehaviour
                         break;
                     }
                 }
-                if (allReady)
+                if (allReady && players.Count > 1)
                 {
+                    foreach (var player in players.Values)
+                    {
+                        player.playerObject.GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+                    }
                     UnityEngine.SceneManagement.SceneManager.LoadScene(StateManager.GAME_SCENE_INDEX);
                 }
             }
@@ -63,6 +67,8 @@ public class PlayerManager : MonoBehaviour
             mes.playerRoot = playerPanel;
             mes.firstSelectedGameObject = panelScript.firstSelected;
         }
+        playerObject.GetComponent<InputSystemUIInputModule>().actionsAsset = playerInput.actions;
+        playerInput.SwitchCurrentActionMap("UI");
     }
 
     public void OnPlayerLeft(PlayerInput playerInput)

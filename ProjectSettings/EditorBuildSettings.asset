@@ -18,5 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Alyx.unity
     guid: f0c2b5054ce5ea985bffa7b4c426649b
   m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: dcb86120c20c9f8b3b5ce6c5eaa6ba1c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
