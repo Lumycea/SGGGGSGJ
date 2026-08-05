@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour
                         break;
                     }
                 }
-                if (allReady && players.Count > 1)
+                if (allReady && players.Count > 0)
                 {
                     foreach (var player in players.Values)
                     {
