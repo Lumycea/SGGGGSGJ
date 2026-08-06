@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(ItemManager))]
@@ -14,7 +15,7 @@ public class QuestManager : SimulationEntity
     [SerializeField] private int[] minQuestDelay;
     [SerializeField] private int[] maxQuestDelay;
 
-    public List<ItemStack?> PendingQuests { get; private set; } = new();
+    public List<ItemStack?> PendingQuests { get; private set; }
 
     private int questCount = 0;
     private int tickBeforeNextQuest = 0;
@@ -22,6 +23,12 @@ public class QuestManager : SimulationEntity
     void Start()
     {
         Instance = this;
+
+
+        PendingQuests = Enumerable.Repeat<ItemStack?>(null, maxQuests.Max()).ToList();
+
+        var farm = GetComponent<StateManager>();
+        tickBeforeNextQuest = Random.Range(minQuestDelay[farm.Tier], maxQuestDelay[farm.Tier]);
     }
 
     public void NewQuest()
@@ -38,7 +45,7 @@ public class QuestManager : SimulationEntity
 
         // Computes the amount of items for the quest.
         var weight = Random.Range(minWeights[farm.Tier], maxWeights[farm.Tier]);
-        var count = weight / item.GetTier();
+        var count = weight / (item.GetTier() + 1);
 
 
         var idx = PendingQuests.FindIndex(e => e == null);
@@ -70,6 +77,18 @@ public class QuestManager : SimulationEntity
 
     public override void Tick()
     {
+        if (!StateManager.Instance.canGenerateQuest)
+        {
+            print("skipping generation");
+            return;
+        }
+        if (StateManager.Instance.generateQuestNow)
+        {
+            print("forced generation");
+            StateManager.Instance.generateQuestNow = false;
+            NewQuest();
+        }
+
         tickBeforeNextQuest--;
         if (tickBeforeNextQuest == 0) { NewQuest(); }
     }

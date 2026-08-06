@@ -34,6 +34,8 @@ public class StateManager : MonoBehaviour
     public bool hasCraftedTutorialDone = false;
 
     public bool showDelta = false;
+    public bool canGenerateQuest = false;
+    public bool generateQuestNow = false;
 
     public const int PLAYER_SELECT_SCENE_INDEX = 1;
     public const int GAME_SCENE_INDEX = 2;
@@ -62,6 +64,8 @@ public class StateManager : MonoBehaviour
         {
             isInPlayerSelect = false;
             isInGame = true;
+            canGenerateQuest = !tutorialEnabled;
+            generateQuestNow = false;
             tutorialStarted = false;
             hasTilled = false;
             hasTilledTutorialDone = false;
@@ -81,6 +85,8 @@ public class StateManager : MonoBehaviour
             hasT1QuestTutorialDone = false;
             hasCrafted = false;
             hasCraftedTutorialDone = false;
+
+            ItemManager.Instance.AvailableItems.Add(FarmItemKind.Sugar);
         }
     }
 
@@ -110,10 +116,11 @@ public class StateManager : MonoBehaviour
             if (hasDeposited && !hasDepositedTutorialDone)
             {
                 hasDepositedTutorialDone = true;
+                canGenerateQuest = true;
+                generateQuestNow = true;
                 SendTutorial("You can see what's in your silo in the top left corner of the screen.");
                 SendTutorial("You can also see how many items you have gained or lost in the last tick.");
                 SendTutorial("Now, go take a customer's request ticket and bring it to the farm's silo.");
-
             }
             if (hasPickedTicket && !hasPickedTicketTutorialDone)
             {

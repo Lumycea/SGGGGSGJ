@@ -100,8 +100,8 @@ static class FarmItemMethods
 
 public class ItemManager : MonoBehaviour
 {
-    public List<FarmItemKind> AvailableItems { get; private set; }
-    public Dictionary<FarmItemKind, Sprite> Sprites { get; private set; }
+    public List<FarmItemKind> AvailableItems { get; private set; } = new();
+    public Dictionary<FarmItemKind, Sprite> Sprites { get; private set; } = new();
 
     public static ItemManager Instance { get; private set; }
 
@@ -113,8 +113,6 @@ public class ItemManager : MonoBehaviour
     void Start()
     {
         Instance = this;
-
-        Sprites = new Dictionary<FarmItemKind, Sprite>();
 
         foreach (var i in Enum.GetValues(typeof(FarmItemKind)).Cast<FarmItemKind>())
         {

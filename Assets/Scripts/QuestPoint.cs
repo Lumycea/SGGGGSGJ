@@ -4,6 +4,26 @@ public class QuestPoint : MonoBehaviour, IInteractable
 {
     [SerializeField] private int slotIndex;
     [SerializeField] GameObject itemStackPrefab;
+    [SerializeField] ItemStackDisplay display;
+
+    void Start()
+    {
+        display.gameObject.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (QuestManager.Instance.PendingQuests[slotIndex] is ItemStack stack)
+        {
+            print(display);
+            display.Stack = stack;
+            display.gameObject.SetActive(true);
+        }
+        else
+        {
+            display.gameObject.SetActive(false);
+        }
+    }
 
     public bool HasQuest()
     {
