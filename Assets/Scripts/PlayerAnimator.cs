@@ -5,12 +5,13 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(SpriteRenderer))]
 public class PlayerAnimator : MonoBehaviour
 {
-    private static readonly int DirectionHash = Animator.StringToHash("direction");
     private static readonly int WalkHash = Animator.StringToHash("walk");
+    private static readonly int XHash = Animator.StringToHash("x");
+    private static readonly int YHash = Animator.StringToHash("y");
 
     private Animator animator;
 
-    Vector2 moveVector;
+    private Vector2 moveVector = Vector2.down;
 
     private void Start()
     {
@@ -19,24 +20,17 @@ public class PlayerAnimator : MonoBehaviour
 
     void Update()
     {
-        print(moveVector);
-        animator.SetBool(WalkHash, moveVector.magnitude > 0.1f);
+        var moving = moveVector.magnitude > 0.1f;
 
-        var angle = Vector2.Angle(moveVector, Vector2.right);
+        animator.SetBool(WalkHash, moving);
 
-        print(angle);
+        if (moving)
+        {
+            animator.SetFloat(XHash, moveVector.x);
+            animator.SetFloat(YHash, moveVector.y);
+            GetComponent<SpriteRenderer>().flipX = moveVector.x > 0.1f;
+        }
 
-        int direction = 0;
-        bool flipped = false;
-        if (45 <= angle && angle <= 135) { direction = 1; }
-        if (135 < angle && angle < 225) { direction = 2; }
-        if (angle < 45 || angle > 315) { direction = 2; flipped = true; }
-
-        print(direction);
-        print(flipped);
-
-        animator.SetInteger(DirectionHash, direction);
-        GetComponent<SpriteRenderer>().flipX = flipped;
     }
 
     public void OnMove(InputValue value)
