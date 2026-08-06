@@ -4,8 +4,6 @@ using System.Linq;
 
 public class Farm : SimulationEntity
 {
-    public uint Tier { get; private set; }
-
     private int _wheat = 0;
     public int Wheat
     {

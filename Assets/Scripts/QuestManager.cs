@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ItemManager))]
-[RequireComponent(typeof(Farm))]
+[RequireComponent(typeof(StateManager))]
 public class QuestManager : SimulationEntity
 {
     [SerializeField] private int[] maxQuests;
@@ -19,7 +19,7 @@ public class QuestManager : SimulationEntity
     public void NewQuest()
     {
         var itemManager = GetComponent<ItemManager>();
-        var farm = GetComponent<Farm>();
+        var farm = GetComponent<StateManager>();
 
         // Ignore quest generation if all slots are used
         if (questCount >= maxQuests[farm.Tier]) { return; }

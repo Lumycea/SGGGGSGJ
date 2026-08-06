@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class DialogManager : MonoBehaviour
 {
+    public static DialogManager Instance;
     [SerializeField] private TMP_Text text;
 
     private Queue<string> dialog = new();
 
     void Start()
     {
-        for (int i = 0; i < 15; ++i)
-            AddDialog("Garry", "Hi!" + i);
+        Instance = this;
     }
 
-    void AddDialog(string source, string line)
+    public void AddDialog(string source, string line)
     {
         dialog.Enqueue($"[{source}] {line}\n");
         ConstructDialog();
