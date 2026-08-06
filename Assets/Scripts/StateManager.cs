@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(ItemManager))]
 public class StateManager : MonoBehaviour
 {
     public static StateManager Instance;
@@ -11,7 +12,7 @@ public class StateManager : MonoBehaviour
 
     public bool isInPlayerSelect = false;
     public bool isInGame = false;
-    public bool tutorialEnabled = true;
+    public bool tutorialEnabled = false;
 
     public bool tutorialStarted = false;
     public bool hasTilled = false;
@@ -34,7 +35,7 @@ public class StateManager : MonoBehaviour
     public bool hasCraftedTutorialDone = false;
 
     public bool showDelta = false;
-    public bool canGenerateQuest = false;
+    public bool canGenerateQuest = true;
     public bool generateQuestNow = false;
 
     public const int PLAYER_SELECT_SCENE_INDEX = 1;
@@ -86,7 +87,7 @@ public class StateManager : MonoBehaviour
             hasCrafted = false;
             hasCraftedTutorialDone = false;
 
-            ItemManager.Instance.AvailableItems.Add(FarmItemKind.Sugar);
+            GetComponent<ItemManager>().AvailableItems.Add(FarmItemKind.Sugar);
         }
     }
 

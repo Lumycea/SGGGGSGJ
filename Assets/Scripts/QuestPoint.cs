@@ -15,7 +15,6 @@ public class QuestPoint : MonoBehaviour, IInteractable
     {
         if (QuestManager.Instance.PendingQuests[slotIndex] is ItemStack stack)
         {
-            print(display);
             display.Stack = stack;
             display.gameObject.SetActive(true);
         }

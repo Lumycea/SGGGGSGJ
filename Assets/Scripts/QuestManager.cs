@@ -79,12 +79,11 @@ public class QuestManager : SimulationEntity
     {
         if (!StateManager.Instance.canGenerateQuest)
         {
-            print("skipping generation");
             return;
         }
+
         if (StateManager.Instance.generateQuestNow)
         {
-            print("forced generation");
             StateManager.Instance.generateQuestNow = false;
             NewQuest();
         }
