@@ -6,6 +6,7 @@ public class ItemStackDisplay : MonoBehaviour, IInteractable
 {
     public ItemStack Stack;
     public bool ForceBackground = false;
+    public bool ForceNoBackground = false;
 
     [SerializeField] private SpriteRenderer backgroundRenderer;
     [SerializeField] private SpriteRenderer itemRenderer;
@@ -18,7 +19,7 @@ public class ItemStackDisplay : MonoBehaviour, IInteractable
         countText.enabled = Stack.count > 1;
         countText.text = Stack.count.ToString();
 
-        backgroundRenderer.enabled = Stack.count > 1 || ForceBackground;
+        backgroundRenderer.enabled = (Stack.count > 1 || ForceBackground) && !ForceNoBackground;
     }
 
     public bool DecreaseCount(int amount)

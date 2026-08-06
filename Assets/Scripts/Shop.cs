@@ -1,0 +1,117 @@
+using System;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+
+public class Shop : MonoBehaviour
+{
+    [SerializeField] private ItemStackDisplay Input;
+    [SerializeField] private TMP_Text WheatInput;
+    [SerializeField] private SpriteRenderer Output;
+    [SerializeField] private GameObject itemStackPrefab;
+
+    private readonly List<ShopEntry> entries = new();
+    private int selectedIndex = 0;
+
+    public static Shop Instance;
+
+    void Start()
+    {
+        Instance = this;
+
+        entries.Add(new ShopEntry(3, null, new ShopEntryItem(new ItemStack(new Seed(FarmItemKind.Sugar), 1)), true));
+        entries.Add(new ShopEntry(10, new ItemStack(new FarmItem(FarmItemKind.Sugar), 5), new ShopEntryUpgrade(), true));
+
+        RefreshView();
+    }
+
+    void RefreshView()
+    {
+        var entry = entries[selectedIndex];
+        WheatInput.text = entry.wheatInput.ToString();
+
+        if (entry.itemInput is ItemStack stack)
+        {
+            Input.Stack = stack;
+            Input.gameObject.SetActive(true);
+        }
+        else
+        {
+            Input.gameObject.SetActive(false);
+        }
+
+        Output.sprite = entry.output.Sprite;
+    }
+
+    public void SwipeLeft()
+    {
+        selectedIndex = (selectedIndex + entries.Count - 1) % entries.Count;
+    }
+    public void SwipeRight()
+    {
+        selectedIndex = (selectedIndex + 1) % entries.Count;
+    }
+
+    public ItemStack? CurrentTarget()
+    {
+        var entry = entries[selectedIndex];
+        return entry.output is ShopEntryItem e ? e.Stack : null;
+    }
+
+    public ItemStack? Buy()
+    {
+        var entry = entries[selectedIndex];
+
+        if (StateManager.Instance.Wheat < entry.wheatInput) return null;
+        if (entry.itemInput is ItemStack stack && !Farm.Instance.TryRemoveItem((stack.item as FarmItem).Kind, stack.count)) return null;
+
+        StateManager.Instance.Wheat -= entry.wheatInput;
+
+        ItemStack? ret = CurrentTarget();
+        if (entry.output is ShopEntryUpgrade)
+        {
+            StateManager.Instance.UpgradeTier();
+        }
+
+        if (!entry.repeatable)
+        {
+            entries.RemoveAt(selectedIndex);
+            selectedIndex = 0;
+        }
+
+        return ret;
+    }
+}
+
+public readonly struct ShopEntry
+{
+    public readonly int wheatInput;
+    public readonly ItemStack? itemInput;
+    public readonly ShopOutput output;
+    public readonly bool repeatable;
+
+    public ShopEntry(int _wheatInput, ItemStack? _itemInput, ShopOutput _output, bool _repeatable)
+    {
+        output = _output;
+        repeatable = _repeatable;
+        wheatInput = _wheatInput;
+        itemInput = _itemInput;
+    }
+}
+
+public abstract class ShopOutput
+{
+    abstract public Sprite Sprite { get; }
+}
+
+public class ShopEntryItem : ShopOutput
+{
+    public ShopEntryItem(ItemStack stack) { Stack = stack; }
+
+    public ItemStack Stack;
+    public override Sprite Sprite => Stack.item.Sprite;
+}
+public class ShopEntryUpgrade : ShopOutput
+{
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/netherite_upgrade_smithing_template");
+}

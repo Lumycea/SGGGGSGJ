@@ -5,7 +5,10 @@ public class StateManager : MonoBehaviour
 {
     public static StateManager Instance;
 
-    public uint Tier;
+    public int Wheat;
+
+    public uint Tier { get; private set; }
+
     public bool isInPlayerSelect = false;
     public bool isInGame = false;
     public bool tutorialEnabled = true;
@@ -138,4 +141,6 @@ public class StateManager : MonoBehaviour
             }
         }
     }
+
+    public void UpgradeTier() { }
 }

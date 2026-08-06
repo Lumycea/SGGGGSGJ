@@ -30,6 +30,13 @@ public class Farm : SimulationEntity
         else { inventory[item] += count; }
     }
 
+    public bool TryRemoveItem(FarmItemKind item, int count)
+    {
+        if (!inventory.ContainsKey(item) || inventory[item] < count) return false;
+        inventory[item] -= count;
+        return true;
+    }
+
     public void RegisterAutomatedAction(Dictionary<FarmItemKind, int> delta)
     {
         foreach (var e in delta)
