@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private StateManager stateManager;
     private Rigidbody2D rb;
     public Transform nose;
+    public float noseDistance = 0.5f;
+    public GameObject dockingPoint;
 
     void Start()
     {
@@ -39,6 +41,9 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         rb.MovePosition(rb.position + moveVector * playerSpeed * Time.fixedDeltaTime);
-        nose.position = rb.position + moveVector * 0.5f;
+        if (moveVector.magnitude > 0.1f)
+        {
+            nose.position = rb.position + moveVector * noseDistance;
+        }
     }
 }

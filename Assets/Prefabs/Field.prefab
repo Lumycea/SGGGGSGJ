@@ -315,9 +315,8 @@ MonoBehaviour:
   - {fileID: 2909077222412171738, guid: d900030d73a4d46ae8e73c26c2e4aa26, type: 3}
   cropRenderer: {fileID: 4700959322648249562}
   groundRenderer: {fileID: 3595155069756754170}
-  Item: 0
   Field: {fileID: 3850557808648370998}
-  isTiled: 0
+  itemStackPrefab: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
 --- !u!1 &3005740230981103665
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,9 +569,8 @@ MonoBehaviour:
   - {fileID: 2909077222412171738, guid: d900030d73a4d46ae8e73c26c2e4aa26, type: 3}
   cropRenderer: {fileID: 1428414947391332717}
   groundRenderer: {fileID: 4594312696543724543}
-  Item: 0
   Field: {fileID: 3850557808648370998}
-  isTiled: 0
+  itemStackPrefab: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
 --- !u!1 &3832464098853108364
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,9 +732,8 @@ MonoBehaviour:
   - {fileID: 2909077222412171738, guid: d900030d73a4d46ae8e73c26c2e4aa26, type: 3}
   cropRenderer: {fileID: 317407458875614652}
   groundRenderer: {fileID: 8610109522350201071}
-  Item: 0
   Field: {fileID: 3850557808648370998}
-  isTiled: 0
+  itemStackPrefab: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
 --- !u!1 &4320000384657474487
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,9 +895,8 @@ MonoBehaviour:
   - {fileID: 2909077222412171738, guid: d900030d73a4d46ae8e73c26c2e4aa26, type: 3}
   cropRenderer: {fileID: 3926636434377922699}
   groundRenderer: {fileID: 1671839746873492340}
-  Item: 0
   Field: {fileID: 3850557808648370998}
-  isTiled: 0
+  itemStackPrefab: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
 --- !u!1 &4597923107551103774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,9 +1240,8 @@ MonoBehaviour:
   - {fileID: 2909077222412171738, guid: d900030d73a4d46ae8e73c26c2e4aa26, type: 3}
   cropRenderer: {fileID: 5866326699381695955}
   groundRenderer: {fileID: 4992274623879467229}
-  Item: 0
   Field: {fileID: 3850557808648370998}
-  isTiled: 0
+  itemStackPrefab: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
 --- !u!1 &7073972204304530578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1772,9 +1767,8 @@ MonoBehaviour:
   - {fileID: 2909077222412171738, guid: d900030d73a4d46ae8e73c26c2e4aa26, type: 3}
   cropRenderer: {fileID: 1156532097153594357}
   groundRenderer: {fileID: 7983200655533397383}
-  Item: 0
   Field: {fileID: 3850557808648370998}
-  isTiled: 0
+  itemStackPrefab: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
 --- !u!1 &8484495468099920567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,9 +2021,8 @@ MonoBehaviour:
   - {fileID: 2909077222412171738, guid: d900030d73a4d46ae8e73c26c2e4aa26, type: 3}
   cropRenderer: {fileID: 8048500655940491287}
   groundRenderer: {fileID: 1747469640331828249}
-  Item: 0
   Field: {fileID: 3850557808648370998}
-  isTiled: 0
+  itemStackPrefab: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
 --- !u!1 &8981481917465818457
 GameObject:
   m_ObjectHideFlags: 0
@@ -2191,9 +2184,8 @@ MonoBehaviour:
   - {fileID: 2909077222412171738, guid: d900030d73a4d46ae8e73c26c2e4aa26, type: 3}
   cropRenderer: {fileID: 9064552459521588914}
   groundRenderer: {fileID: 162174361999498693}
-  Item: 0
   Field: {fileID: 3850557808648370998}
-  isTiled: 0
+  itemStackPrefab: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
 --- !u!1 &9062394057513438927
 GameObject:
   m_ObjectHideFlags: 0
@@ -2355,6 +2347,5 @@ MonoBehaviour:
   - {fileID: 2909077222412171738, guid: d900030d73a4d46ae8e73c26c2e4aa26, type: 3}
   cropRenderer: {fileID: 4356544501169007123}
   groundRenderer: {fileID: 3816027612935829226}
-  Item: 0
   Field: {fileID: 3850557808648370998}
-  isTiled: 0
+  itemStackPrefab: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}

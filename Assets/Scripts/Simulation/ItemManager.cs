@@ -20,6 +20,8 @@ public enum FarmItem
     Magnum,
     IceCream,
     Smarties,
+    Axe, Hoe, Hammer,
+    MilkSeed, CocoaSeed, SugarSeed, IceSeed
 }
 
 

@@ -6,9 +6,9 @@ public class Field : MonoBehaviour
 
     public bool CanPlant(FarmItem item)
     {
-        foreach(var c in crops)
+        foreach (var c in crops)
         {
-            if(c.Item != null && c.Item != item)
+            if (c.Item != null && c.Item != item)
             {
                 return false;
             }

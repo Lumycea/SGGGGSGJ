@@ -104,13 +104,13 @@ public class PlayerManager : MonoBehaviour
 public class Player
 {
     public GameObject playerObject;
-    public GameObject playerPanel;
+    public GameObject playerPanel = null;
     public Color playerColor;
     public bool isReady = false;
+    public ItemStackDisplay heldItem;
     public Player(GameObject obj)
     {
         playerObject = obj;
-        playerPanel = null;
         playerColor = Random.ColorHSV(0f, 1f, 0.5f, 1f, 0.5f, 1f);
     }
 }
