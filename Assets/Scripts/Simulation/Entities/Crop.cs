@@ -11,7 +11,7 @@ public class Crop : SimulationEntity, IInteractable
 
     public FarmItemKind? Item { get; private set; }
 
-    private bool isTiled = false;
+    private bool isTilled = false;
     private uint growthStage = 0;
 
     void Update()
@@ -19,7 +19,7 @@ public class Crop : SimulationEntity, IInteractable
         cropRenderer.enabled = Item != null;
         cropRenderer.sprite = Sprites[growthStage];
 
-        groundRenderer.enabled = isTiled;
+        groundRenderer.enabled = isTilled;
     }
 
     public override void Tick()
@@ -31,15 +31,23 @@ public class Crop : SimulationEntity, IInteractable
 
     }
 
-    public bool IsHarvestable() { return growthStage == Sprites.Length && Item != null; }
+    public bool IsHarvestable() { return growthStage == Sprites.Length - 1 && Item != null; }
     public void Harvest() { growthStage = 0; }
 
 
-    public bool IsTileable() { return !isTiled; }
-    public void Tile() { isTiled = true; }
+    public bool IsTillable() { return !isTilled; }
+    public void Till()
+    {
+        isTilled = true;
+        StateManager.Instance.hasTilled = true;
+    }
 
-    public bool CanPlant(FarmItemKind item) { return isTiled && Item == null && Field.CanPlant(item); }
-    public void Plant(FarmItemKind item) { Item = item; }
+    public bool CanPlant(FarmItemKind item) { return isTilled && Item == null && Field.CanPlant(item); }
+    public void Plant(FarmItemKind item)
+    {
+        Item = item;
+        StateManager.Instance.hasPlanted = true;
+    }
 
     public bool Interact(Player player)
     {
@@ -53,9 +61,9 @@ public class Crop : SimulationEntity, IInteractable
             return true;
         }
 
-        if (player.heldItem != null && player.heldItem.Stack.item is Hoe && !isTiled)
+        if (player.heldItem != null && player.heldItem.Stack.item is Hoe && !isTilled)
         {
-            Tile();
+            Till();
             return true;
         }
 

@@ -12,6 +12,8 @@ public class Simulation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!StateManager.Instance.isInGame) { return; }
+
         timeBeforeNextTick -= Time.deltaTime;
 
         while (timeBeforeNextTick < 0)

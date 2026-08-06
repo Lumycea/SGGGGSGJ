@@ -41,6 +41,10 @@ public class StateManager : MonoBehaviour
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void Start()
+    {
         Instance = this;
     }
 
@@ -103,6 +107,10 @@ public class StateManager : MonoBehaviour
             if (hasDeposited && !hasDepositedTutorialDone)
             {
                 hasDepositedTutorialDone = true;
+                SendTutorial("You can see what's in your silo in the top left corner of the screen.");
+                SendTutorial("You can also see how many items you have gained or lost in the last tick.");
+                SendTutorial("Now, go take a customer's request ticket and bring it to the farm's silo.");
+
             }
             if (hasPickedTicket && !hasPickedTicketTutorialDone)
             {
