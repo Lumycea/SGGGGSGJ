@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class HUD : MonoBehaviour
@@ -13,11 +12,15 @@ public class HUD : MonoBehaviour
     public Dictionary<FarmItemKind, int> Delta = new Dictionary<FarmItemKind, int>();
     public bool ShowDelta = false;
 
+    public static HUD Instance { get; private set; }
+
     void Start()
     {
+        Instance = this;
+
         Inventory.Add(FarmItemKind.Milk, 2);
         Inventory.Add(FarmItemKind.Sugar, 4);
-        Inventory.Add(FarmItemKind.Popsicle, 10);        
+        Inventory.Add(FarmItemKind.Popsicle, 10);
 
         Delta.Add(FarmItemKind.Milk, -1);
         Delta.Add(FarmItemKind.Sugar, +3);
@@ -26,7 +29,7 @@ public class HUD : MonoBehaviour
         itemManager = GameObject.FindWithTag("GameManager").GetComponent<ItemManager>();
         AvailableDisplays = new Queue<ItemDisplay>(GetComponentsInChildren<ItemDisplay>());
 
-        foreach(var d in AvailableDisplays)
+        foreach (var d in AvailableDisplays)
         {
             d.gameObject.SetActive(false);
         }
@@ -34,10 +37,10 @@ public class HUD : MonoBehaviour
 
     void Update()
     {
-        foreach(var e in Inventory)
+        foreach (var e in Inventory)
         {
             var tier = e.Key.GetTier();
-            if(!displays.ContainsKey(e.Key))
+            if (!displays.ContainsKey(e.Key))
             {
                 var d = AvailableDisplays.Dequeue();
                 d.gameObject.SetActive(true);
@@ -50,7 +53,7 @@ public class HUD : MonoBehaviour
             display.Sprite = itemManager.Sprites[e.Key];
             display.Count = e.Value;
             display.ShowDelta = ShowDelta;
-            if(ShowDelta)
+            if (ShowDelta)
             {
                 display.Delta = Delta[e.Key];
             }

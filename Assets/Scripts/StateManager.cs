@@ -30,6 +30,8 @@ public class StateManager : MonoBehaviour
     public bool hasCrafted = false;
     public bool hasCraftedTutorialDone = false;
 
+    public bool showDelta = false;
+
     public const int PLAYER_SELECT_SCENE_INDEX = 1;
     public const int GAME_SCENE_INDEX = 2;
     public const string TUTORIAL_SOURCE = "Garry";
