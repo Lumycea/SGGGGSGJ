@@ -67,7 +67,7 @@ public class PlayerManager : MonoBehaviour
             mes.playerRoot = playerPanel;
             mes.firstSelectedGameObject = panelScript.firstSelected;
         }
-        playerObject.GetComponent<InputSystemUIInputModule>().actionsAsset = playerInput.actions;
+        // playerObject.GetComponent<InputSystemUIInputModule>().actionsAsset = playerInput.actions;
         playerInput.SwitchCurrentActionMap("UI");
     }
 

@@ -78,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 450
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -145,10 +145,10 @@ TextureImporter:
         serializedVersion: 2
         x: 37
         y: 12
-        width: 163
-        height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 162
+        height: 299
+      alignment: 9
+      pivot: {x: 0.53901154, y: 0.18554085}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -167,10 +167,10 @@ TextureImporter:
         serializedVersion: 2
         x: 215
         y: 16
-        width: 163
+        width: 162
         height: 278
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5390115, y: 0.18173622}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,12 +187,12 @@ TextureImporter:
       name: IdleBack_2
       rect:
         serializedVersion: 2
-        x: 408
+        x: 409
         y: 16
-        width: 163
-        height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 161
+        height: 299
+      alignment: 9
+      pivot: {x: 0.53444713, y: 0.18554088}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,12 +209,12 @@ TextureImporter:
       name: IdleBack_3
       rect:
         serializedVersion: 2
-        x: 586
-        y: 22
-        width: 163
-        height: 278
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 587
+        y: 23
+        width: 161
+        height: 276
+      alignment: 9
+      pivot: {x: 0.5320438, y: 0.18176648}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -232,11 +232,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 773
-        y: 18
-        width: 163
-        height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 19
+        width: 162
+        height: 299
+      alignment: 9
+      pivot: {x: 0.5350308, y: 0.18338406}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -253,12 +253,12 @@ TextureImporter:
       name: IdleBack_5
       rect:
         serializedVersion: 2
-        x: 927
-        y: 22
-        width: 186
-        height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 954
+        y: 23
+        width: 184
+        height: 309
+      alignment: 9
+      pivot: {x: 0.58832055, y: 0.17443031}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -275,12 +275,12 @@ TextureImporter:
       name: IdleBack_6
       rect:
         serializedVersion: 2
-        x: 1131
-        y: 18
-        width: 186
-        height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1157
+        y: 19
+        width: 185
+        height: 309
+      alignment: 9
+      pivot: {x: 0.59481496, y: 0.17484772}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -297,12 +297,12 @@ TextureImporter:
       name: IdleBack_7
       rect:
         serializedVersion: 2
-        x: 1324
-        y: 14
-        width: 186
-        height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1351
+        y: 15
+        width: 184
+        height: 309
+      alignment: 9
+      pivot: {x: 0.58902174, y: 0.17902164}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -319,12 +319,12 @@ TextureImporter:
       name: IdleBack_8
       rect:
         serializedVersion: 2
-        x: 1517
+        x: 1544
         y: 11
-        width: 186
+        width: 184
         height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5862181, y: 0.17548053}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -341,12 +341,12 @@ TextureImporter:
       name: IdleBack_9
       rect:
         serializedVersion: 2
-        x: 1713
+        x: 1740
         y: 12
-        width: 186
+        width: 183
         height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5944417, y: 0.17797685}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -363,7 +363,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 19a2d2616df55ad8cb7b34d5b0a9d20e
     internalID: 0
     vertices: []
     indices: 
@@ -371,7 +371,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       IdleBack_0: 2239502500526802822
       IdleBack_1: 4418771248019951181
