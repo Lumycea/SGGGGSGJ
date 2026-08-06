@@ -37,18 +37,14 @@ public class ItemStackDisplay : MonoBehaviour, IInteractable
         return false;
     }
 
-    public bool Grab(Player player)
+    public bool Interact(Player player)
     {
         if (player.heldItem == null)
         {
-            player.heldItem = this;
-            transform.SetParent(player.playerObject.GetComponent<PlayerController>().dockingPoint.transform);
-            transform.localPosition = Vector3.zero;
-            gameObject.layer = LayerMask.NameToLayer("Default");
+            player.SetItem(this);
             return true;
         }
-
-        if (player.heldItem.Stack.item.Equals(Stack.item))
+        else if (player.heldItem.Stack.item.Equals(Stack.item))
         {
             player.heldItem.Stack.count += Stack.count;
             Destroy(gameObject);

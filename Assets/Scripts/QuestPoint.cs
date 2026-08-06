@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class QuestPoint : MonoBehaviour
+public class QuestPoint : MonoBehaviour, IInteractable
 {
     [SerializeField] private int slotIndex;
+    [SerializeField] GameObject questTicketPrefab;
 
     public bool HasQuest()
     {
@@ -17,5 +18,25 @@ public class QuestPoint : MonoBehaviour
     public bool DepositPackage(QuestPackage package)
     {
         return QuestManager.Instance.DepositPackage(package, slotIndex);
+    }
+
+    public bool Interact(Player playerState)
+    {
+        if (playerState.heldItem == null && HasQuest())
+        {
+            GameObject ticket = Instantiate(questTicketPrefab, transform.position, Quaternion.identity);
+            playerState.SetItem(ticket.GetComponent<ItemStackDisplay>());
+            return true;
+        }
+        else if (playerState.heldItem != null && playerState.heldItem.Stack.item is QuestPackage package)
+        {
+            if (DepositPackage(package))
+            {
+                Destroy(playerState.heldItem.gameObject);
+                playerState.heldItem = null;
+                return true;
+            }
+        }
+        return false;
     }
 }

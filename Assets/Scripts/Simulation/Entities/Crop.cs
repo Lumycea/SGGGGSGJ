@@ -31,7 +31,7 @@ public class Crop : SimulationEntity, IInteractable
 
     }
 
-    public bool IsHarvestable() { return growthStage == Sprites.Length - 1 && Item != null; }
+    public bool IsHarvestable() { return isTilled && growthStage == Sprites.Length - 1 && Item != null; }
     public void Harvest() { growthStage = 0; }
 
 
@@ -51,30 +51,42 @@ public class Crop : SimulationEntity, IInteractable
 
     public bool Interact(Player player)
     {
-        if (IsHarvestable() && Item is FarmItemKind kind)
+        if (player.heldItem != null)
         {
-            var prefab = Instantiate(itemStackPrefab, transform.position, Quaternion.identity);
-            var stack = prefab.GetComponent<ItemStackDisplay>();
-
-            stack.Stack = new ItemStack(new FarmItem(kind), 1);
-            Harvest();
-            return true;
-        }
-
-        if (player.heldItem != null && player.heldItem.Stack.item is Hoe && !isTilled)
-        {
-            Till();
-            return true;
-        }
-
-        if (player.heldItem != null && player.heldItem.Stack.item is Seed seed && CanPlant(seed.Kind))
-        {
-            Plant(seed.Kind);
-            if (player.heldItem.DecreaseCount(1))
+            if (player.heldItem.Stack.item is Hoe)
             {
-                player.heldItem = null;
+                if (IsTillable())
+                {
+                    Till();
+                    return true;
+                }
+                else if (IsHarvestable() && Item is FarmItemKind kind)
+                {
+                    var prefab = Instantiate(itemStackPrefab, transform.position, Quaternion.identity);
+                    var stack = prefab.GetComponent<ItemStackDisplay>();
+
+                    stack.Stack = new ItemStack(new FarmItem(kind), 1);
+                    player.SetItem(stack);
+
+                    Harvest();
+                    return true;
+                }
             }
-            return true;
+            else if (player.heldItem.Stack.item is FarmItem farmItem && IsHarvestable() && farmItem.Kind == Item)
+            {
+                player.heldItem.Stack.count += 1;
+                Harvest();
+                return true;
+            }
+            else if (player.heldItem.Stack.item is Seed seed && CanPlant(seed.Kind))
+            {
+                Plant(seed.Kind);
+                if (player.heldItem.DecreaseCount(1))
+                {
+                    player.heldItem = null;
+                }
+                return true;
+            }
         }
         return false;
     }

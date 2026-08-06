@@ -22,20 +22,7 @@ public class PlayerInteractor : MonoBehaviour
         {
             if (collider.TryGetComponent(out IInteractable interactable))
             {
-                interactable.Interact(playerState);
-                return;
-            }
-        }
-    }
-
-    public void OnGrab()
-    {
-        Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position, interactorLayerMask);
-        foreach (Collider2D collider in colliders)
-        {
-            if (collider.TryGetComponent(out IInteractable interactable))
-            {
-                if (interactable.Grab(playerState)) return;
+                if (interactable.Interact(playerState)) return;
             }
         }
 
@@ -47,5 +34,14 @@ public class PlayerInteractor : MonoBehaviour
             playerState.heldItem = null;
             return;
         }
+    }
+
+    public void OnSwipeLeft()
+    {
+
+    }
+
+    public void OnSwipeRight()
+    {
     }
 }

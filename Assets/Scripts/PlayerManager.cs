@@ -113,4 +113,12 @@ public class Player
         playerObject = obj;
         playerColor = Random.ColorHSV(0f, 1f, 0.5f, 1f, 0.5f, 1f);
     }
+
+    public void SetItem(ItemStackDisplay item)
+    {
+        heldItem = item;
+        item.transform.SetParent(playerObject.GetComponent<PlayerController>().dockingPoint.transform);
+        item.transform.localPosition = Vector3.zero;
+        item.gameObject.layer = LayerMask.NameToLayer("Default");
+    }
 }
