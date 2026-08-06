@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerInteractor : MonoBehaviour
 {
     [SerializeField] private Transform interactionPoint;
+    [SerializeField] private LayerMask interactorLayerMask;
     private Player playerState;
 
     void Start()
@@ -16,15 +17,35 @@ public class PlayerInteractor : MonoBehaviour
 
     public void OnInteract()
     {
-        Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position);
+        Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position, interactorLayerMask);
         foreach (Collider2D collider in colliders)
         {
             if (collider.TryGetComponent(out IInteractable interactable))
             {
-                print($"Interacting with {interactable}");
                 interactable.Interact(playerState);
                 return;
             }
+        }
+    }
+
+    public void OnGrab()
+    {
+        Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position, interactorLayerMask);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.TryGetComponent(out IInteractable interactable))
+            {
+                if (interactable.Grab(playerState)) return;
+            }
+        }
+
+        if (playerState.heldItem != null)
+        {
+            playerState.heldItem.transform.SetParent(null);
+            playerState.heldItem.transform.position = interactionPoint.position;
+            playerState.heldItem.gameObject.layer = LayerMask.NameToLayer("Interactable");
+            playerState.heldItem = null;
+            return;
         }
     }
 }

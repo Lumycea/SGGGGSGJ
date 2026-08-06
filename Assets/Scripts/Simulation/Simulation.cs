@@ -25,8 +25,6 @@ public class Simulation : MonoBehaviour
 
     void doTick()
     {
-        print("Ticking");
-
         var simEntities = FindObjectsByType<SimulationEntity>(FindObjectsSortMode.None);
 
         foreach (var e in simEntities)

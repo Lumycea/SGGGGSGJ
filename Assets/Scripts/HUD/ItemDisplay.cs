@@ -5,14 +5,14 @@ using TMPro;
 public class ItemDisplay : MonoBehaviour
 {
     private Sprite _sprite = null;
-    private uint _count = 0;
+    private int _count = 0;
     private int _delta = 0;
     private bool _showDelta = false;
 
-    public Sprite Sprite { get => _sprite; set { _sprite = value; ItemImage.sprite = Sprite; }}
-    public uint Count { get => _count; set { _count = value; updateText(); }}
-    public int Delta { get => _delta; set { _delta = value; updateText(); }}
-    public bool ShowDelta { get => _showDelta; set { _showDelta = value; updateText(); }}
+    public Sprite Sprite { get => _sprite; set { _sprite = value; ItemImage.sprite = Sprite; } }
+    public int Count { get => _count; set { _count = value; updateText(); } }
+    public int Delta { get => _delta; set { _delta = value; updateText(); } }
+    public bool ShowDelta { get => _showDelta; set { _showDelta = value; updateText(); } }
 
     public Image ItemImage;
     public TMP_Text StatusText;

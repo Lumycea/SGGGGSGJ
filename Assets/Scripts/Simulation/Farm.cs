@@ -4,7 +4,7 @@ using System.Linq;
 
 public class Farm : SimulationEntity
 {
-    private readonly Dictionary<FarmItemKind, uint> inventory = new();
+    private readonly Dictionary<FarmItemKind, int> inventory = new();
     private readonly Dictionary<FarmItemKind, int> delta = new();
 
     private int _wheat = 0;
@@ -17,7 +17,14 @@ public class Farm : SimulationEntity
         }
     }
 
-    public void AddItem(FarmItemKind item, uint count)
+    public static Farm Instance { get; private set; }
+
+    void Start()
+    {
+        Instance = this;
+    }
+
+    public void AddItem(FarmItemKind item, int count)
     {
         if (!inventory.ContainsKey(item)) { inventory.Add(item, count); }
         else { inventory[item] += count; }

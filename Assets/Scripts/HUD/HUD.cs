@@ -8,7 +8,7 @@ public class HUD : MonoBehaviour
     private uint[] usedSlots = { 0, 0, 0, 0 };
     private ItemManager itemManager;
 
-    public Dictionary<FarmItemKind, uint> Inventory = new Dictionary<FarmItemKind, uint>();
+    public Dictionary<FarmItemKind, int> Inventory = new Dictionary<FarmItemKind, int>();
     public Dictionary<FarmItemKind, int> Delta = new Dictionary<FarmItemKind, int>();
     public bool ShowDelta = false;
 

@@ -83,8 +83,6 @@ public class StateManager : MonoBehaviour
         {
             if (!tutorialStarted)
             {
-                print("printing tuto start");
-                print(tutorialStarted);
                 tutorialStarted = true;
                 SendTutorial("Hi! I'm Garry. I will teach you the basics of SGGGSGJ :)");
                 SendTutorial("First, go pick the Hoe and use it to till some soil.");

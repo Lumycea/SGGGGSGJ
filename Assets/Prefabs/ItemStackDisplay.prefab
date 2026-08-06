@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 7048158525226511095}
   - component: {fileID: 8274030394607508626}
   - component: {fileID: 137502879070684590}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ItemStackDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,12 +140,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   Stack:
-    item: 0
+    item:
+      rid: -2
     count: 1
   ForceBackground: 0
   backgroundRenderer: {fileID: 1657184818333212382}
   itemRenderer: {fileID: 4685910520307470021}
   countText: {fileID: 2941362914882389241}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!61 &137502879070684590
 BoxCollider2D:
   m_ObjectHideFlags: 0

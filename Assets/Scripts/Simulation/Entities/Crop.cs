@@ -41,7 +41,7 @@ public class Crop : SimulationEntity, IInteractable
     public bool CanPlant(FarmItemKind item) { return isTiled && Item == null && Field.CanPlant(item); }
     public void Plant(FarmItemKind item) { Item = item; }
 
-    public void Interact(Player player)
+    public bool Interact(Player player)
     {
         if (IsHarvestable() && Item is FarmItemKind kind)
         {
@@ -50,13 +50,13 @@ public class Crop : SimulationEntity, IInteractable
 
             stack.Stack = new ItemStack(new FarmItem(kind), 1);
             Harvest();
-            return;
+            return true;
         }
 
         if (player.heldItem != null && player.heldItem.Stack.item is Hoe && !isTiled)
         {
             Tile();
-            return;
+            return true;
         }
 
         if (player.heldItem != null && player.heldItem.Stack.item is Seed seed && CanPlant(seed.Kind))
@@ -66,7 +66,8 @@ public class Crop : SimulationEntity, IInteractable
             {
                 player.heldItem = null;
             }
-            return;
+            return true;
         }
+        return false;
     }
 }
