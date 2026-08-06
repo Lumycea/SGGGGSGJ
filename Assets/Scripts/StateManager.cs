@@ -36,14 +36,53 @@ public class StateManager : MonoBehaviour
 
     void SendTutorial(string dialog) { DialogManager.Instance.AddDialog(TUTORIAL_SOURCE, dialog); }
 
-    void Start() { Instance = this; }
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        Instance = this;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == PLAYER_SELECT_SCENE_INDEX)
+        {
+            isInPlayerSelect = true;
+            isInGame = false;
+        }
+        else if (scene.buildIndex == GAME_SCENE_INDEX)
+        {
+            isInPlayerSelect = false;
+            isInGame = true;
+            tutorialStarted = false;
+            hasTilled = false;
+            hasTilledTutorialDone = false;
+            hasPlanted = false;
+            hasPlantedTutorialDone = false;
+            hasDeposited = false;
+            hasDepositedTutorialDone = false;
+            hasPickedTicket = false;
+            hasPickedTicketTutorialDone = false;
+            hasUsedTicket = false;
+            hasUsedTicketTutorialDone = false;
+            hasCompletedQuest = false;
+            hasCompletedQuestTutorialDone = false;
+            hasBoughtSeeds = false;
+            hasBoughtSeedsTutorialDone = false;
+            hasT1Quest = false;
+            hasT1QuestTutorialDone = false;
+            hasCrafted = false;
+            hasCraftedTutorialDone = false;
+        }
+    }
 
     void Update()
     {
-        if (tutorialEnabled)
+        if (tutorialEnabled && isInGame)
         {
             if (!tutorialStarted)
             {
+                print("printing tuto start");
+                print(tutorialStarted);
                 tutorialStarted = true;
                 SendTutorial("Hi! I'm Garry. I will teach you the basics of SGGGSGJ :)");
                 SendTutorial("First, go pick the Hoe and use it to till some soil.");
@@ -89,36 +128,6 @@ public class StateManager : MonoBehaviour
             {
                 hasCraftedTutorialDone = true;
             }
-        }
-
-        if (SceneManager.GetActiveScene().buildIndex == PLAYER_SELECT_SCENE_INDEX)
-        {
-            isInPlayerSelect = true;
-            isInGame = false;
-        }
-        else if (SceneManager.GetActiveScene().buildIndex == GAME_SCENE_INDEX)
-        {
-            isInPlayerSelect = false;
-            isInGame = true;
-            tutorialStarted = false;
-            hasTilled = false;
-            hasTilledTutorialDone = false;
-            hasPlanted = false;
-            hasPlantedTutorialDone = false;
-            hasDeposited = false;
-            hasDepositedTutorialDone = false;
-            hasPickedTicket = false;
-            hasPickedTicketTutorialDone = false;
-            hasUsedTicket = false;
-            hasUsedTicketTutorialDone = false;
-            hasCompletedQuest = false;
-            hasCompletedQuestTutorialDone = false;
-            hasBoughtSeeds = false;
-            hasBoughtSeedsTutorialDone = false;
-            hasT1Quest = false;
-            hasT1QuestTutorialDone = false;
-            hasCrafted = false;
-            hasCraftedTutorialDone = false;
         }
     }
 }

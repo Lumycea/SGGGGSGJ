@@ -52,7 +52,7 @@ public class Seed : Item
         Kind = kind;
     }
 
-    public readonly FarmItemKind Kind;
+    public FarmItemKind Kind;
 
 
     public override int MaxStackCount => 1;

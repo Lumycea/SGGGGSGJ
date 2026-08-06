@@ -119,6 +119,103 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &250637052
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 307964368580907090, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_Name
+      value: DialogManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618532375662829089, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72d5643ef6dfd037c809371b3929c587, type: 3}
 --- !u!1001 &459910988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -511,7 +608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8274030394607508626, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: Stack.item
-      value: 118750700251382011
+      value: 118750700251382015
       objectReference: {fileID: 0}
     - target: {fileID: 8274030394607508626, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: 'managedReferences[118750700251382007]'
@@ -520,6 +617,10 @@ PrefabInstance:
     - target: {fileID: 8274030394607508626, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: 'managedReferences[118750700251382011]'
       value: Assembly-CSharp FarmItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274030394607508626, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
+      propertyPath: 'managedReferences[118750700251382015]'
+      value: Assembly-CSharp Seed
       objectReference: {fileID: 0}
     - target: {fileID: 8274030394607508626, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: managedReferences[118750700251382011].Kind
@@ -659,11 +760,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8274030394607508626, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: Stack.item
-      value: 118750700251382009
+      value: 118750700251382014
       objectReference: {fileID: 0}
     - target: {fileID: 8274030394607508626, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: 'managedReferences[118750700251382009]'
       value: Assembly-CSharp FarmItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274030394607508626, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
+      propertyPath: 'managedReferences[118750700251382014]'
+      value: Assembly-CSharp Hoe
       objectReference: {fileID: 0}
     - target: {fileID: 8274030394607508626, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: managedReferences[118750700251382009].Kind
@@ -823,3 +928,4 @@ SceneRoots:
   - {fileID: 2072085928}
   - {fileID: 459910988}
   - {fileID: 1929866235}
+  - {fileID: 250637052}
