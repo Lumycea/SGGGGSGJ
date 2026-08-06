@@ -3,8 +3,11 @@ using UnityEngine;
 
 [RequireComponent(typeof(ItemManager))]
 [RequireComponent(typeof(StateManager))]
+[RequireComponent(typeof(Farm))]
 public class QuestManager : SimulationEntity
 {
+    public static QuestManager Instance;
+
     [SerializeField] private int[] maxQuests;
     [SerializeField] private int[] minWeights;
     [SerializeField] private int[] maxWeights;
@@ -15,6 +18,11 @@ public class QuestManager : SimulationEntity
 
     private int questCount = 0;
     private int tickBeforeNextQuest = 0;
+
+    void Start()
+    {
+        Instance = this;
+    }
 
     public void NewQuest()
     {
@@ -49,29 +57,16 @@ public class QuestManager : SimulationEntity
         PendingQuests[slot] = null;
     }
 
-    /// <summary>
-    /// Attempts to deposit an item stack at a quest slot. If the quest cannot be completed with this stack, returns it and does nothing.
-    /// </summary>
-    /// <param name="stack"></param>
-    /// <param name="slot"></param>
-    /// <returns>The remaining item stack, or null if everything is used.</returns>
-    public ItemStack? DepositStack(ItemStack stack, int slot)
+
+    public bool DepositPackage(QuestPackage package, int slot)
     {
-        var questN = PendingQuests[slot];
-
-        if (questN is ItemStack quest)
+        if (PendingQuests[slot] is ItemStack stack && stack.Equals(package.Stack))
         {
-            // Stack item doesn't match the quest, or there are not enought items.
-            if (quest.item != stack.item || quest.count > stack.count) { return stack; }
-
             CompleteQuest(slot);
-
-            if (quest.count == stack.count) { return null; }
-            else { return new ItemStack(stack.item, stack.count - quest.count); }
+            return true;
         }
-        return stack;
+        return false;
     }
-
 
     public override void Tick()
     {
@@ -79,3 +74,26 @@ public class QuestManager : SimulationEntity
         if (tickBeforeNextQuest == 0) { NewQuest(); }
     }
 }
+
+[System.Serializable]
+public class QuestTicket : Item
+{
+    public QuestTicket(ItemStack stack) { Stack = stack; }
+
+    public readonly ItemStack Stack;
+
+    public override int MaxStackCount => 1;
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/Prize_Ticket");
+}
+
+[System.Serializable]
+public class QuestPackage : Item
+{
+    public QuestPackage(ItemStack stack) { Stack = stack; }
+
+    public readonly ItemStack Stack;
+
+    public override int MaxStackCount => 1;
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/Golden_Mystery_Box");
+}
+

@@ -140,4 +140,7 @@ public struct ItemStack
         item = i;
         count = c;
     }
+
+    public override bool Equals(object obj) { return obj is ItemStack s && s.item.Equals(item) & s.count == count; }
+    public override int GetHashCode() { return HashCode.Combine(item, count); }
 }
