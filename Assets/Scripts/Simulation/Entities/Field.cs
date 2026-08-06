@@ -4,7 +4,7 @@ public class Field : MonoBehaviour
 {
     [SerializeField] private Crop[] crops;
 
-    public bool CanPlant(FarmItem item)
+    public bool CanPlant(FarmItemKind item)
     {
         foreach (var c in crops)
         {

@@ -34,8 +34,8 @@ public class QuestManager : SimulationEntity
 
 
         var idx = PendingQuests.FindIndex(e => e == null);
-        if (idx == -1) { PendingQuests.Add(new ItemStack(item, count)); }
-        else { PendingQuests[idx] = new ItemStack(item, count); }
+        if (idx == -1) { PendingQuests.Add(new ItemStack(new FarmItem(item), count)); }
+        else { PendingQuests[idx] = new ItemStack(new FarmItem(item), count); }
 
         questCount++;
 
@@ -45,7 +45,7 @@ public class QuestManager : SimulationEntity
     private void CompleteQuest(int slot)
     {
         var quest = PendingQuests[slot] ?? throw new System.Exception();
-        GetComponent<Farm>().Wheat += quest.count * GetComponent<ItemManager>().ItemPrice(quest.item);
+        GetComponent<Farm>().Wheat += quest.count * GetComponent<ItemManager>().ItemPrice((quest.item as FarmItem).Kind);
         PendingQuests[slot] = null;
     }
 

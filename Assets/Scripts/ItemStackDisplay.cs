@@ -4,24 +4,16 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class ItemStackDisplay : MonoBehaviour, IInteractable
 {
-    public ItemStack Stack = new(FarmItem.Sugar, 1);
+    public ItemStack Stack;
     public bool ForceBackground = false;
 
     [SerializeField] private SpriteRenderer backgroundRenderer;
     [SerializeField] private SpriteRenderer itemRenderer;
     [SerializeField] private TMP_Text countText;
 
-    private ItemManager itemManager;
-
-
-    void Start()
-    {
-        itemManager = GameObject.FindWithTag("GameManager").GetComponent<ItemManager>();
-    }
-
     void Update()
     {
-        itemRenderer.sprite = itemManager.Sprites[Stack.item];
+        itemRenderer.sprite = Stack.item.Sprite;
 
         countText.enabled = Stack.count > 1;
         countText.text = Stack.count.ToString();
@@ -47,7 +39,6 @@ public class ItemStackDisplay : MonoBehaviour, IInteractable
 
     public void Interact(Player player)
     {
-        print(player.heldItem);
         if (player.heldItem == null)
         {
             player.heldItem = this;
@@ -56,8 +47,7 @@ public class ItemStackDisplay : MonoBehaviour, IInteractable
             return;
         }
 
-        print(player.heldItem.Stack.item);
-        if (player.heldItem.Stack.item == Stack.item)
+        if (player.heldItem.Stack.item.Equals(Stack.item))
         {
             player.heldItem.Stack.count += Stack.count;
             Destroy(gameObject);

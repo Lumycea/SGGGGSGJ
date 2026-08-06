@@ -5,6 +5,6 @@ public class SampleEntity : SimulationEntity
 {
     public override void Tick()
     {
-        Farm.AddItem(FarmItem.Sugar, 2);
+        Farm.AddItem(FarmItemKind.Sugar, 2);
     }
 }

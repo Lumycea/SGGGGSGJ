@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-public enum FarmItem
+public enum FarmItemKind
 {
     Sugar,
     Ice,
@@ -20,39 +20,77 @@ public enum FarmItem
     Magnum,
     IceCream,
     Smarties,
-    Axe, Hoe, Hammer,
-    MilkSeed, CocoaSeed, SugarSeed, IceSeed
+}
+
+[Serializable]
+public class FarmItem : Item
+{
+    public FarmItem() { }
+    public FarmItem(FarmItemKind kind) { Kind = kind; }
+
+    public FarmItemKind Kind;
+
+    public override int MaxStackCount => 4;
+    public override Sprite Sprite => ItemManager.Instance.Sprites[Kind];
+    public override bool Equals(object obj) { return obj is FarmItem s && s.Kind == Kind; }
+    public override int GetHashCode() { return HashCode.Combine("farmitem", Kind); }
+}
+
+[Serializable]
+public class Seed : Item
+{
+    public static readonly FarmItemKind[] Allowed = new FarmItemKind[] {
+        FarmItemKind.Sugar,
+        FarmItemKind.Ice,
+        FarmItemKind.Cocoa,
+        FarmItemKind.Milk
+    };
+
+    public Seed(FarmItemKind kind)
+    {
+        if (!Allowed.Contains(kind)) throw new Exception($"Invalid seed type: {kind}");
+        Kind = kind;
+    }
+
+    public readonly FarmItemKind Kind;
+
+
+    public override int MaxStackCount => 1;
+    public override Sprite Sprite => null;
+
+    public override bool Equals(object obj) { return obj is Seed s && s.Kind == Kind; }
+    public override int GetHashCode() { return HashCode.Combine("seed", Kind); }
 }
 
 
 static class FarmItemMethods
 {
-    public static int GetTier(this FarmItem i)
+    public static int GetTier(this FarmItemKind i)
     {
         switch (i)
         {
-            case FarmItem.Sugar:
-            case FarmItem.Ice:
-            case FarmItem.Cocoa:
-            case FarmItem.Milk:
+            case FarmItemKind.Sugar:
+            case FarmItemKind.Ice:
+            case FarmItemKind.Cocoa:
+            case FarmItemKind.Milk:
                 return 0;
 
-            case FarmItem.Candy:
-            case FarmItem.Chantilly:
-            case FarmItem.Popsicle:
-            case FarmItem.DarkChocolate:
+            case FarmItemKind.Candy:
+            case FarmItemKind.Chantilly:
+            case FarmItemKind.Popsicle:
+            case FarmItemKind.DarkChocolate:
                 return 1;
 
 
-            case FarmItem.Milkshake:
-            case FarmItem.Sorbet:
-            case FarmItem.Chocolate:
-            case FarmItem.SweetenedCondensedMilk:
+            case FarmItemKind.Milkshake:
+            case FarmItemKind.Sorbet:
+            case FarmItemKind.Chocolate:
+            case FarmItemKind.SweetenedCondensedMilk:
                 return 2;
 
-            case FarmItem.Magnum:
-            case FarmItem.IceCream:
-            case FarmItem.Smarties:
+            case FarmItemKind.Magnum:
+            case FarmItemKind.IceCream:
+            case FarmItemKind.Smarties:
                 return 3;
         }
 
@@ -62,19 +100,23 @@ static class FarmItemMethods
 
 public class ItemManager : MonoBehaviour
 {
-    public List<FarmItem> AvailableItems { get; private set; }
-    public Dictionary<FarmItem, Sprite> Sprites { get; private set; }
+    public List<FarmItemKind> AvailableItems { get; private set; }
+    public Dictionary<FarmItemKind, Sprite> Sprites { get; private set; }
 
-    public int ItemPrice(FarmItem item)
+    public static ItemManager Instance { get; private set; }
+
+    public int ItemPrice(FarmItemKind item)
     {
         return item.GetTier();
     }
 
     void Start()
     {
-        Sprites = new Dictionary<FarmItem, Sprite>();
+        Instance = this;
 
-        foreach (var i in Enum.GetValues(typeof(FarmItem)).Cast<FarmItem>())
+        Sprites = new Dictionary<FarmItemKind, Sprite>();
+
+        foreach (var i in Enum.GetValues(typeof(FarmItemKind)).Cast<FarmItemKind>())
         {
             var sprite = Resources.Load<Sprite>("Items/" + i.ToString().ToLower());
             if (sprite == null)
@@ -90,10 +132,10 @@ public class ItemManager : MonoBehaviour
 [Serializable]
 public struct ItemStack
 {
-    public FarmItem item;
+    [SerializeReference, SubclassSelector] public Item item;
     public int count;
 
-    public ItemStack(FarmItem i, int c)
+    public ItemStack(Item i, int c)
     {
         item = i;
         count = c;

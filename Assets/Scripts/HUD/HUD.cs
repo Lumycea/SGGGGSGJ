@@ -5,23 +5,23 @@ using System.Collections.Generic;
 public class HUD : MonoBehaviour
 {
     private Queue<ItemDisplay> AvailableDisplays;
-    private Dictionary<FarmItem, ItemDisplay> displays = new Dictionary<FarmItem, ItemDisplay>();
+    private Dictionary<FarmItemKind, ItemDisplay> displays = new Dictionary<FarmItemKind, ItemDisplay>();
     private uint[] usedSlots = { 0, 0, 0, 0 };
     private ItemManager itemManager;
 
-    public Dictionary<FarmItem, uint> Inventory = new Dictionary<FarmItem, uint>();
-    public Dictionary<FarmItem, int> Delta = new Dictionary<FarmItem, int>();
+    public Dictionary<FarmItemKind, uint> Inventory = new Dictionary<FarmItemKind, uint>();
+    public Dictionary<FarmItemKind, int> Delta = new Dictionary<FarmItemKind, int>();
     public bool ShowDelta = false;
 
     void Start()
     {
-        Inventory.Add(FarmItem.Milk, 2);
-        Inventory.Add(FarmItem.Sugar, 4);
-        Inventory.Add(FarmItem.Popsicle, 10);        
+        Inventory.Add(FarmItemKind.Milk, 2);
+        Inventory.Add(FarmItemKind.Sugar, 4);
+        Inventory.Add(FarmItemKind.Popsicle, 10);        
 
-        Delta.Add(FarmItem.Milk, -1);
-        Delta.Add(FarmItem.Sugar, +3);
-        Delta.Add(FarmItem.Popsicle, +1);
+        Delta.Add(FarmItemKind.Milk, -1);
+        Delta.Add(FarmItemKind.Sugar, +3);
+        Delta.Add(FarmItemKind.Popsicle, +1);
 
         itemManager = GameObject.FindWithTag("GameManager").GetComponent<ItemManager>();
         AvailableDisplays = new Queue<ItemDisplay>(GetComponentsInChildren<ItemDisplay>());

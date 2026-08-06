@@ -14,13 +14,13 @@ public class Farm : SimulationEntity
         }
     }
 
-    public void AddItem(FarmItem item, uint count)
+    public void AddItem(FarmItemKind item, uint count)
     {
         if (!Inventory.ContainsKey(item)) { Inventory.Add(item, count); }
         else { Inventory[item] += count; }
     }
 
-    public void RegisterAutomatedAction(Dictionary<FarmItem, int> delta)
+    public void RegisterAutomatedAction(Dictionary<FarmItemKind, int> delta)
     {
         foreach (var e in delta)
         {
@@ -32,7 +32,7 @@ public class Farm : SimulationEntity
     public override void PreTick()
     {
         base.PreTick();
-        foreach (var i in Enum.GetValues(typeof(FarmItem)).Cast<FarmItem>())
+        foreach (var i in Enum.GetValues(typeof(FarmItemKind)).Cast<FarmItemKind>())
         {
             AutomatedDelta.Clear();
         }
@@ -47,7 +47,7 @@ public class Farm : SimulationEntity
         }
     }
 
-    public Dictionary<FarmItem, uint> Inventory { get; private set; } = new Dictionary<FarmItem, uint>();
-    public Dictionary<FarmItem, int> AutomatedDelta { get; private set; } = new Dictionary<FarmItem, int>();
+    public Dictionary<FarmItemKind, uint> Inventory { get; private set; } = new Dictionary<FarmItemKind, uint>();
+    public Dictionary<FarmItemKind, int> AutomatedDelta { get; private set; } = new Dictionary<FarmItemKind, int>();
 
 }
