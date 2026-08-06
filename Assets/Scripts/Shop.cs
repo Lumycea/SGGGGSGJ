@@ -1,8 +1,8 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using System.Collections.Generic;
 
-public class Shop : MonoBehaviour
+public class Shop : MonoBehaviour, IInteractable
 {
     [SerializeField] private ItemStackDisplay Input;
     [SerializeField] private TMP_Text WheatInput;
@@ -45,10 +45,12 @@ public class Shop : MonoBehaviour
     public void SwipeLeft()
     {
         selectedIndex = (selectedIndex + entries.Count - 1) % entries.Count;
+        RefreshView();
     }
     public void SwipeRight()
     {
         selectedIndex = (selectedIndex + 1) % entries.Count;
+        RefreshView();
     }
 
     public ItemStack? CurrentTarget()
@@ -79,6 +81,50 @@ public class Shop : MonoBehaviour
         }
 
         return ret;
+    }
+
+    public bool Swipe(Player playerState, IInteractable.Direction direction)
+    {
+        if (direction == IInteractable.Direction.Left)
+        {
+            SwipeLeft();
+            return true;
+        }
+        else if (direction == IInteractable.Direction.Right)
+        {
+            SwipeRight();
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool Interact(Player playerState)
+    {
+        if (playerState.heldItem == null)
+        {
+            var item = Buy();
+            if (item != null)
+            {
+                var itemObject = Instantiate(itemStackPrefab, transform.position, Quaternion.identity);
+                var stack = itemObject.GetComponent<ItemStackDisplay>();
+                stack.Stack = item.Value;
+                playerState.SetItem(stack);
+                return true;
+            }
+        }
+        else
+        {
+            if (playerState.heldItem.Stack.item == CurrentTarget()?.item)
+            {
+                if (Buy() != null)
+                {
+                    playerState.heldItem.Stack.count += 1;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
 

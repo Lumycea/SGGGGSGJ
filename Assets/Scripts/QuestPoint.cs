@@ -44,7 +44,9 @@ public class QuestPoint : MonoBehaviour, IInteractable
         if (playerState.heldItem == null && HasQuest())
         {
             GameObject ticket = Instantiate(itemStackPrefab, transform.position, Quaternion.identity);
-            playerState.SetItem(ticket.GetComponent<ItemStackDisplay>());
+            var stackDisplay = ticket.GetComponent<ItemStackDisplay>();
+            stackDisplay.Stack = new ItemStack(GetTicket(), 1);
+            playerState.SetItem(stackDisplay);
             return true;
         }
         else if (playerState.heldItem != null && playerState.heldItem.Stack.item is QuestPackage package)
