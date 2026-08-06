@@ -28,9 +28,16 @@ public class PlayerInteractor : MonoBehaviour
 
         if (playerState.heldItem != null)
         {
-            playerState.heldItem.transform.SetParent(null);
-            playerState.heldItem.transform.position = interactionPoint.position;
-            playerState.heldItem.gameObject.layer = LayerMask.NameToLayer("Interactable");
+            if (playerState.heldItem.Stack.item is QuestTicket)
+            {
+                Destroy(playerState.heldItem.gameObject);
+            }
+            else
+            {
+                playerState.heldItem.transform.SetParent(null);
+                playerState.heldItem.transform.position = interactionPoint.position;
+                playerState.heldItem.gameObject.layer = LayerMask.NameToLayer("Interactable");
+            }
             playerState.heldItem = null;
             return;
         }
@@ -38,11 +45,25 @@ public class PlayerInteractor : MonoBehaviour
 
     public void OnSwipeLeft()
     {
-
+        Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position, interactorLayerMask);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.TryGetComponent(out IInteractable interactable))
+            {
+                if (interactable.Swipe(playerState, IInteractable.Direction.Left)) return;
+            }
+        }
     }
 
     public void OnSwipeRight()
     {
-
+        Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position, interactorLayerMask);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.TryGetComponent(out IInteractable interactable))
+            {
+                if (interactable.Swipe(playerState, IInteractable.Direction.Right)) return;
+            }
+        }
     }
 }

@@ -118,7 +118,7 @@ Transform:
   m_GameObject: {fileID: 220163374634567497}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -144,6 +144,7 @@ MonoBehaviour:
       rid: -2
     count: 1
   ForceBackground: 0
+  ForceNoBackground: 0
   backgroundRenderer: {fileID: 1657184818333212382}
   itemRenderer: {fileID: 4685910520307470021}
   countText: {fileID: 2941362914882389241}

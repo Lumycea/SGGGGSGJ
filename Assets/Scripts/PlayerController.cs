@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     int playerId;
     public float playerSpeed = 5f;
-    Vector2 moveVector;
+    private Vector2 inputVector;
     PlayerManager playerManager;
     private StateManager stateManager;
     private Rigidbody2D rb;
@@ -35,15 +35,15 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
-        moveVector = value.Get<Vector2>().normalized;
+        inputVector = value.Get<Vector2>();
     }
 
     private void MovePlayer()
     {
-        rb.MovePosition(rb.position + moveVector * playerSpeed * Time.fixedDeltaTime);
-        if (moveVector.magnitude > 0.1f)
+        rb.MovePosition(rb.position + inputVector * playerSpeed * Time.fixedDeltaTime);
+        if (inputVector.magnitude > 0.1f)
         {
-            nose.position = rb.position + moveVector * noseDistance;
+            nose.position = rb.position + inputVector.normalized * noseDistance;
         }
     }
 }

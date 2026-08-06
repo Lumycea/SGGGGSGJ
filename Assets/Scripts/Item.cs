@@ -34,3 +34,13 @@ public class Hammer : Item
     public override bool Equals(object obj) { return obj is Hammer; }
     public override int GetHashCode() { return base.GetHashCode(); }
 }
+
+[Serializable]
+public class Banner : Item
+{
+    public override int MaxStackCount => 1;
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/MilkShake");
+
+    public override bool Equals(object obj) { return obj is Banner; }
+    public override int GetHashCode() { return base.GetHashCode(); }
+}
