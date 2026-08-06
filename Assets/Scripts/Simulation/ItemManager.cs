@@ -116,7 +116,7 @@ public class ItemManager : MonoBehaviour
 
         foreach (var i in Enum.GetValues(typeof(FarmItemKind)).Cast<FarmItemKind>())
         {
-            var sprite = Resources.Load<Sprite>("Items/" + i.ToString().ToLower());
+            var sprite = Resources.Load<Sprite>("Items/Farm/" + i.ToString().ToLower());
             if (sprite == null)
             {
                 print($"Unable to get sprite for {i}");

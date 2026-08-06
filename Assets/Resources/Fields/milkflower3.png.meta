@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: d9638de1b4dc121adbcbdc95df935fe9
+guid: 9f75b2591e68f90858f985329d91b2fd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 35427707396550272
-    second: netherite_hoe_0
+      213: -2912520895151365428
+    second: milkflower3_0
+  - first:
+      213: -226860120177422997
+    second: milkflower3_1
+  - first:
+      213: 7119200541139501923
+    second: milkflower3_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 520
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: netherite_hoe_0
+      name: milkflower3_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 14
-        height: 16
+        x: 76
+        y: 136
+        width: 170
+        height: 423
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 08ee39aef4ddd7000800000000000000
-      internalID: 35427707396550272
+      spriteID: cc2a9935da5a497d0800000000000000
+      internalID: -2912520895151365428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: milkflower3_1
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 43
+        width: 87
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6d4f133ce70adcf0800000000000000
+      internalID: -226860120177422997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: milkflower3_2
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 115
+        width: 119
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 363836b4c2b7cc260800000000000000
+      internalID: 7119200541139501923
       vertices: []
       indices: 
       edges: []
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      netherite_hoe_0: 35427707396550272
+      milkflower3_0: -2912520895151365428
+      milkflower3_1: -226860120177422997
+      milkflower3_2: 7119200541139501923
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
