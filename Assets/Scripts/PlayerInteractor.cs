@@ -43,5 +43,6 @@ public class PlayerInteractor : MonoBehaviour
 
     public void OnSwipeRight()
     {
+
     }
 }

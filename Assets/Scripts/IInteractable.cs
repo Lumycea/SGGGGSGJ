@@ -9,5 +9,4 @@ public interface IInteractable
     }
     public virtual bool Interact(Player playerState) { return false; }
     public virtual bool Swipe(Player playerState, Direction direction) { return false; }
-
 }

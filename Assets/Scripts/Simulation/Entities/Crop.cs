@@ -51,26 +51,27 @@ public class Crop : SimulationEntity, IInteractable
 
     public bool Interact(Player player)
     {
-        if (player.heldItem != null)
+        if (player.heldItem == null)
         {
-            if (player.heldItem.Stack.item is Hoe)
+            if (IsHarvestable() && Item is FarmItemKind kind)
             {
-                if (IsTillable())
-                {
-                    Till();
-                    return true;
-                }
-                else if (IsHarvestable() && Item is FarmItemKind kind)
-                {
-                    var prefab = Instantiate(itemStackPrefab, transform.position, Quaternion.identity);
-                    var stack = prefab.GetComponent<ItemStackDisplay>();
+                var prefab = Instantiate(itemStackPrefab, transform.position, Quaternion.identity);
+                var stack = prefab.GetComponent<ItemStackDisplay>();
 
-                    stack.Stack = new ItemStack(new FarmItem(kind), 1);
-                    player.SetItem(stack);
+                stack.Stack = new ItemStack(new FarmItem(kind), 1);
+                player.SetItem(stack);
 
-                    Harvest();
-                    return true;
-                }
+                Harvest();
+                return true;
+            }
+        }
+        else
+        {
+            if (player.heldItem.Stack.item is Hoe && IsTillable())
+            {
+                Till();
+                return true;
+
             }
             else if (player.heldItem.Stack.item is FarmItem farmItem && IsHarvestable() && farmItem.Kind == Item)
             {

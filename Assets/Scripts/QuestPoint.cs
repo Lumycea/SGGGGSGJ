@@ -3,7 +3,7 @@ using UnityEngine;
 public class QuestPoint : MonoBehaviour, IInteractable
 {
     [SerializeField] private int slotIndex;
-    [SerializeField] GameObject questTicketPrefab;
+    [SerializeField] GameObject itemStackPrefab;
 
     public bool HasQuest()
     {
@@ -24,7 +24,7 @@ public class QuestPoint : MonoBehaviour, IInteractable
     {
         if (playerState.heldItem == null && HasQuest())
         {
-            GameObject ticket = Instantiate(questTicketPrefab, transform.position, Quaternion.identity);
+            GameObject ticket = Instantiate(itemStackPrefab, transform.position, Quaternion.identity);
             playerState.SetItem(ticket.GetComponent<ItemStackDisplay>());
             return true;
         }
