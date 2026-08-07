@@ -29,7 +29,7 @@ public class HUD : MonoBehaviour
             if (!displays.ContainsKey(e.Key))
             {
                 var display = Instantiate(itemDisplayPrefab, inventoryPanel).GetComponent<ItemDisplay>();
-                display.Sprite = itemManager.Sprites[e.Key];
+                display.Sprite = new FarmItem(e.Key).Sprite;
                 displays.Add(e.Key, display);
             }
 

@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(ItemManager))]
 public class StateManager : MonoBehaviour
 {
     public static StateManager Instance;
@@ -41,7 +40,7 @@ public class StateManager : MonoBehaviour
     public bool generateQuestNow = false;
 
     public const int PLAYER_SELECT_SCENE_INDEX = 1;
-    public const int GAME_SCENE_INDEX = 2;
+    public const int GAME_SCENE_INDEX = 3;
     public const string TUTORIAL_SOURCE = "Garry";
 
     void SendTutorial(string dialog) { DialogManager.Instance.AddDialog(TUTORIAL_SOURCE, dialog); }
@@ -88,8 +87,6 @@ public class StateManager : MonoBehaviour
             hasT1QuestTutorialDone = false;
             hasCrafted = false;
             hasCraftedTutorialDone = false;
-
-            GetComponent<ItemManager>().AvailableItems.Add(FarmItemKind.Sugar);
         }
     }
 
@@ -170,5 +167,9 @@ public class StateManager : MonoBehaviour
         }
     }
 
-    public void UpgradeTier() { }
+    public void UpgradeTier()
+    {
+        Tier += 1;
+        ItemManager.Instance.UpgradeTier();
+    }
 }

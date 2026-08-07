@@ -43,11 +43,11 @@ GameObject:
   - component: {fileID: 6745209975108869409}
   - component: {fileID: 234019846251565624}
   - component: {fileID: 7875262404953089523}
-  - component: {fileID: 3806894866652327319}
   - component: {fileID: 947242558661508006}
   - component: {fileID: 4693202401136362293}
   - component: {fileID: 3925996181716058493}
   - component: {fileID: 1784911124420027498}
+  - component: {fileID: 9150145349395619819}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameManager
@@ -146,18 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b93fbc90ee24933093825bba4545768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DontDestroyOnLoad
---- !u!114 &3806894866652327319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3193263519694696686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fa0205e59207c3c4b5de92f0ee7e639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemManager
 --- !u!114 &947242558661508006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +166,10 @@ MonoBehaviour:
   minQuestTimer: 020000003c0000003c0000001e000000
   maxQuestTimer: 020000005a0000005a0000003c000000
   maxFailureCount: 3
+  PendingQuests: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &4693202401136362293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +214,8 @@ MonoBehaviour:
   tutorialStarted: 0
   hasTilled: 0
   hasTilledTutorialDone: 0
+  hasGrabbedBanner: 0
+  hasGrabbedBannerTutorialDone: 0
   hasPlanted: 0
   hasPlantedTutorialDone: 0
   hasDeposited: 0
@@ -241,6 +235,18 @@ MonoBehaviour:
   showDelta: 0
   canGenerateQuest: 1
   generateQuestNow: 0
+--- !u!114 &9150145349395619819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3193263519694696686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa0205e59207c3c4b5de92f0ee7e639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemManager
 --- !u!1 &6203556814462370247
 GameObject:
   m_ObjectHideFlags: 0

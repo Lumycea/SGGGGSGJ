@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using static FarmItemKind;
 
 public enum FarmItemKind
 {
@@ -31,7 +32,7 @@ public class FarmItem : Item
     public FarmItemKind Kind;
 
     public override int MaxStackCount => 4;
-    public override Sprite Sprite => ItemManager.Instance.Sprites[Kind];
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/Farm/" + Kind.ToString().ToLower());
     public override bool Equals(object obj) { return obj is FarmItem s && s.Kind == Kind; }
     public override int GetHashCode() { return HashCode.Combine("farmitem", Kind); }
 }
@@ -40,10 +41,10 @@ public class FarmItem : Item
 public class Seed : Item
 {
     public static readonly FarmItemKind[] Allowed = new FarmItemKind[] {
-        FarmItemKind.Sugar,
-        FarmItemKind.Ice,
-        FarmItemKind.Cocoa,
-        FarmItemKind.Milk
+        Sugar,
+        Ice,
+        Cocoa,
+        Milk
     };
 
     public Seed(FarmItemKind kind)
@@ -69,28 +70,28 @@ static class FarmItemMethods
     {
         switch (i)
         {
-            case FarmItemKind.Sugar:
-            case FarmItemKind.Ice:
-            case FarmItemKind.Cocoa:
-            case FarmItemKind.Milk:
+            case Sugar:
+            case Ice:
+            case Cocoa:
+            case Milk:
                 return 0;
 
-            case FarmItemKind.Candy:
-            case FarmItemKind.Chantilly:
-            case FarmItemKind.Popsicle:
-            case FarmItemKind.DarkChocolate:
+            case Candy:
+            case Chantilly:
+            case Popsicle:
+            case DarkChocolate:
                 return 1;
 
 
-            case FarmItemKind.Milkshake:
-            case FarmItemKind.Sorbet:
-            case FarmItemKind.Chocolate:
-            case FarmItemKind.SweetenedCondensedMilk:
+            case Milkshake:
+            case Sorbet:
+            case Chocolate:
+            case SweetenedCondensedMilk:
                 return 2;
 
-            case FarmItemKind.Magnum:
-            case FarmItemKind.IceCream:
-            case FarmItemKind.Smarties:
+            case Magnum:
+            case IceCream:
+            case Smarties:
                 return 3;
         }
 
@@ -100,8 +101,16 @@ static class FarmItemMethods
 
 public class ItemManager : MonoBehaviour
 {
+    private static FarmItemKind[][] ItemsByTier =
+    {
+      new FarmItemKind[]{Sugar, Ice, Milk, Cocoa},
+      new FarmItemKind[]{Candy, Chantilly, Popsicle, DarkChocolate},
+      new FarmItemKind[]{Milkshake, Sorbet, Chocolate, SweetenedCondensedMilk},
+      new FarmItemKind[]{Magnum, IceCream, Smarties},
+    };
+
     public List<FarmItemKind> AvailableItems { get; private set; } = new();
-    public Dictionary<FarmItemKind, Sprite> Sprites { get; private set; } = new();
+    public List<Recipe> AvailableRecipes { get; private set; } = new();
 
     public static ItemManager Instance { get; private set; }
 
@@ -114,16 +123,50 @@ public class ItemManager : MonoBehaviour
     {
         Instance = this;
 
-        foreach (var i in Enum.GetValues(typeof(FarmItemKind)).Cast<FarmItemKind>())
-        {
-            var sprite = Resources.Load<Sprite>("Items/Farm/" + i.ToString().ToLower());
-            if (sprite == null)
-            {
-                print($"Unable to get sprite for {i}");
-            }
+        AvailableItems = new();
+        AvailableRecipes = new();
 
-            Sprites.Add(i, sprite);
+        var initialItem = ItemsByTier[0][UnityEngine.Random.Range(0, ItemsByTier[0].Length)];
+        AvailableItems.Add(initialItem);
+    }
+
+    public void UpgradeTier()
+    {
+        FarmItemKind? toadd = null;
+        while (toadd == null)
+        {
+            var item = ItemsByTier[0][UnityEngine.Random.Range(0, ItemsByTier[0].Length)];
+            if (!AvailableItems.Contains(item)) toadd = item;
         }
+
+        AvailableItems.Add(toadd ?? throw new Exception());
+
+        for (int i = 1; i <= StateManager.Instance.Tier; ++i)
+        {
+            AddRandomRecipe(i);
+        }
+    }
+
+    private void AddRandomRecipe(int tier)
+    {
+        Recipe toadd = null;
+        while (toadd == null)
+        {
+            var available = Recipe.ByTier[tier];
+            var idx = UnityEngine.Random.Range(0, available.Length);
+            print(available);
+            print(idx);
+            var r = available[idx];
+
+            if (!AvailableRecipes.Contains(r)
+                && AvailableItems.Contains(r.Items[0])
+                && AvailableItems.Contains(r.Items[1]))
+                toadd = r;
+        }
+
+        AvailableItems.Add(toadd.Output);
+        AvailableRecipes.Add(toadd);
+
     }
 }
 
@@ -139,6 +182,28 @@ public struct ItemStack
         count = c;
     }
 
-    public override bool Equals(object obj) { return obj is ItemStack s && s.item.Equals(item) & s.count == count; }
-    public override int GetHashCode() { return HashCode.Combine(item, count); }
+    public override readonly bool Equals(object obj) { return obj is ItemStack s && s.item.Equals(item) & s.count == count; }
+    public override readonly int GetHashCode() { return HashCode.Combine(item, count); }
+}
+
+[Serializable]
+public class Recipe
+{
+    public Recipe(FarmItemKind a, FarmItemKind b, FarmItemKind output)
+    {
+        Items = new FarmItemKind[] { a, b };
+        Output = output;
+    }
+
+    public readonly FarmItemKind[] Items;
+    public readonly FarmItemKind Output;
+
+
+    public static Recipe[][] ByTier =
+    {
+      new Recipe[]{},
+      new Recipe[]{ new(Sugar, Sugar, Candy), new(Cocoa, Cocoa, DarkChocolate), new(Milk, Milk, Chantilly), new(Ice, Ice, Popsicle) },
+      new Recipe[]{ new(Sugar, Ice, Sorbet), new(Sugar, Milk, SweetenedCondensedMilk), new(Cocoa, Milk, Chocolate), new(Milk, Ice, Milkshake) },
+      new Recipe[]{ new(Sorbet, Milk, IceCream), new(Sugar, Chocolate, Smarties) },
+    };
 }

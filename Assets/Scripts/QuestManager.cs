@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[RequireComponent(typeof(ItemManager))]
 [RequireComponent(typeof(StateManager))]
 [RequireComponent(typeof(Farm))]
 public class QuestManager : SimulationEntity
@@ -37,14 +36,14 @@ public class QuestManager : SimulationEntity
     public void NewQuest()
     {
         var farm = GetComponent<StateManager>();
-        tickBeforeNextQuest = Random.Range(minQuestDelay[farm.Tier], maxQuestDelay[farm.Tier]); var itemManager = GetComponent<ItemManager>();
+        tickBeforeNextQuest = Random.Range(minQuestDelay[farm.Tier], maxQuestDelay[farm.Tier]);
 
         // Ignore quest generation if all slots are used
         if (questCount >= maxQuests[farm.Tier]) { return; }
 
         // Chooses a random item in the available ones.
-        var randIdx = Random.Range(0, itemManager.AvailableItems.Count);
-        var item = itemManager.AvailableItems[randIdx];
+        var randIdx = Random.Range(0, ItemManager.Instance.AvailableItems.Count);
+        var item = ItemManager.Instance.AvailableItems[randIdx];
 
         // Computes the amount of items for the quest.
         var weight = Random.Range(minWeights[farm.Tier], maxWeights[farm.Tier]);
