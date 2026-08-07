@@ -88,53 +88,71 @@ public class StateManager : MonoBehaviour
             if (!tutorialStarted)
             {
                 tutorialStarted = true;
-                SendTutorial("Hi! I'm Garry. I will teach you the basics of SGGGSGJ :)");
-                SendTutorial("First, go pick the Hoe and use it to till some soil.");
+                SendTutorial("Salut, je suis Garry et je vais vous apprendre les base du businesse de friandise");
+                //SendTutorial("Pour commancer, ramasse cet houe et vas houer des parcelle de terrin");
+                SendTutorial("Pour commencer, il vous faut ramacer la bagnière afin de bouger votre point de repère pour ne pas vous perdre");
+
+            }
+            if (hasGrabbedBanner && !hasGrabbedBannerTutorialDone)
+            {
+                SendTutorial("À présent ramassez cet houe et allez houer des parcelle de terrin");
             }
             if (hasTilled && !hasTilledTutorialDone)
             {
                 hasTilledTutorialDone = true;
-                SendTutorial("Great! Now, pick one of these seeds and plant them in your field.");
+                SendTutorial("Maintenant prennez des graine et allez les semer");
             }
             if (hasPlanted && !hasPlantedTutorialDone)
             {
                 hasPlantedTutorialDone = true;
-                SendTutorial("Plants all take some time to grow. In the meantime let me explain you some things.");
-                SendTutorial("Your work here is to satisfy the people from Candy Land with sweet treats.");
-                SendTutorial("Once a plant is grown, you can harvest it and bring it to the farm's silo.");
-                SendTutorial("For now you only have a few crops, but you will soon need more to fill their requests.");
+                SendTutorial("Les bonbons sont des plantes qui prenne leur temps pour pousser");
+                SendTutorial("Je vais donc en profiter pour vous expliquer ce que vous faite ici");
+                SendTutorial("Votre objectif est de délivrer les commandes des clients, afin d'ameliorer votre bonbonerie");
+                SendTutorial("Lorce que les bonbons aurons pousser, amenez-les à la base");
             }
             if (hasDeposited && !hasDepositedTutorialDone)
             {
                 hasDepositedTutorialDone = true;
-                SendTutorial("You can see what's in your silo in the top left corner of the screen.");
-                SendTutorial("You can also see how many items you have gained or lost in the last tick.");
-                SendTutorial("Now, go take a customer's request ticket and bring it to the farm's silo.");
+                SendTutorial("Vous pouvez savoir en permanance ce qui se trouve dans votre base en regaradant en haut à gauche");
+                SendTutorial("Maintenant que vous avez récolter des bonbons, aller récupérer une commande au contoire");
 
             }
             if (hasPickedTicket && !hasPickedTicketTutorialDone)
             {
                 hasPickedTicketTutorialDone = true;
+                SendTutorial("Maintenant que vous avez un tiquet de commande, retournez à la base et prener ce qu'il vous demande");
             }
             if (hasUsedTicket && !hasUsedTicketTutorialDone)
             {
                 hasUsedTicketTutorialDone = true;
+                SendTutorial("Maintenant que vous avez la commande je vous laise deviner quoi faire");
+                SendTutorial("Raiponse A: le ramener au client");
+                SendTutorial("Raiponse B: allez dormir");
             }
             if (hasCompletedQuest && !hasCompletedQuestTutorialDone)
             {
                 hasCompletedQuestTutorialDone = true;
+                SendTutorial("Maintenant vous avez de l'argent");
+                SendTutorial("Allez donc dépenser cet argent durement gagner au magasin (CAPITALISME!!!)");
             }
             if (hasBoughtSeeds && !hasBoughtSeedsTutorialDone)
             {
                 hasBoughtSeedsTutorialDone = true;
+                SendTutorial("Maintenant que c'est fini je vais jouer à un meilleur jeu");
+                SendTutorial("/ a quiter la partie /");
             }
             if (hasT1Quest && !hasT1QuestTutorialDone)
             {
                 hasT1QuestTutorialDone = true;
+                SendTutorial("J'ai fait exprès de faire croire que j'était mort");
+                SendTutorial("Mais je suis de retour pour vous apprendre les craft (consepte 100% original)");
+                SendTutorial("Vas donc à la table de craft et utilise la");
             }
             if (hasCrafted && !hasCraftedTutorialDone)
             {
                 hasCraftedTutorialDone = true;
+                SendTutorial("Bon cet fois je part pour de bon");
+                SendTutorial("/ a quiter la partie pour de bon /");
             }
         }
     }
