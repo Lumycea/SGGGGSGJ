@@ -143,12 +143,12 @@ TextureImporter:
       name: IdleHoeFront_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 7
-        width: 190
-        height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 34
+        y: 22
+        width: 189
+        height: 299
+      alignment: 9
+      pivot: {x: 0.6012605, y: 0.1845347}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: IdleHoeFront_1
       rect:
         serializedVersion: 2
-        x: 191
-        y: 11
-        width: 184
+        x: 241
+        y: 29
+        width: 183
         height: 278
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.59053314, y: 0.18289351}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,12 +187,12 @@ TextureImporter:
       name: IdleHoeFront_2
       rect:
         serializedVersion: 2
-        x: 380
-        y: 11
+        x: 439
+        y: 9
         width: 188
         height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5946529, y: 0.18228532}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,12 +209,12 @@ TextureImporter:
       name: IdleHoeFront_3
       rect:
         serializedVersion: 2
-        x: 561
-        y: 17
-        width: 185
+        x: 644
+        y: 22
+        width: 183
         height: 278
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5849446, y: 0.18215773}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -231,12 +231,12 @@ TextureImporter:
       name: IdleHoeFront_4
       rect:
         serializedVersion: 2
-        x: 744
-        y: 13
-        width: 189
-        height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 853
+        y: 10
+        width: 188
+        height: 299
+      alignment: 9
+      pivot: {x: 0.5968287, y: 0.18669523}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -253,12 +253,12 @@ TextureImporter:
       name: IdleHoeFront_5
       rect:
         serializedVersion: 2
-        x: 905
-        y: 17
-        width: 205
+        x: 1070
+        y: 16
+        width: 204
         height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.626332, y: 0.183297}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -275,12 +275,12 @@ TextureImporter:
       name: IdleHoeFront_6
       rect:
         serializedVersion: 2
-        x: 1095
-        y: 13
-        width: 219
+        x: 1300
+        y: 10
+        width: 218
         height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.6538719, y: 0.17867841}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -297,12 +297,12 @@ TextureImporter:
       name: IdleHoeFront_7
       rect:
         serializedVersion: 2
-        x: 1303
+        x: 1545
         y: 9
         width: 204
         height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.62131816, y: 0.18065776}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -319,12 +319,12 @@ TextureImporter:
       name: IdleHoeFront_8
       rect:
         serializedVersion: 2
-        x: 1494
-        y: 6
-        width: 206
+        x: 1771
+        y: 14
+        width: 205
         height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.63768816, y: 0.18329696}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -341,12 +341,12 @@ TextureImporter:
       name: IdleHoeFront_9
       rect:
         serializedVersion: 2
-        x: 1675
-        y: 7
-        width: 221
-        height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2004
+        y: 12
+        width: 219
+        height: 311
+      alignment: 9
+      pivot: {x: 0.6475657, y: 0.18760367}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -363,7 +363,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b9f6750a935be4aa1a83e690a491374c
     internalID: 0
     vertices: []
     indices: 
@@ -371,7 +371,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       IdleHoeFront_0: -2078343506402991658
       IdleHoeFront_1: 1713125406112495708

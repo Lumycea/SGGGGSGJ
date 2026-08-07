@@ -143,12 +143,12 @@ TextureImporter:
       name: IdleAxeBack_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 11
-        width: 189
-        height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 16
+        y: 16
+        width: 188
+        height: 299
+      alignment: 9
+      pivot: {x: 0.59890246, y: 0.192623}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: IdleAxeBack_1
       rect:
         serializedVersion: 2
-        x: 195
-        y: 15
-        width: 187
+        x: 233
+        y: 30
+        width: 186
         height: 278
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5913975, y: 0.18182519}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,12 +187,12 @@ TextureImporter:
       name: IdleAxeBack_2
       rect:
         serializedVersion: 2
-        x: 372
-        y: 15
-        width: 203
+        x: 434
+        y: 20
+        width: 202
         height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.63675684, y: 0.19276217}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,12 +209,12 @@ TextureImporter:
       name: IdleAxeBack_3
       rect:
         serializedVersion: 2
-        x: 561
-        y: 21
-        width: 192
+        x: 656
+        y: 30
+        width: 191
         height: 278
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.6070841, y: 0.18660259}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -231,12 +231,12 @@ TextureImporter:
       name: IdleAxeBack_4
       rect:
         serializedVersion: 2
-        x: 742
-        y: 17
+        x: 881
+        y: 23
         width: 198
         height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.6153722, y: 0.18479347}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -253,12 +253,12 @@ TextureImporter:
       name: IdleAxeBack_5
       rect:
         serializedVersion: 2
-        x: 918
-        y: 21
-        width: 199
+        x: 1101
+        y: 18
+        width: 198
         height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.6180556, y: 0.18296553}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -275,12 +275,12 @@ TextureImporter:
       name: IdleAxeBack_6
       rect:
         serializedVersion: 2
-        x: 1107
-        y: 17
+        x: 1349
+        y: 15
         width: 214
         height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.6402594, y: 0.18125182}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -297,12 +297,12 @@ TextureImporter:
       name: IdleAxeBack_7
       rect:
         serializedVersion: 2
-        x: 1312
-        y: 13
-        width: 202
+        x: 1595
+        y: 14
+        width: 201
         height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.62422264, y: 0.18467928}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -319,12 +319,12 @@ TextureImporter:
       name: IdleAxeBack_8
       rect:
         serializedVersion: 2
-        x: 1497
-        y: 10
-        width: 210
+        x: 1816
+        y: 12
+        width: 208
         height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.63536656, y: 0.17953812}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -341,12 +341,12 @@ TextureImporter:
       name: IdleAxeBack_9
       rect:
         serializedVersion: 2
-        x: 1697
-        y: 11
+        x: 2051
+        y: 6
         width: 206
         height: 310
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.63023365, y: 0.17953812}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -363,7 +363,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 3c9b175fbb1ef15e1b2f2f2708134d2c
     internalID: 0
     vertices: []
     indices: 
@@ -371,7 +371,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       IdleAxeBack_0: 6982067355895097897
       IdleAxeBack_1: 871359481302543763

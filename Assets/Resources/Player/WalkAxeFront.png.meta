@@ -122,12 +122,12 @@ TextureImporter:
       name: WalkAxeFront_0
       rect:
         serializedVersion: 2
-        x: 37
-        y: 13
-        width: 411
-        height: 304
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 78
+        y: 19
+        width: 211
+        height: 295
+      alignment: 9
+      pivot: {x: 0.6539351, y: 0.19749552}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -144,12 +144,12 @@ TextureImporter:
       name: WalkAxeFront_1
       rect:
         serializedVersion: 2
-        x: 438
-        y: 20
-        width: 202
-        height: 299
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 306
+        y: 23
+        width: 214
+        height: 298
+      alignment: 9
+      pivot: {x: 0.65331006, y: 0.17301692}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -166,12 +166,12 @@ TextureImporter:
       name: WalkAxeFront_2
       rect:
         serializedVersion: 2
-        x: 625
-        y: 24
-        width: 213
-        height: 300
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 539
+        y: 15
+        width: 198
+        height: 297
+      alignment: 9
+      pivot: {x: 0.62095994, y: 0.19400923}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -184,11 +184,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: WalkAxeFront_3
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 23
+        width: 209
+        height: 298
+      alignment: 9
+      pivot: {x: 0.64441967, y: 0.18622838}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f7d04bb1640db6ad8690839e7e2d8d8
+      internalID: 1591886242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 3cd05f7c603893a60b9b30be1d5598c1
     internalID: 0
     vertices: []
     indices: 
@@ -196,11 +218,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       WalkAxeFront_0: 7384526803750657700
       WalkAxeFront_1: -8519252966361396199
       WalkAxeFront_2: -2616461357475899957
+      WalkAxeFront_3: 1591886242
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
