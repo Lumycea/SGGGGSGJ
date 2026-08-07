@@ -2,9 +2,18 @@ using UnityEngine;
 
 public class Simulation : MonoBehaviour
 {
+    public static Simulation Instance;
+
+    public int SimulationTime { get; private set; }
+
+    [SerializeField] private int TickTime = 2;
+    private float timeBeforeNextTick;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Instance = this;
+
         SimulationTime = 0;
         timeBeforeNextTick = TickTime;
     }
@@ -42,9 +51,4 @@ public class Simulation : MonoBehaviour
             e.PostTick();
         }
     }
-
-    public int SimulationTime { get; private set; }
-
-    [SerializeField] private int TickTime = 2;
-    private float timeBeforeNextTick;
 }

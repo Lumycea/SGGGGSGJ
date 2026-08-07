@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Shop : MonoBehaviour, IInteractable
+public class Shop : SimulationEntity, IInteractable
 {
     [SerializeField] private ItemStackDisplay Input;
     [SerializeField] private TMP_Text WheatInput;
@@ -17,11 +17,6 @@ public class Shop : MonoBehaviour, IInteractable
     void Start()
     {
         Instance = this;
-
-        entries.Add(new ShopEntry(3, null, new ShopEntryItem(new ItemStack(new Seed(FarmItemKind.Sugar), 1)), true));
-        entries.Add(new ShopEntry(10, new ItemStack(new FarmItem(FarmItemKind.Sugar), 5), new ShopEntryUpgrade(), true));
-
-        RefreshView();
     }
 
     void RefreshView()
@@ -133,6 +128,17 @@ public class Shop : MonoBehaviour, IInteractable
             }
         }
         return false;
+    }
+
+    public override void Tick()
+    {
+        if (Simulation.Instance.SimulationTime == 0)
+        {
+            entries.Add(new ShopEntry(3, null, new ShopEntryItem(new ItemStack(new Seed(ItemManager.Instance.AvailableItems[0]), 1)), true));
+            entries.Add(new ShopEntry(10, new ItemStack(new FarmItem(ItemManager.Instance.AvailableItems[0]), 5), new ShopEntryUpgrade(), true));
+
+            RefreshView();
+        }
     }
 }
 
