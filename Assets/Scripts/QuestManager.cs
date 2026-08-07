@@ -101,7 +101,7 @@ public class QuestTicket : Item
     public readonly ItemStack Stack;
 
     public override int MaxStackCount => 1;
-    public override Sprite Sprite => Resources.Load<Sprite>("Items/Prize_Ticket");
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/checklist");
 }
 
 [System.Serializable]
@@ -112,6 +112,6 @@ public class QuestPackage : Item
     public readonly ItemStack Stack;
 
     public override int MaxStackCount => 1;
-    public override Sprite Sprite => Resources.Load<Sprite>("Items/Golden_Mystery_Box");
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/package");
 }
 

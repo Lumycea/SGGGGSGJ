@@ -158,5 +158,9 @@ public class ShopEntryItem : ShopOutput
 }
 public class ShopEntryUpgrade : ShopOutput
 {
-    public override Sprite Sprite => Resources.Load<Sprite>("Items/netherite_upgrade_smithing_template");
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/upgrade");
+}
+public class ShopEntryFree : ShopOutput
+{
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/Prize_Ticket");
 }
