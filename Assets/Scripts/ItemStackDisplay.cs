@@ -12,6 +12,7 @@ public class ItemStackDisplay : MonoBehaviour, IInteractable
 
 
     [SerializeField] private SpriteRenderer backgroundRenderer;
+    [SerializeField] private SpriteRenderer foregroundRenderer;
     [SerializeField] private SpriteRenderer itemRenderer;
     [SerializeField] private TMP_Text countText;
 
@@ -22,11 +23,13 @@ public class ItemStackDisplay : MonoBehaviour, IInteractable
 
         backgroundRenderer.sortingOrder = SpriteLayer;
         itemRenderer.sortingOrder = SpriteLayer + 1;
+        foregroundRenderer.sortingOrder = SpriteLayer + 2;
 
         countText.enabled = Stack.count > 1;
         countText.text = Stack.count.ToString();
 
         backgroundRenderer.enabled = (Stack.count > 1 || ForceBackground) && !ForceNoBackground;
+        foregroundRenderer.enabled = backgroundRenderer.enabled;
     }
 
     public bool DecreaseCount(int amount)

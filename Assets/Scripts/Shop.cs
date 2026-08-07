@@ -27,6 +27,10 @@ public class Shop : MonoBehaviour, IInteractable
     void RefreshView()
     {
         var entry = entries[selectedIndex];
+
+        print(entry.output);
+        print(entry.output.Sprite);
+
         WheatInput.text = entry.wheatInput.ToString();
 
         if (entry.itemInput is ItemStack stack)
@@ -84,6 +88,7 @@ public class Shop : MonoBehaviour, IInteractable
         {
             entries.RemoveAt(selectedIndex);
             selectedIndex = 0;
+            RefreshView();
         }
 
         return ret;

@@ -56,7 +56,7 @@ public class Seed : Item
 
 
     public override int MaxStackCount => 1;
-    public override Sprite Sprite => Resources.Load<Sprite>("Items/Parsnip_Seeds");
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/Seeds/" + Kind.ToString() + "Seeds");
 
     public override bool Equals(object obj) { return obj is Seed s && s.Kind == Kind; }
     public override int GetHashCode() { return HashCode.Combine("seed", Kind); }
