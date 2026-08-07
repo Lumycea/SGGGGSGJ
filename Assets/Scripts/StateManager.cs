@@ -133,7 +133,7 @@ public class StateManager : MonoBehaviour
             if (hasPickedTicket && !hasPickedTicketTutorialDone)
             {
                 hasPickedTicketTutorialDone = true;
-                SendTutorial("Maintenant que vous avez un tiquet de commande, retournez à la ferme et prennez ce qu'il vous demande");
+                SendTutorial("Maintenant que vous avez un ticket de commande, retournez à la ferme et prennez ce qu'il vous demande");
             }
             if (hasUsedTicket && !hasUsedTicketTutorialDone)
             {
