@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 5c08b577986025d77bd1dc4eb600bf6f
@@ -15,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Player Select.unity
     guid: e530d26ad72d86453bb8be18ab06e8d7
   - enabled: 1
-    path: Assets/Scenes/Alyx.unity
-    guid: f0c2b5054ce5ea985bffa7b4c426649b
+    path: Assets/Scenes/Main.unity
+    guid: c594f9786a72cc8a090e9e409214c9a1
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: dcb86120c20c9f8b3b5ce6c5eaa6ba1c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

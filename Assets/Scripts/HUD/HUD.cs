@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 public class HUD : MonoBehaviour
 {
-    private Queue<ItemDisplay> AvailableDisplays;
+    [SerializeField] private GameObject itemDisplayPrefab;
+    [SerializeField] private Transform inventoryPanel;
     private readonly Dictionary<FarmItemKind, ItemDisplay> displays = new();
     private readonly uint[] usedSlots = { 0, 0, 0, 0 };
     private ItemManager itemManager;
@@ -19,36 +20,22 @@ public class HUD : MonoBehaviour
         Instance = this;
 
         itemManager = GameObject.FindWithTag("GameManager").GetComponent<ItemManager>();
-        AvailableDisplays = new Queue<ItemDisplay>(GetComponentsInChildren<ItemDisplay>());
-
-        foreach (var d in AvailableDisplays)
-        {
-            d.gameObject.SetActive(false);
-        }
     }
 
     void Update()
     {
         foreach (var e in Inventory)
         {
-            var tier = e.Key.GetTier();
             if (!displays.ContainsKey(e.Key))
             {
-                var d = AvailableDisplays.Dequeue();
-                d.gameObject.SetActive(true);
-                d.gameObject.transform.Translate(usedSlots[tier] * 200, tier * -50, 0);
-                usedSlots[tier] += 1;
-                displays.Add(e.Key, d);
+                var display = Instantiate(itemDisplayPrefab, inventoryPanel).GetComponent<ItemDisplay>();
+                display.Sprite = itemManager.Sprites[e.Key];
+                displays.Add(e.Key, display);
             }
 
-            var display = displays[e.Key];
-            display.Sprite = itemManager.Sprites[e.Key];
-            display.Count = e.Value;
-            display.ShowDelta = ShowDelta;
-            if (ShowDelta)
-            {
-                display.Delta = Delta[e.Key];
-            }
+            displays[e.Key].Count = e.Value;
+            displays[e.Key].Delta = Delta.ContainsKey(e.Key) ? Delta[e.Key] : 0;
+            displays[e.Key].ShowDelta = ShowDelta;
         }
     }
 }

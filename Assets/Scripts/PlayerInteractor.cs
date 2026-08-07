@@ -7,6 +7,7 @@ public class PlayerInteractor : MonoBehaviour
     public Transform interactionPoint;
     [SerializeField] private LayerMask interactorLayerMask;
     private Player playerState;
+    public float interactionRadius = 0.5f;
 
     void Start()
     {
@@ -19,7 +20,7 @@ public class PlayerInteractor : MonoBehaviour
     {
         if (playerState.isInJail) return;
 
-        Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position, interactorLayerMask);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(interactionPoint.position, interactionRadius, interactorLayerMask);
         foreach (Collider2D collider in colliders)
         {
             if (collider.TryGetComponent(out IInteractable interactable))
@@ -47,7 +48,7 @@ public class PlayerInteractor : MonoBehaviour
     {
         if (playerState.isInJail) return;
 
-        Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position, interactorLayerMask);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(interactionPoint.position, interactionRadius, interactorLayerMask);
         foreach (Collider2D collider in colliders)
         {
             if (collider.TryGetComponent(out IInteractable interactable))
@@ -61,7 +62,7 @@ public class PlayerInteractor : MonoBehaviour
     {
         if (playerState.isInJail) return;
 
-        Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position, interactorLayerMask);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(interactionPoint.position, interactionRadius, interactorLayerMask);
         foreach (Collider2D collider in colliders)
         {
             if (collider.TryGetComponent(out IInteractable interactable))
