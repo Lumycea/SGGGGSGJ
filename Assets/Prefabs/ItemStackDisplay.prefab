@@ -145,6 +145,7 @@ MonoBehaviour:
     count: 1
   ForceBackground: 0
   ForceNoBackground: 0
+  SpriteLayer: 0
   backgroundRenderer: {fileID: 1657184818333212382}
   itemRenderer: {fileID: 4685910520307470021}
   countText: {fileID: 2941362914882389241}
@@ -349,7 +350,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 7781544405547805069, guid: 8ec466b496b896b9ca1c40db046926bd, type: 2}
@@ -373,7 +374,7 @@ MeshRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 90
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &2941362914882389241

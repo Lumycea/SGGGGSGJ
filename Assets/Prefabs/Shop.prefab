@@ -341,6 +341,7 @@ MonoBehaviour:
   Input: {fileID: 7745232928134924839}
   WheatInput: {fileID: 5960696292551236621}
   Output: {fileID: 781284656833864320}
+  itemStackPrefab: {fileID: 0}
 --- !u!1 &7755957878603749332
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +421,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 9686c47f1e0ed320b8861f80f716799f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -511,7 +512,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 31
   m_MaskInteraction: 0
   m_Sprite: {fileID: 5333652719442215801, guid: 490db68267d8bc571a8bf19edb04a5c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -521,7 +522,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &1850938221798201013
 PrefabInstance:
@@ -582,6 +583,10 @@ PrefabInstance:
     - target: {fileID: 7048158525226511095, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274030394607508626, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
+      propertyPath: spriteLayer
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 8274030394607508626, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: ForceNoBackground

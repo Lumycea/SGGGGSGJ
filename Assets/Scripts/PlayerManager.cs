@@ -159,12 +159,14 @@ public class Player
         item.transform.SetParent(playerObject.GetComponent<PlayerController>().dockingPoint.transform);
         item.transform.localPosition = Vector3.zero;
         item.gameObject.layer = LayerMask.NameToLayer("Default");
+        item.SpriteLayer = 21;
     }
 
     public void DropItem()
     {
         if (heldItem != null)
         {
+            heldItem.SpriteLayer = 10;
             heldItem.transform.SetParent(null);
             heldItem.transform.position = playerObject.GetComponent<PlayerInteractor>().interactionPoint.position;
             heldItem.gameObject.layer = LayerMask.NameToLayer("Interactable");
