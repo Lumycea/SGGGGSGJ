@@ -17,6 +17,8 @@ public class StateManager : MonoBehaviour
     public bool tutorialStarted = false;
     public bool hasTilled = false;
     public bool hasTilledTutorialDone = false;
+    public bool hasGrabbedBanner = false;
+    public bool hasGrabbedBannerTutorialDone = false;
     public bool hasPlanted = false;
     public bool hasPlantedTutorialDone = false;
     public bool hasDeposited = false;
@@ -98,73 +100,72 @@ public class StateManager : MonoBehaviour
             if (!tutorialStarted)
             {
                 tutorialStarted = true;
-                SendTutorial("Salut, je suis Garry et je vais vous apprendre les base du businesse de friandise");
-                //SendTutorial("Pour commancer, ramasse cet houe et vas houer des parcelle de terrin");
-                SendTutorial("Pour commencer, il vous faut ramacer la bagni�re afin de bouger votre point de rep�re pour ne pas vous perdre");
+                SendTutorial("Salut, je suis Garry et je vais vous apprendre les bases du business de la création friandise");
+                SendTutorial("Pour commencer, il vous faut ramasser la bannière afin de bouger votre point de repère et de ne pas vous perdre");
 
             }
             if (hasGrabbedBanner && !hasGrabbedBannerTutorialDone)
             {
-                SendTutorial("� pr�sent ramassez cet houe et allez houer des parcelle de terrin");
+                SendTutorial("À présent ramassez cette houe et allez labourer des parcelles de terrain");
             }
             if (hasTilled && !hasTilledTutorialDone)
             {
                 hasTilledTutorialDone = true;
-                SendTutorial("Maintenant prennez des graine et allez les semer");
+                SendTutorial("Maintenant, prennez des graines et semez les dans votre champ");
             }
             if (hasPlanted && !hasPlantedTutorialDone)
             {
                 hasPlantedTutorialDone = true;
-                SendTutorial("Les bonbons sont des plantes qui prenne leur temps pour pousser");
-                SendTutorial("Je vais donc en profiter pour vous expliquer ce que vous faite ici");
-                SendTutorial("Votre objectif est de d�livrer les commandes des clients, afin d'ameliorer votre bonbonerie");
-                SendTutorial("Lorce que les bonbons aurons pousser, amenez-les � la base");
+                SendTutorial("Les bonbons sont des plantes qui prennent leur temps pour pousser");
+                SendTutorial("Je vais donc en profiter pour vous expliquer ce que vous faites ici");
+                SendTutorial("Votre objectif est de livrer les commandes des clients, afin d'améliorer votre confiserie");
+                SendTutorial("Lorsque les bonbons auront poussés, amenez-les à la ferme");
             }
             if (hasDeposited && !hasDepositedTutorialDone)
             {
                 hasDepositedTutorialDone = true;
                 canGenerateQuest = true;
                 generateQuestNow = true;
-                SendTutorial("Vous pouvez savoir en permanance ce qui se trouve dans votre base en regaradant en haut � gauche");
-                SendTutorial("Maintenant que vous avez r�colter des bonbons, aller r�cup�rer une commande au contoire");
+                SendTutorial("Vous pouvez savoir en permanence ce qui se trouve dans votre ferme en regardant en haut à gauche");
+                SendTutorial("Maintenant que vous avez récolté des bonbons, aller récupérer une commande au comptoir");
 
             }
             if (hasPickedTicket && !hasPickedTicketTutorialDone)
             {
                 hasPickedTicketTutorialDone = true;
-                SendTutorial("Maintenant que vous avez un tiquet de commande, retournez � la base et prener ce qu'il vous demande");
+                SendTutorial("Maintenant que vous avez un tiquet de commande, retournez à la ferme et prennez ce qu'il vous demande");
             }
             if (hasUsedTicket && !hasUsedTicketTutorialDone)
             {
                 hasUsedTicketTutorialDone = true;
-                SendTutorial("Maintenant que vous avez la commande je vous laise deviner quoi faire");
-                SendTutorial("Raiponse A: le ramener au client");
-                SendTutorial("Raiponse B: allez dormir");
+                SendTutorial("Désormais que vous avez la commande je vous laise deviner quoi faire");
+                SendTutorial("Réponse A: le ramener au client");
+                SendTutorial("Réponse B: allez dormir");
             }
             if (hasCompletedQuest && !hasCompletedQuestTutorialDone)
             {
                 hasCompletedQuestTutorialDone = true;
-                SendTutorial("Maintenant vous avez de l'argent");
-                SendTutorial("Allez donc d�penser cet argent durement gagner au magasin (CAPITALISME!!!)");
+                SendTutorial("Maintenant vous avez du blé");
+                SendTutorial("Allez donc dépenser cet argent durement gagner au magasin (CAPITALISME!!!)");
             }
             if (hasBoughtSeeds && !hasBoughtSeedsTutorialDone)
             {
                 hasBoughtSeedsTutorialDone = true;
-                SendTutorial("Maintenant que c'est fini je vais jouer � un meilleur jeu");
-                SendTutorial("/ a quiter la partie /");
+                SendTutorial("Maintenant que c'est fini je vais jouer à un meilleur jeu");
+                SendTutorial("/ a quitté la partie /");
             }
             if (hasT1Quest && !hasT1QuestTutorialDone)
             {
                 hasT1QuestTutorialDone = true;
-                SendTutorial("J'ai fait expr�s de faire croire que j'�tait mort");
-                SendTutorial("Mais je suis de retour pour vous apprendre les craft (consepte 100% original)");
-                SendTutorial("Vas donc � la table de craft et utilise la");
+                SendTutorial("Je l'ai fait exprès de dire que j'étais mort");
+                SendTutorial("Mais je suis de retour pour vous apprendre les craft (concept 100% original)");
+                SendTutorial("Vas donc à l'établi et sélectionne la recette. Ensuite, tu peux la concevoir directement à partir des ingrédients présents dans la ferme");
             }
             if (hasCrafted && !hasCraftedTutorialDone)
             {
                 hasCraftedTutorialDone = true;
-                SendTutorial("Bon cet fois je part pour de bon");
-                SendTutorial("/ a quiter la partie pour de bon /");
+                SendTutorial("Bon cette fois je pars pour de bon");
+                SendTutorial("/ a quitté la partie pour de bon /");
             }
         }
     }
