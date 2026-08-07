@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 
+[RequireComponent(typeof(StateManager))]
 public class PlayerManager : MonoBehaviour
 {
     public Dictionary<int, Player> players = new Dictionary<int, Player>();
@@ -11,9 +12,15 @@ public class PlayerManager : MonoBehaviour
     private StateManager stateManager;
     public float outOfBoundsTime = 3f;
     public Transform jailPoint;
+    public Transform releasePoint;
+
+    private readonly List<Player> jailedPlayers = new();
+
+    public static PlayerManager Instance;
 
     void Start()
     {
+        Instance = this;
         stateManager = GetComponent<StateManager>();
     }
 
@@ -83,6 +90,33 @@ public class PlayerManager : MonoBehaviour
         player.isInJail = true;
         player.DropItem();
         player.playerObject.transform.position = jailPoint.position;
+        jailedPlayers.Add(player);
+
+        if (jailedPlayers.Count == 1)
+        {
+            Shop.Instance.AddEntry(new ShopEntry(10, null, new ShopEntryFree(), false));
+        }
+    }
+
+    public bool IsPlayerInJail()
+    {
+        return jailedPlayers.Count > 0;
+    }
+
+    public void ReleasePlayer()
+    {
+        var idx = Random.Range(0, jailedPlayers.Count);
+
+        var p = jailedPlayers[idx];
+        jailedPlayers.RemoveAt(idx);
+
+        p.isInJail = false;
+        p.playerObject.transform.position = releasePoint.position;
+
+        if (jailedPlayers.Count > 0)
+        {
+            Shop.Instance.AddEntry(new ShopEntry(10, null, new ShopEntryFree(), false));
+        }
     }
 
     public void OnPlayerJoined(PlayerInput playerInput)

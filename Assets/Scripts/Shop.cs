@@ -53,6 +53,8 @@ public class Shop : MonoBehaviour, IInteractable
         RefreshView();
     }
 
+    public void AddEntry(ShopEntry entry) { entries.Add(entry); }
+
     public ItemStack? CurrentTarget()
     {
         var entry = entries[selectedIndex];
@@ -72,6 +74,10 @@ public class Shop : MonoBehaviour, IInteractable
         if (entry.output is ShopEntryUpgrade)
         {
             StateManager.Instance.UpgradeTier();
+        }
+        if (entry.output is ShopEntryFree)
+        {
+            PlayerManager.Instance.ReleasePlayer();
         }
 
         if (!entry.repeatable)

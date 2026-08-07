@@ -6,7 +6,7 @@ public class StateManager : MonoBehaviour
 {
     public static StateManager Instance;
 
-    public int Wheat;
+    public int Wheat = 50;
 
     public uint Tier { get; private set; }
 
