@@ -681,6 +681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828072a5d944c9b9faa5b8d412c545c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  itemDisplayPrefab: {fileID: 2462480049178393045, guid: c18f0f4e49bb74197ba3cb3c3fa87d7b, type: 3}
+  inventoryPanel: {fileID: 4476684628979242932}
   ShowDelta: 1
 --- !u!114 &51391564015646124
 MonoBehaviour:

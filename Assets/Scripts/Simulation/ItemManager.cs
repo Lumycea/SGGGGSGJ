@@ -68,34 +68,34 @@ static class FarmItemMethods
 {
     public static int GetTier(this FarmItemKind i)
     {
-        switch (i)
+        return i switch
         {
-            case Sugar:
-            case Ice:
-            case Cocoa:
-            case Milk:
-                return 0;
+            Sugar or Ice or Cocoa or Milk => 0,
+            Candy or Chantilly or Popsicle or DarkChocolate => 1,
+            Milkshake or Sorbet or Chocolate or SweetenedCondensedMilk => 2,
+            Magnum or IceCream or Smarties => 3,
+            _ => -1,
+        };
+    }
 
-            case Candy:
-            case Chantilly:
-            case Popsicle:
-            case DarkChocolate:
-                return 1;
+    public static Sprite[] GrowthSprites(this FarmItemKind kind)
+    {
+        var prefix = kind switch
+        {
+            Sugar => "sugarflower",
+            Milk => "milkflower",
+            Cocoa => "cocoatree",
+            Ice => "icetree",
+            _ => "",
+        };
 
-
-            case Milkshake:
-            case Sorbet:
-            case Chocolate:
-            case SweetenedCondensedMilk:
-                return 2;
-
-            case Magnum:
-            case IceCream:
-            case Smarties:
-                return 3;
+        var sprites = new Sprite[5];
+        for(var i = 0; i < 5; ++i)
+        {
+            sprites[i] = Resources.Load<Sprite>($"Fields/{prefix}{i}");
         }
 
-        return -1;
+        return sprites;
     }
 }
 

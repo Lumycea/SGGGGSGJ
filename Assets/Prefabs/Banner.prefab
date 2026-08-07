@@ -421,6 +421,7 @@ MonoBehaviour:
   ForceNoBackground: 0
   SpriteLayer: 0
   backgroundRenderer: {fileID: 4114387101770663152}
+  foregroundRenderer: {fileID: 4114387101770663152}
   itemRenderer: {fileID: 6762528599095975283}
   countText: {fileID: 1766257966174833784}
   references:

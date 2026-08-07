@@ -46,6 +46,7 @@ public class Crop : SimulationEntity, IInteractable
     public void Plant(FarmItemKind item)
     {
         Item = item;
+        Sprites = item.GrowthSprites();
         StateManager.Instance.hasPlanted = true;
     }
 
