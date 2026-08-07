@@ -7,16 +7,6 @@ public class Farm : SimulationEntity
     private readonly Dictionary<FarmItemKind, int> inventory = new();
     private readonly Dictionary<FarmItemKind, int> delta = new();
 
-    private int _wheat = 0;
-    public int Wheat
-    {
-        get => _wheat; set
-        {
-            if (value < 0) { return; }
-            _wheat = value;
-        }
-    }
-
     public static Farm Instance { get; private set; }
 
     void Start()

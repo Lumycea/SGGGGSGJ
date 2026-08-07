@@ -61,7 +61,7 @@ public class QuestManager : SimulationEntity
     private void CompleteQuest(int slot)
     {
         var quest = PendingQuests[slot] ?? throw new System.Exception();
-        GetComponent<Farm>().Wheat += quest.Stack.count * GetComponent<ItemManager>().ItemPrice((quest.Stack.item as FarmItem).Kind);
+        StateManager.Instance.Wheat += quest.Stack.count * GetComponent<ItemManager>().ItemPrice((quest.Stack.item as FarmItem).Kind);
         PendingQuests[slot] = null;
     }
 
