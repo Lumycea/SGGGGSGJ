@@ -90,9 +90,9 @@ static class FarmItemMethods
         };
 
         var sprites = new Sprite[5];
-        for(var i = 0; i < 5; ++i)
+        for (var i = 0; i < 5; ++i)
         {
-            sprites[i] = Resources.Load<Sprite>($"Fields/{prefix}{i}");
+            sprites[i] = Resources.Load<Sprite>($"Fields/{prefix}{i + 1}");
         }
 
         return sprites;
@@ -145,6 +145,8 @@ public class ItemManager : MonoBehaviour
         {
             AddRandomRecipe(i);
         }
+
+        Shop.Instance.RefreshEntries();
     }
 
     private void AddRandomRecipe(int tier)

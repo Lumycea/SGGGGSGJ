@@ -8,6 +8,7 @@ TagManager:
   - Canvas
   - DialogManager
   - Zone
+  - Shop
   layers:
   - Default
   - TransparentFX

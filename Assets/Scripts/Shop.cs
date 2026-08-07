@@ -2,14 +2,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Shop : SimulationEntity, IInteractable
+public class Shop : MonoBehaviour, IInteractable
 {
     [SerializeField] private ItemStackDisplay Input;
     [SerializeField] private TMP_Text WheatInput;
     [SerializeField] private SpriteRenderer Output;
     [SerializeField] private GameObject itemStackPrefab;
 
-    private readonly List<ShopEntry> entries = new();
+    private List<ShopEntry> entries = new();
     private int selectedIndex = 0;
 
     public static Shop Instance;
@@ -17,6 +17,7 @@ public class Shop : SimulationEntity, IInteractable
     void Start()
     {
         Instance = this;
+        RefreshEntries();
     }
 
     void RefreshView()
@@ -130,15 +131,36 @@ public class Shop : SimulationEntity, IInteractable
         return false;
     }
 
-    public override void Tick()
+    public void RefreshEntries()
     {
-        if (Simulation.Instance.SimulationTime == 0)
-        {
-            entries.Add(new ShopEntry(3, null, new ShopEntryItem(new ItemStack(new Seed(ItemManager.Instance.AvailableItems[0]), 1)), true));
-            entries.Add(new ShopEntry(10, new ItemStack(new FarmItem(ItemManager.Instance.AvailableItems[0]), 5), new ShopEntryUpgrade(), true));
+        entries = new();
+        print("refreshing");
 
-            RefreshView();
+        var tier = StateManager.Instance != null ? StateManager.Instance.Tier : 0;
+        FarmItemKind upgradeMaterial = FarmItemKind.Sugar;
+        foreach (var e in ItemManager.Instance.AvailableItems)
+        {
+            if (e.GetTier() == 0)
+            {
+                entries.Add(new ShopEntry(3, null, new ShopEntryItem(new ItemStack(new Seed(e), 1)), true));
+            }
+
+            if (e.GetTier() == tier)
+            {
+                upgradeMaterial = e;
+            }
         }
+
+        if (PlayerManager.Instance.IsPlayerInJail())
+        {
+            entries.Add(new ShopEntry(10, null, new ShopEntryFree(), false));
+        }
+
+
+        entries.Add(new ShopEntry(10 * (tier + 1), new ItemStack(new FarmItem(upgradeMaterial), 5), new ShopEntryUpgrade(), true));
+
+        selectedIndex = 0;
+        RefreshView();
     }
 }
 

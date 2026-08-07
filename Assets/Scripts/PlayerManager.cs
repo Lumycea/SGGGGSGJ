@@ -92,10 +92,7 @@ public class PlayerManager : MonoBehaviour
         player.playerObject.transform.position = jailPoint.position;
         jailedPlayers.Add(player);
 
-        if (jailedPlayers.Count == 1)
-        {
-            Shop.Instance.AddEntry(new ShopEntry(10, null, new ShopEntryFree(), false));
-        }
+        Shop.Instance.RefreshEntries();
     }
 
     public bool IsPlayerInJail()
@@ -113,10 +110,7 @@ public class PlayerManager : MonoBehaviour
         p.isInJail = false;
         p.playerObject.transform.position = releasePoint.position;
 
-        if (jailedPlayers.Count > 0)
-        {
-            Shop.Instance.AddEntry(new ShopEntry(10, null, new ShopEntryFree(), false));
-        }
+        Shop.Instance.RefreshEntries();
     }
 
     public void OnPlayerJoined(PlayerInput playerInput)

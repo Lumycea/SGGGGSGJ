@@ -7,7 +7,7 @@ public class StateManager : MonoBehaviour
 
     public int Wheat = 50;
 
-    public uint Tier { get; private set; }
+    public int Tier { get; private set; }
 
     public bool isInPlayerSelect = false;
     public bool isInGame = false;
