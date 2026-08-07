@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerInteractor : MonoBehaviour
 {
-    [SerializeField] private Transform interactionPoint;
+    public Transform interactionPoint;
     [SerializeField] private LayerMask interactorLayerMask;
     private Player playerState;
 
@@ -17,6 +17,8 @@ public class PlayerInteractor : MonoBehaviour
 
     public void OnInteract()
     {
+        if (playerState.isInJail) return;
+
         Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position, interactorLayerMask);
         foreach (Collider2D collider in colliders)
         {
@@ -31,20 +33,20 @@ public class PlayerInteractor : MonoBehaviour
             if (playerState.heldItem.Stack.item is QuestTicket)
             {
                 Destroy(playerState.heldItem.gameObject);
+                playerState.heldItem = null;
             }
             else
             {
-                playerState.heldItem.transform.SetParent(null);
-                playerState.heldItem.transform.position = interactionPoint.position;
-                playerState.heldItem.gameObject.layer = LayerMask.NameToLayer("Interactable");
+                playerState.DropItem();
             }
-            playerState.heldItem = null;
             return;
         }
     }
 
     public void OnSwipeLeft()
     {
+        if (playerState.isInJail) return;
+
         Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position, interactorLayerMask);
         foreach (Collider2D collider in colliders)
         {
@@ -57,6 +59,8 @@ public class PlayerInteractor : MonoBehaviour
 
     public void OnSwipeRight()
     {
+        if (playerState.isInJail) return;
+
         Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position, interactorLayerMask);
         foreach (Collider2D collider in colliders)
         {

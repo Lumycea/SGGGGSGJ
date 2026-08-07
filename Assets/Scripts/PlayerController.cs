@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (stateManager.isInGame)
+        if (stateManager.isInGame && !playerManager.players[playerId].isInJail)
         {
             MovePlayer();
         }
@@ -44,6 +44,22 @@ public class PlayerController : MonoBehaviour
         if (inputVector.magnitude > 0.1f)
         {
             nose.position = rb.position + inputVector.normalized * noseDistance;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Zone"))
+        {
+            playerManager.players[playerId].isInZone = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Zone"))
+        {
+            playerManager.players[playerId].isInZone = false;
         }
     }
 }
