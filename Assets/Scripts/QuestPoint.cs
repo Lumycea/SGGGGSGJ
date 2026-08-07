@@ -13,9 +13,10 @@ public class QuestPoint : MonoBehaviour, IInteractable
 
     void Update()
     {
-        if (QuestManager.Instance.PendingQuests[slotIndex] is ItemStack stack)
+        var quest = QuestManager.Instance.PendingQuests[slotIndex];
+        if (quest != null)
         {
-            display.Stack = stack;
+            display.Stack = quest.Stack;
             display.gameObject.SetActive(true);
         }
         else
@@ -31,7 +32,7 @@ public class QuestPoint : MonoBehaviour, IInteractable
 
     public Item GetTicket()
     {
-        return new QuestTicket(QuestManager.Instance.PendingQuests[slotIndex] ?? throw new System.Exception());
+        return new QuestTicket((QuestManager.Instance.PendingQuests[slotIndex] ?? throw new System.Exception()).Stack);
     }
 
     public bool DepositPackage(QuestPackage package)
