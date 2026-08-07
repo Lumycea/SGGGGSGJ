@@ -56,7 +56,7 @@ public class Seed : Item
 
 
     public override int MaxStackCount => 1;
-    public override Sprite Sprite => Resources.Load<Sprite>("Items/Parsnip_Seeds");
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/Seeds/" + Kind.ToString() + "Seeds");
 
     public override bool Equals(object obj) { return obj is Seed s && s.Kind == Kind; }
     public override int GetHashCode() { return HashCode.Combine("seed", Kind); }
@@ -100,8 +100,8 @@ static class FarmItemMethods
 
 public class ItemManager : MonoBehaviour
 {
-    public List<FarmItemKind> AvailableItems { get; private set; }
-    public Dictionary<FarmItemKind, Sprite> Sprites { get; private set; }
+    public List<FarmItemKind> AvailableItems { get; private set; } = new();
+    public Dictionary<FarmItemKind, Sprite> Sprites { get; private set; } = new();
 
     public static ItemManager Instance { get; private set; }
 
@@ -114,11 +114,9 @@ public class ItemManager : MonoBehaviour
     {
         Instance = this;
 
-        Sprites = new Dictionary<FarmItemKind, Sprite>();
-
         foreach (var i in Enum.GetValues(typeof(FarmItemKind)).Cast<FarmItemKind>())
         {
-            var sprite = Resources.Load<Sprite>("Items/" + i.ToString().ToLower());
+            var sprite = Resources.Load<Sprite>("Items/Farm/" + i.ToString().ToLower());
             if (sprite == null)
             {
                 print($"Unable to get sprite for {i}");
@@ -140,4 +138,7 @@ public struct ItemStack
         item = i;
         count = c;
     }
+
+    public override bool Equals(object obj) { return obj is ItemStack s && s.item.Equals(item) & s.count == count; }
+    public override int GetHashCode() { return HashCode.Combine(item, count); }
 }

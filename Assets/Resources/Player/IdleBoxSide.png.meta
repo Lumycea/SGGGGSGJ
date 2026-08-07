@@ -1,0 +1,250 @@
+fileFormatVersion: 2
+guid: 4f62b88ea61a40f09be7e9041de9a0c8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5482378712588972752
+    second: IdleBoxSide_0
+  - first:
+      213: -4425026141929220414
+    second: IdleBoxSide_1
+  - first:
+      213: 5500871816342324631
+    second: IdleBoxSide_2
+  - first:
+      213: 9018761578213826655
+    second: IdleBoxSide_3
+  - first:
+      213: -434942454079511140
+    second: IdleBoxSide_4
+  - first:
+      213: -2513609623127321149
+    second: IdleBoxSide_5
+  - first:
+      213: -2032860370443115060
+    second: IdleBoxSide_6
+  - first:
+      213: -5667412391907513675
+    second: IdleBoxSide_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: IdleBoxSide_0
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 11
+        width: 155
+        height: 292
+      alignment: 9
+      pivot: {x: 0.53083277, y: 0.17783347}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03d88f79b9daae3b0800000000000000
+      internalID: -5482378712588972752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdleBoxSide_2
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 10
+        width: 154
+        height: 269
+      alignment: 9
+      pivot: {x: 0.5326665, y: 0.16618362}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 795ca08a5c5075c40800000000000000
+      internalID: 5500871816342324631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdleBoxSide_4
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 6
+        width: 155
+        height: 292
+      alignment: 9
+      pivot: {x: 0.51622784, y: 0.16491231}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c95aad67426c6f9f0800000000000000
+      internalID: -434942454079511140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IdleBoxSide_6
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 6
+        width: 154
+        height: 269
+      alignment: 9
+      pivot: {x: 0.5359331, y: 0.17646928}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc5e4cd7344d9c3e0800000000000000
+      internalID: -2032860370443115060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 98b79ad6ace6e4c1289cf7d78807097c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      IdleBoxSide_0: -5482378712588972752
+      IdleBoxSide_1: -4425026141929220414
+      IdleBoxSide_2: 5500871816342324631
+      IdleBoxSide_3: 9018761578213826655
+      IdleBoxSide_4: -434942454079511140
+      IdleBoxSide_5: -2513609623127321149
+      IdleBoxSide_6: -2032860370443115060
+      IdleBoxSide_7: -5667412391907513675
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

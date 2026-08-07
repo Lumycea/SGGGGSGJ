@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &981025169982397313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7057549243327416991}
+  m_Layer: 0
+  m_Name: Release
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7057549243327416991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981025169982397313}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2442887029569310912}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3193263519694696686
 GameObject:
   m_ObjectHideFlags: 0
@@ -36,7 +67,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5574829058473454956}
+  - {fileID: 7057549243327416991}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6745209975108869409
@@ -98,6 +131,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   playerPanelsParent: {fileID: 0}
   playerPanelPrefab: {fileID: 6871152735604017801, guid: 8936177fe79c9b679bd697a9744e8bf0, type: 3}
+  outOfBoundsTime: 3
+  jailPoint: {fileID: 5574829058473454956}
+  releasePoint: {fileID: 7057549243327416991}
 --- !u!114 &7875262404953089523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +174,10 @@ MonoBehaviour:
   minWeights: 01000000030000000600000008000000
   maxWeights: 01000000060000000c00000010000000
   minQuestDelay: 0a000000080000000500000002000000
-  maxQuestDelay: 140000000f0000000a00000006000000
+  maxQuestDelay: 050000000f0000000a00000006000000
+  minQuestTimer: 020000003c0000003c0000001e000000
+  maxQuestTimer: 020000005a0000005a0000003c000000
+  maxFailureCount: 3
 --- !u!114 &4693202401136362293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,5 +215,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c5ecce6ca414beb810ac14a0ec441b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  Wheat: 0
   isInPlayerSelect: 0
   isInGame: 0
+  tutorialEnabled: 0
+  tutorialStarted: 0
+  hasTilled: 0
+  hasTilledTutorialDone: 0
+  hasPlanted: 0
+  hasPlantedTutorialDone: 0
+  hasDeposited: 0
+  hasDepositedTutorialDone: 0
+  hasPickedTicket: 0
+  hasPickedTicketTutorialDone: 0
+  hasUsedTicket: 0
+  hasUsedTicketTutorialDone: 0
+  hasCompletedQuest: 0
+  hasCompletedQuestTutorialDone: 0
+  hasBoughtSeeds: 0
+  hasBoughtSeedsTutorialDone: 0
+  hasT1Quest: 0
+  hasT1QuestTutorialDone: 0
+  hasCrafted: 0
+  hasCraftedTutorialDone: 0
+  showDelta: 0
+  canGenerateQuest: 1
+  generateQuestNow: 0
+--- !u!1 &6203556814462370247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5574829058473454956}
+  m_Layer: 0
+  m_Name: Jail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5574829058473454956
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6203556814462370247}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.3, y: 4.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2442887029569310912}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

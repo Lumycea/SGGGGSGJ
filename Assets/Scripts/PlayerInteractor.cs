@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerInteractor : MonoBehaviour
 {
-    [SerializeField] private Transform interactionPoint;
+    public Transform interactionPoint;
     [SerializeField] private LayerMask interactorLayerMask;
     private Player playerState;
 
@@ -17,35 +17,57 @@ public class PlayerInteractor : MonoBehaviour
 
     public void OnInteract()
     {
-        Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position, interactorLayerMask);
-        foreach (Collider2D collider in colliders)
-        {
-            if (collider.TryGetComponent(out IInteractable interactable))
-            {
-                interactable.Interact(playerState);
-                return;
-            }
-        }
-    }
+        if (playerState.isInJail) return;
 
-    public void OnGrab()
-    {
         Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position, interactorLayerMask);
         foreach (Collider2D collider in colliders)
         {
             if (collider.TryGetComponent(out IInteractable interactable))
             {
-                if (interactable.Grab(playerState)) return;
+                if (interactable.Interact(playerState)) return;
             }
         }
 
         if (playerState.heldItem != null)
         {
-            playerState.heldItem.transform.SetParent(null);
-            playerState.heldItem.transform.position = interactionPoint.position;
-            playerState.heldItem.gameObject.layer = LayerMask.NameToLayer("Interactable");
-            playerState.heldItem = null;
+            if (playerState.heldItem.Stack.item is QuestTicket)
+            {
+                Destroy(playerState.heldItem.gameObject);
+                playerState.heldItem = null;
+            }
+            else
+            {
+                playerState.DropItem();
+            }
             return;
+        }
+    }
+
+    public void OnSwipeLeft()
+    {
+        if (playerState.isInJail) return;
+
+        Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position, interactorLayerMask);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.TryGetComponent(out IInteractable interactable))
+            {
+                if (interactable.Swipe(playerState, IInteractable.Direction.Left)) return;
+            }
+        }
+    }
+
+    public void OnSwipeRight()
+    {
+        if (playerState.isInJail) return;
+
+        Collider2D[] colliders = Physics2D.OverlapPointAll(interactionPoint.position, interactorLayerMask);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.TryGetComponent(out IInteractable interactable))
+            {
+                if (interactable.Swipe(playerState, IInteractable.Direction.Right)) return;
+            }
         }
     }
 }

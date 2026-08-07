@@ -7,6 +7,7 @@ TagManager:
   - GameManager
   - Canvas
   - DialogManager
+  - Zone
   layers:
   - Default
   - TransparentFX

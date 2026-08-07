@@ -11,7 +11,7 @@ public abstract class Item
 public class Axe : Item
 {
     public override int MaxStackCount => 1;
-    public override Sprite Sprite => Resources.Load<Sprite>("Items/netherite_axe");
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/Tools/axe");
 
     public override bool Equals(object obj) { return obj is Axe; }
     public override int GetHashCode() { return base.GetHashCode(); }
@@ -20,7 +20,7 @@ public class Axe : Item
 public class Hoe : Item
 {
     public override int MaxStackCount => 1;
-    public override Sprite Sprite => Resources.Load<Sprite>("Items/netherite_hoe");
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/Tools/hoe");
 
     public override bool Equals(object obj) { return obj is Hoe; }
     public override int GetHashCode() { return base.GetHashCode(); }
@@ -29,8 +29,18 @@ public class Hoe : Item
 public class Hammer : Item
 {
     public override int MaxStackCount => 1;
-    public override Sprite Sprite => Resources.Load<Sprite>("Items/mace");
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/Tools/hammer");
 
     public override bool Equals(object obj) { return obj is Hammer; }
+    public override int GetHashCode() { return base.GetHashCode(); }
+}
+
+[Serializable]
+public class Banner : Item
+{
+    public override int MaxStackCount => 1;
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/Prize_Ticket");
+
+    public override bool Equals(object obj) { return obj is Banner; }
     public override int GetHashCode() { return base.GetHashCode(); }
 }

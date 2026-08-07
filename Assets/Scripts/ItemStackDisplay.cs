@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -6,19 +7,29 @@ public class ItemStackDisplay : MonoBehaviour, IInteractable
 {
     public ItemStack Stack;
     public bool ForceBackground = false;
+    public bool ForceNoBackground = false;
+    public int SpriteLayer = 0;
+
 
     [SerializeField] private SpriteRenderer backgroundRenderer;
+    [SerializeField] private SpriteRenderer foregroundRenderer;
     [SerializeField] private SpriteRenderer itemRenderer;
     [SerializeField] private TMP_Text countText;
+
 
     void Update()
     {
         itemRenderer.sprite = Stack.item.Sprite;
 
+        backgroundRenderer.sortingOrder = SpriteLayer;
+        itemRenderer.sortingOrder = SpriteLayer + 1;
+        foregroundRenderer.sortingOrder = SpriteLayer + 2;
+
         countText.enabled = Stack.count > 1;
         countText.text = Stack.count.ToString();
 
-        backgroundRenderer.enabled = Stack.count > 1 || ForceBackground;
+        backgroundRenderer.enabled = (Stack.count > 1 || ForceBackground) && !ForceNoBackground;
+        foregroundRenderer.enabled = backgroundRenderer.enabled;
     }
 
     public bool DecreaseCount(int amount)
@@ -37,18 +48,14 @@ public class ItemStackDisplay : MonoBehaviour, IInteractable
         return false;
     }
 
-    public bool Grab(Player player)
+    public bool Interact(Player player)
     {
         if (player.heldItem == null)
         {
-            player.heldItem = this;
-            transform.SetParent(player.playerObject.GetComponent<PlayerController>().dockingPoint.transform);
-            transform.localPosition = Vector3.zero;
-            gameObject.layer = LayerMask.NameToLayer("Default");
+            player.SetItem(this);
             return true;
         }
-
-        if (player.heldItem.Stack.item.Equals(Stack.item))
+        else if (player.heldItem.Stack.item.Equals(Stack.item))
         {
             player.heldItem.Stack.count += Stack.count;
             Destroy(gameObject);

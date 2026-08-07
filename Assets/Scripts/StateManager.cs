@@ -1,14 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(ItemManager))]
 public class StateManager : MonoBehaviour
 {
     public static StateManager Instance;
 
-    public uint Tier;
+    public int Wheat = 50;
+
+    public uint Tier { get; private set; }
+
     public bool isInPlayerSelect = false;
     public bool isInGame = false;
-    public bool tutorialEnabled = true;
+    public bool tutorialEnabled = false;
 
     public bool tutorialStarted = false;
     public bool hasTilled = false;
@@ -31,6 +35,8 @@ public class StateManager : MonoBehaviour
     public bool hasCraftedTutorialDone = false;
 
     public bool showDelta = false;
+    public bool canGenerateQuest = true;
+    public bool generateQuestNow = false;
 
     public const int PLAYER_SELECT_SCENE_INDEX = 1;
     public const int GAME_SCENE_INDEX = 2;
@@ -59,6 +65,8 @@ public class StateManager : MonoBehaviour
         {
             isInPlayerSelect = false;
             isInGame = true;
+            canGenerateQuest = !tutorialEnabled;
+            generateQuestNow = false;
             tutorialStarted = false;
             hasTilled = false;
             hasTilledTutorialDone = false;
@@ -78,6 +86,8 @@ public class StateManager : MonoBehaviour
             hasT1QuestTutorialDone = false;
             hasCrafted = false;
             hasCraftedTutorialDone = false;
+
+            GetComponent<ItemManager>().AvailableItems.Add(FarmItemKind.Sugar);
         }
     }
 
@@ -90,12 +100,12 @@ public class StateManager : MonoBehaviour
                 tutorialStarted = true;
                 SendTutorial("Salut, je suis Garry et je vais vous apprendre les base du businesse de friandise");
                 //SendTutorial("Pour commancer, ramasse cet houe et vas houer des parcelle de terrin");
-                SendTutorial("Pour commencer, il vous faut ramacer la bagnière afin de bouger votre point de repère pour ne pas vous perdre");
+                SendTutorial("Pour commencer, il vous faut ramacer la bagniï¿½re afin de bouger votre point de repï¿½re pour ne pas vous perdre");
 
             }
             if (hasGrabbedBanner && !hasGrabbedBannerTutorialDone)
             {
-                SendTutorial("À présent ramassez cet houe et allez houer des parcelle de terrin");
+                SendTutorial("ï¿½ prï¿½sent ramassez cet houe et allez houer des parcelle de terrin");
             }
             if (hasTilled && !hasTilledTutorialDone)
             {
@@ -107,20 +117,22 @@ public class StateManager : MonoBehaviour
                 hasPlantedTutorialDone = true;
                 SendTutorial("Les bonbons sont des plantes qui prenne leur temps pour pousser");
                 SendTutorial("Je vais donc en profiter pour vous expliquer ce que vous faite ici");
-                SendTutorial("Votre objectif est de délivrer les commandes des clients, afin d'ameliorer votre bonbonerie");
-                SendTutorial("Lorce que les bonbons aurons pousser, amenez-les à la base");
+                SendTutorial("Votre objectif est de dï¿½livrer les commandes des clients, afin d'ameliorer votre bonbonerie");
+                SendTutorial("Lorce que les bonbons aurons pousser, amenez-les ï¿½ la base");
             }
             if (hasDeposited && !hasDepositedTutorialDone)
             {
                 hasDepositedTutorialDone = true;
-                SendTutorial("Vous pouvez savoir en permanance ce qui se trouve dans votre base en regaradant en haut à gauche");
-                SendTutorial("Maintenant que vous avez récolter des bonbons, aller récupérer une commande au contoire");
+                canGenerateQuest = true;
+                generateQuestNow = true;
+                SendTutorial("Vous pouvez savoir en permanance ce qui se trouve dans votre base en regaradant en haut ï¿½ gauche");
+                SendTutorial("Maintenant que vous avez rï¿½colter des bonbons, aller rï¿½cupï¿½rer une commande au contoire");
 
             }
             if (hasPickedTicket && !hasPickedTicketTutorialDone)
             {
                 hasPickedTicketTutorialDone = true;
-                SendTutorial("Maintenant que vous avez un tiquet de commande, retournez à la base et prener ce qu'il vous demande");
+                SendTutorial("Maintenant que vous avez un tiquet de commande, retournez ï¿½ la base et prener ce qu'il vous demande");
             }
             if (hasUsedTicket && !hasUsedTicketTutorialDone)
             {
@@ -133,20 +145,20 @@ public class StateManager : MonoBehaviour
             {
                 hasCompletedQuestTutorialDone = true;
                 SendTutorial("Maintenant vous avez de l'argent");
-                SendTutorial("Allez donc dépenser cet argent durement gagner au magasin (CAPITALISME!!!)");
+                SendTutorial("Allez donc dï¿½penser cet argent durement gagner au magasin (CAPITALISME!!!)");
             }
             if (hasBoughtSeeds && !hasBoughtSeedsTutorialDone)
             {
                 hasBoughtSeedsTutorialDone = true;
-                SendTutorial("Maintenant que c'est fini je vais jouer à un meilleur jeu");
+                SendTutorial("Maintenant que c'est fini je vais jouer ï¿½ un meilleur jeu");
                 SendTutorial("/ a quiter la partie /");
             }
             if (hasT1Quest && !hasT1QuestTutorialDone)
             {
                 hasT1QuestTutorialDone = true;
-                SendTutorial("J'ai fait exprès de faire croire que j'était mort");
+                SendTutorial("J'ai fait exprï¿½s de faire croire que j'ï¿½tait mort");
                 SendTutorial("Mais je suis de retour pour vous apprendre les craft (consepte 100% original)");
-                SendTutorial("Vas donc à la table de craft et utilise la");
+                SendTutorial("Vas donc ï¿½ la table de craft et utilise la");
             }
             if (hasCrafted && !hasCraftedTutorialDone)
             {
@@ -156,4 +168,6 @@ public class StateManager : MonoBehaviour
             }
         }
     }
+
+    public void UpgradeTier() { }
 }
