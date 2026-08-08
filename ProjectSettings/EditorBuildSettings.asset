@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
     guid: c594f9786a72cc8a090e9e409214c9a1
   - enabled: 1
+    path: Assets/Scenes/End Screen.unity
+    guid: ee19d86bfd66d39a4b7fcffa4e91299d
+  - enabled: 1
     path: Assets/Scenes/Alyx.unity
     guid: f0c2b5054ce5ea985bffa7b4c426649b
   m_configObjects:

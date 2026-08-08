@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(StateManager))]
 public class PlayerManager : MonoBehaviour
@@ -197,6 +198,7 @@ public class Player
         {
             heldItem.SpriteLayer = 10;
             heldItem.transform.SetParent(null);
+            SceneManager.MoveGameObjectToScene(heldItem.gameObject, SceneManager.GetSceneByBuildIndex(StateManager.GAME_SCENE_INDEX));
             heldItem.transform.position = playerObject.GetComponent<PlayerInteractor>().interactionPoint.position;
             heldItem.gameObject.layer = LayerMask.NameToLayer("Interactable");
             heldItem = null;
