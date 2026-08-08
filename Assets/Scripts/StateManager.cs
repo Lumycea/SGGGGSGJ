@@ -169,6 +169,11 @@ public class StateManager : MonoBehaviour
 
     public void UpgradeTier()
     {
+        if (Tier == 3)
+        {
+            print("victory!");
+        }
+
         Tier += 1;
         ItemManager.Instance.UpgradeTier();
     }

@@ -126,6 +126,7 @@ public class QuestManager : SimulationEntity
 
         failureCount += 1;
         Quests[slot] = null;
+        QuestSlotAvailable[slot] = true;
         questCount -= 1;
 
         if (failureCount == maxFailureCount)

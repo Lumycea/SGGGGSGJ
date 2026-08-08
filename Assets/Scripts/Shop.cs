@@ -8,6 +8,7 @@ public class Shop : MonoBehaviour, IInteractable
     [SerializeField] private TMP_Text WheatInput;
     [SerializeField] private SpriteRenderer Output;
     [SerializeField] private GameObject itemStackPrefab;
+    [SerializeField] private int[] upgradeCosts;
 
     private List<ShopEntry> entries = new();
     private int selectedIndex = 0;
@@ -156,7 +157,7 @@ public class Shop : MonoBehaviour, IInteractable
         }
 
 
-        entries.Add(new ShopEntry(10 * (tier + 1), new ItemStack(new FarmItem(upgradeMaterial), 5), new ShopEntryUpgrade(), true));
+        entries.Add(new ShopEntry(upgradeCosts[tier], new ItemStack(new FarmItem(upgradeMaterial), 5 + 2 * tier), new ShopEntryUpgrade(), true));
 
         selectedIndex = 0;
         RefreshView();
