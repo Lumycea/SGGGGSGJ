@@ -147,6 +147,7 @@ public class ItemManager : MonoBehaviour
         }
 
         Shop.Instance.RefreshEntries();
+        CraftingTable.Instance.OnUpgrade();
     }
 
     private void AddRandomRecipe(int tier)
@@ -156,8 +157,6 @@ public class ItemManager : MonoBehaviour
         {
             var available = Recipe.ByTier[tier];
             var idx = UnityEngine.Random.Range(0, available.Length);
-            print(available);
-            print(idx);
             var r = available[idx];
 
             if (!AvailableRecipes.Contains(r)

@@ -134,7 +134,6 @@ public class Shop : MonoBehaviour, IInteractable
     public void RefreshEntries()
     {
         entries = new();
-        print("refreshing");
 
         var tier = StateManager.Instance != null ? StateManager.Instance.Tier : 0;
         FarmItemKind upgradeMaterial = FarmItemKind.Sugar;

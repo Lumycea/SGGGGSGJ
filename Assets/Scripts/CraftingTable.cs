@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class CraftingTable : MonoBehaviour, IInteractable
 {
+    public static CraftingTable Instance;
+
     [SerializeField] private ItemStackDisplay input0, input1, output;
     [SerializeField] GameObject itemStackPrefab;
     private int selectedIndex = 0;
 
     void Start()
     {
+        Instance = this;
         RefreshView();
     }
 
@@ -74,6 +77,7 @@ public class CraftingTable : MonoBehaviour, IInteractable
 
     void RefreshView()
     {
+        print(ItemManager.Instance.AvailableRecipes.Count);
         if (ItemManager.Instance.AvailableRecipes.Count == 0)
         {
             input0.gameObject.SetActive(false);
@@ -93,5 +97,10 @@ public class CraftingTable : MonoBehaviour, IInteractable
         input0.Stack = new ItemStack(new FarmItem(recipe.Items[0]), 1);
         input1.Stack = new ItemStack(new FarmItem(recipe.Items[1]), 1);
         output.Stack = new ItemStack(new FarmItem(recipe.Output), 1);
+    }
+
+    public void OnUpgrade()
+    {
+        RefreshView();
     }
 }

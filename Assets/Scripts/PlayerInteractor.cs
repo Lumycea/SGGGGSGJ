@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,7 @@ public class PlayerInteractor : MonoBehaviour
 {
     public Transform interactionPoint;
     [SerializeField] private LayerMask interactorLayerMask;
+    [SerializeField] private Collider2D interactionCollider;
     private Player playerState;
     public float interactionRadius = 0.5f;
 
@@ -20,7 +22,9 @@ public class PlayerInteractor : MonoBehaviour
     {
         if (playerState.isInJail) return;
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(interactionPoint.position, interactionRadius, interactorLayerMask);
+        List<Collider2D> colliders = new();
+        Physics2D.OverlapCollider(interactionCollider, colliders);
+
         foreach (Collider2D collider in colliders)
         {
             if (collider.TryGetComponent(out IInteractable interactable))
