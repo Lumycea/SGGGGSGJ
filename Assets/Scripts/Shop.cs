@@ -194,9 +194,9 @@ public class ShopEntryItem : ShopOutput
 }
 public class ShopEntryUpgrade : ShopOutput
 {
-    public override Sprite Sprite => Resources.Load<Sprite>("Items/upgrade");
+    public override Sprite Sprite => Resources.Load<Sprite>("UI/upgrade");
 }
 public class ShopEntryFree : ShopOutput
 {
-    public override Sprite Sprite => Resources.Load<Sprite>("Items/Prize_Ticket");
+    public override Sprite Sprite => Resources.Load<Sprite>("UI/addPlayer");
 }

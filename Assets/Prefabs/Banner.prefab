@@ -117,7 +117,7 @@ Transform:
   m_GameObject: {fileID: 1528470701661355146}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.387, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -419,6 +419,7 @@ MonoBehaviour:
     count: 1
   ForceBackground: 0
   ForceNoBackground: 1
+  ForceCount: 0
   SpriteLayer: 0
   backgroundRenderer: {fileID: 4114387101770663152}
   foregroundRenderer: {fileID: 4114387101770663152}

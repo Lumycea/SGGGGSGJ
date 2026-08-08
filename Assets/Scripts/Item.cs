@@ -39,7 +39,7 @@ public class Hammer : Item
 public class Banner : Item
 {
     public override int MaxStackCount => 1;
-    public override Sprite Sprite => Resources.Load<Sprite>("Items/Prize_Ticket");
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/banner");
 
     public override bool Equals(object obj) { return obj is Banner; }
     public override int GetHashCode() { return base.GetHashCode(); }
