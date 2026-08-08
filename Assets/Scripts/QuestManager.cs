@@ -68,10 +68,15 @@ public class QuestManager : SimulationEntity
     private void CompleteQuest(int slot)
     {
         var quest = Quests[slot] ?? throw new System.Exception();
+
+        Stats.Instance.QuestsCompleted++;
+        Stats.Instance.ResourcesSold += quest.Stack.count;
+
         StateManager.Instance.Wheat += quest.Stack.count * GetComponent<ItemManager>().ItemPrice((quest.Stack.item as FarmItem).Kind);
         Quests[slot] = null;
         QuestSlotAvailable[slot] = true;
         questCount--;
+
     }
 
 
@@ -96,6 +101,7 @@ public class QuestManager : SimulationEntity
 
         if (StateManager.Instance.generateQuestNow)
         {
+            print("generating quest");
             StateManager.Instance.generateQuestNow = false;
             NewQuest();
         }
@@ -122,8 +128,6 @@ public class QuestManager : SimulationEntity
 
     private void FailQuest(int slot)
     {
-        print("fail");
-
         failureCount += 1;
         Quests[slot] = null;
         QuestSlotAvailable[slot] = true;
@@ -131,7 +135,8 @@ public class QuestManager : SimulationEntity
 
         if (failureCount == maxFailureCount)
         {
-            print("Defeat!");
+            Stats.Instance.Victory = false;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(StateManager.END_SCREEN_SCENE_INDEX);
         }
     }
 }

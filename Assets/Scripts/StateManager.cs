@@ -5,7 +5,19 @@ public class StateManager : MonoBehaviour
 {
     public static StateManager Instance;
 
-    public int Wheat = 50;
+    [SerializeField] private int _wheat = 0;
+    public int Wheat
+    {
+        get => _wheat; set
+        {
+            if (value > _wheat)
+            {
+                Stats.Instance.WheatGained += value - _wheat;
+            }
+
+            _wheat = value;
+        }
+    }
 
     public int Tier { get; private set; }
 
@@ -40,7 +52,8 @@ public class StateManager : MonoBehaviour
     public bool generateQuestNow = false;
 
     public const int PLAYER_SELECT_SCENE_INDEX = 1;
-    public const int GAME_SCENE_INDEX = 3;
+    public const int GAME_SCENE_INDEX = 4;
+    public const int END_SCREEN_SCENE_INDEX = 3;
     public const string TUTORIAL_SOURCE = "Garry";
 
     void SendTutorial(string dialog) { DialogManager.Instance.AddDialog(TUTORIAL_SOURCE, dialog); }
@@ -169,12 +182,14 @@ public class StateManager : MonoBehaviour
 
     public void UpgradeTier()
     {
+        Tier += 1;
+
         if (Tier == 3)
         {
-            print("victory!");
+            Stats.Instance.Victory = true;
+            SceneManager.LoadScene(END_SCREEN_SCENE_INDEX);
         }
 
-        Tier += 1;
         ItemManager.Instance.UpgradeTier();
     }
 }

@@ -93,6 +93,7 @@ public class PlayerManager : MonoBehaviour
         jailedPlayers.Add(player);
 
         Shop.Instance.RefreshEntries();
+        Stats.Instance.PlayersLost++;
     }
 
     public bool IsPlayerInJail()

@@ -230,8 +230,16 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1784911124420027498, guid: 14f7fb399f8109dac87c18b7cc8fdebe, type: 3}
+      propertyPath: _wheat
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784911124420027498, guid: 14f7fb399f8109dac87c18b7cc8fdebe, type: 3}
       propertyPath: tutorialEnabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784911124420027498, guid: 14f7fb399f8109dac87c18b7cc8fdebe, type: 3}
+      propertyPath: canGenerateQuest
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1784911124420027498, guid: 14f7fb399f8109dac87c18b7cc8fdebe, type: 3}
       propertyPath: hasGrabbedBanner

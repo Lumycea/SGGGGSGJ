@@ -52,7 +52,7 @@ public class Farm : SimulationEntity
     public override void PreTick()
     {
         base.PreTick();
-        foreach (var e in Delta.Keys)
+        foreach (var e in Delta.Keys.ToList())
         {
             Delta[e] = 0;
         }

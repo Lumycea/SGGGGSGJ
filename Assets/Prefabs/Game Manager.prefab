@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 3925996181716058493}
   - component: {fileID: 1784911124420027498}
   - component: {fileID: 9150145349395619819}
+  - component: {fileID: 4961699193668288819}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameManager
@@ -166,10 +167,6 @@ MonoBehaviour:
   minQuestTimer: 020000003c0000003c0000001e000000
   maxQuestTimer: 020000005a0000005a0000003c000000
   maxFailureCount: 3
-  PendingQuests: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &4693202401136362293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +244,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa0205e59207c3c4b5de92f0ee7e639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
+--- !u!114 &4961699193668288819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3193263519694696686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6fb535264208bd0b6761f6fc17e906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &6203556814462370247
 GameObject:
   m_ObjectHideFlags: 0
