@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using static FarmItemKind;
+using Unity.VisualScripting;
 
 public enum FarmItemKind
 {
@@ -152,6 +153,8 @@ public class ItemManager : MonoBehaviour
 
     private void AddRandomRecipe(int tier)
     {
+        StateManager.Instance.hasRecipes = true;
+
         Recipe toadd = null;
         while (toadd == null)
         {

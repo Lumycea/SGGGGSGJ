@@ -42,7 +42,7 @@ public class StateManager : MonoBehaviour
     public bool hasCompletedQuestTutorialDone = false;
     public bool hasBoughtSeeds = false;
     public bool hasBoughtSeedsTutorialDone = false;
-    public bool hasT1Quest = false;
+    public bool hasRecipes = false;
     public bool hasT1QuestTutorialDone = false;
     public bool hasCrafted = false;
     public bool hasCraftedTutorialDone = false;
@@ -96,7 +96,7 @@ public class StateManager : MonoBehaviour
             hasCompletedQuestTutorialDone = false;
             hasBoughtSeeds = false;
             hasBoughtSeedsTutorialDone = false;
-            hasT1Quest = false;
+            hasRecipes = false;
             hasT1QuestTutorialDone = false;
             hasCrafted = false;
             hasCraftedTutorialDone = false;
@@ -165,7 +165,7 @@ public class StateManager : MonoBehaviour
                 SendTutorial("Maintenant que c'est fini je vais jouer à un meilleur jeu");
                 SendTutorial("<span color='red'> Garry a quitté la partie </span>");
             }
-            if (hasT1Quest && !hasT1QuestTutorialDone)
+            if (hasRecipes && !hasT1QuestTutorialDone)
             {
                 hasT1QuestTutorialDone = true;
                 SendTutorial("Je l'ai fait exprès de dire que j'étais mort");

@@ -18,9 +18,13 @@ public class CraftingTable : MonoBehaviour, IInteractable
     {
         var recipe = ItemManager.Instance.AvailableRecipes[selectedIndex];
 
-        return Farm.Instance.TryRemovePair(recipe.Items[0], recipe.Items[1])
-            ? new ItemStack(new FarmItem(recipe.Output), 1)
-            : null;
+        if (Farm.Instance.TryRemovePair(recipe.Items[0], recipe.Items[1]))
+        {
+            StateManager.Instance.hasCrafted = true;
+            return new ItemStack(new FarmItem(recipe.Output), 1);
+        }
+
+        return null;
     }
 
     public bool Interact(Player playerState)
