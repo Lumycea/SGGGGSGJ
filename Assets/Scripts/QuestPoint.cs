@@ -42,7 +42,6 @@ public class QuestPoint : MonoBehaviour, IInteractable
 
     public bool Interact(Player playerState)
     {
-        print("interacting");
         if (playerState.heldItem == null && HasQuest())
         {
             GameObject ticket = Instantiate(itemStackPrefab, transform.position, Quaternion.identity);

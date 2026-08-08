@@ -25,7 +25,6 @@ public class CraftingTable : MonoBehaviour, IInteractable
 
     public bool Interact(Player playerState)
     {
-        print("interacting");
         if (ItemManager.Instance.AvailableRecipes.Count == 0) { return false; }
 
         if (playerState.heldItem == null)
@@ -56,7 +55,6 @@ public class CraftingTable : MonoBehaviour, IInteractable
 
     public bool Swipe(Player playerState, IInteractable.Direction direction)
     {
-        print("swiping");
         if (ItemManager.Instance.AvailableRecipes.Count == 0) { return false; }
 
         if (direction == IInteractable.Direction.Left)

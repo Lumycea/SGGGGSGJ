@@ -25,7 +25,6 @@ public class PlayerInteractor : MonoBehaviour
         {
             if (collider.TryGetComponent(out IInteractable interactable))
             {
-                print(interactable);
                 if (interactable.Interact(playerState)) return;
             }
         }

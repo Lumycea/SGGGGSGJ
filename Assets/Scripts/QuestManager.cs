@@ -59,8 +59,9 @@ public class QuestManager : SimulationEntity
 
         var idx = QuestSlotAvailable.FindIndex(e => e);
         if (idx == -1) { throw new System.Exception(); }
-        else { Quests[idx] = quest; QuestSlotAvailable[idx] = false; }
 
+        Quests[idx] = quest;
+        QuestSlotAvailable[idx] = false;
         questCount++;
     }
 
@@ -70,6 +71,7 @@ public class QuestManager : SimulationEntity
         StateManager.Instance.Wheat += quest.Stack.count * GetComponent<ItemManager>().ItemPrice((quest.Stack.item as FarmItem).Kind);
         Quests[slot] = null;
         QuestSlotAvailable[slot] = true;
+        questCount--;
     }
 
 

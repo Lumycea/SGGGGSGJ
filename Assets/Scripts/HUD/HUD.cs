@@ -1,10 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class HUD : MonoBehaviour
 {
     [SerializeField] private GameObject itemDisplayPrefab;
     [SerializeField] private Transform inventoryPanel;
+    [SerializeField] private TMP_Text wheatCount;
+
     private readonly Dictionary<FarmItemKind, ItemDisplay> displays = new();
     private readonly uint[] usedSlots = { 0, 0, 0, 0 };
     private ItemManager itemManager;
@@ -37,5 +40,7 @@ public class HUD : MonoBehaviour
             displays[e.Key].Delta = Delta.ContainsKey(e.Key) ? Delta[e.Key] : 0;
             displays[e.Key].ShowDelta = ShowDelta;
         }
+
+        wheatCount.text = StateManager.Instance.Wheat.ToString();
     }
 }
