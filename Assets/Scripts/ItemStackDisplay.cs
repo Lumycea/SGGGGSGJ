@@ -8,6 +8,7 @@ public class ItemStackDisplay : MonoBehaviour, IInteractable
     public ItemStack Stack;
     public bool ForceBackground = false;
     public bool ForceNoBackground = false;
+    public bool ForceCount = false;
     public int SpriteLayer = 0;
 
 
@@ -19,13 +20,20 @@ public class ItemStackDisplay : MonoBehaviour, IInteractable
 
     void Update()
     {
+        var enabled = Stack.item != null;
+        backgroundRenderer.enabled = enabled;
+        foregroundRenderer.enabled = enabled;
+        itemRenderer.enabled = enabled;
+        countText.enabled = enabled;
+        if (!enabled) return;
+
         itemRenderer.sprite = Stack.item.Sprite;
 
         backgroundRenderer.sortingOrder = SpriteLayer;
         itemRenderer.sortingOrder = SpriteLayer + 1;
         foregroundRenderer.sortingOrder = SpriteLayer + 2;
 
-        countText.enabled = Stack.count > 1;
+        countText.enabled = Stack.count > 1 || ForceCount;
         countText.text = Stack.count.ToString();
 
         backgroundRenderer.enabled = (Stack.count > 1 || ForceBackground) && !ForceNoBackground;

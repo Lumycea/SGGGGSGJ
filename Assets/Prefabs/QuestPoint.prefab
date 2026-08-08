@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8438356187908892453}
   - component: {fileID: 6221627222717277189}
   - component: {fileID: 8917624266629331479}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: QuestPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,9 +167,29 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 169536485889544679, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: m_Name
       value: ItemStackDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282337149353594656, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813031923719281068, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875777994299114269, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7048158525226511095, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: m_LocalPosition.x
@@ -210,6 +230,14 @@ PrefabInstance:
     - target: {fileID: 7048158525226511095, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274030394607508626, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
+      propertyPath: ForceCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274030394607508626, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
+      propertyPath: SpriteLayer
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

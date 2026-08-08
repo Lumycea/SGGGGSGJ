@@ -13,9 +13,9 @@ public class QuestPoint : MonoBehaviour, IInteractable
 
     void Update()
     {
-        var quest = QuestManager.Instance.PendingQuests[slotIndex];
-        if (quest != null)
+        if (QuestManager.Instance.HasQuest(slotIndex))
         {
+            var quest = QuestManager.Instance.Quest(slotIndex);
             display.Stack = quest.Stack;
             display.gameObject.SetActive(true);
         }
@@ -27,12 +27,12 @@ public class QuestPoint : MonoBehaviour, IInteractable
 
     public bool HasQuest()
     {
-        return QuestManager.Instance.PendingQuests[slotIndex] != null;
+        return QuestManager.Instance.HasQuest(slotIndex);
     }
 
     public Item GetTicket()
     {
-        return new QuestTicket((QuestManager.Instance.PendingQuests[slotIndex] ?? throw new System.Exception()).Stack);
+        return new QuestTicket((QuestManager.Instance.Quest(slotIndex) ?? throw new System.Exception()).Stack);
     }
 
     public bool DepositPackage(QuestPackage package)
@@ -42,6 +42,7 @@ public class QuestPoint : MonoBehaviour, IInteractable
 
     public bool Interact(Player playerState)
     {
+        print("interacting");
         if (playerState.heldItem == null && HasQuest())
         {
             GameObject ticket = Instantiate(itemStackPrefab, transform.position, Quaternion.identity);

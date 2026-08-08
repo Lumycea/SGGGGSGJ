@@ -27,6 +27,7 @@ public class PlayerInteractor : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
+            print(collider);
             if (collider.TryGetComponent(out IInteractable interactable))
             {
                 if (interactable.Interact(playerState)) return;

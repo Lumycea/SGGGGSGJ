@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
 [RequireComponent(typeof(StateManager))]
 [RequireComponent(typeof(Farm))]
+
+[RequireComponent(typeof(ItemManager))]
 public class QuestManager : SimulationEntity
 {
     public static QuestManager Instance;
@@ -17,7 +18,8 @@ public class QuestManager : SimulationEntity
     [SerializeField] private int[] maxQuestTimer;
     [SerializeField] private int maxFailureCount;
 
-    public List<Quest> PendingQuests;
+    private List<Quest> Quests;
+    private List<bool> QuestSlotAvailable;
 
     private int questCount = 0;
     private int tickBeforeNextQuest = 0;
@@ -27,11 +29,15 @@ public class QuestManager : SimulationEntity
     {
         Instance = this;
 
-        PendingQuests = Enumerable.Repeat<Quest>(null, maxQuests.Max()).ToList();
+        Quests = Enumerable.Repeat<Quest>(null, maxQuests.Max()).ToList();
+        QuestSlotAvailable = Enumerable.Repeat(true, maxQuests.Max()).ToList();
 
         var farm = GetComponent<StateManager>();
         tickBeforeNextQuest = Random.Range(minQuestDelay[farm.Tier], maxQuestDelay[farm.Tier]);
     }
+
+    public bool HasQuest(int slot) { return !QuestSlotAvailable[slot]; }
+    public Quest Quest(int slot) { return Quests[slot]; }
 
     public void NewQuest()
     {
@@ -47,28 +53,29 @@ public class QuestManager : SimulationEntity
 
         // Computes the amount of items for the quest.
         var weight = Random.Range(minWeights[farm.Tier], maxWeights[farm.Tier]);
-        var timer = Random.Range(minQuestTimer[farm.Tier], maxQuestDelay[farm.Tier]);
+        var timer = Random.Range(minQuestTimer[farm.Tier], maxQuestTimer[farm.Tier]);
         var count = weight / (item.GetTier() + 1);
         var quest = new Quest(new ItemStack(new FarmItem(item), count), timer);
 
-        var idx = PendingQuests.FindIndex(e => e == null);
-        if (idx == -1) { PendingQuests.Add(quest); }
-        else { PendingQuests[idx] = quest; }
+        var idx = QuestSlotAvailable.FindIndex(e => e);
+        if (idx == -1) { throw new System.Exception(); }
+        else { Quests[idx] = quest; QuestSlotAvailable[idx] = false; }
 
         questCount++;
     }
 
     private void CompleteQuest(int slot)
     {
-        var quest = PendingQuests[slot] ?? throw new System.Exception();
+        var quest = Quests[slot] ?? throw new System.Exception();
         StateManager.Instance.Wheat += quest.Stack.count * GetComponent<ItemManager>().ItemPrice((quest.Stack.item as FarmItem).Kind);
-        PendingQuests[slot] = null;
+        Quests[slot] = null;
+        QuestSlotAvailable[slot] = true;
     }
 
 
     public bool DepositPackage(QuestPackage package, int slot)
     {
-        if (PendingQuests[slot] != null && PendingQuests[slot].Stack.Equals(package.Stack))
+        if (Quests[slot] != null && Quests[slot].Stack.Equals(package.Stack))
         {
             CompleteQuest(slot);
             return true;
@@ -97,9 +104,9 @@ public class QuestManager : SimulationEntity
 
     private void TickQuestTimer()
     {
-        for (var i = 0; i < PendingQuests.Count; ++i)
+        for (var i = 0; i < Quests.Count; ++i)
         {
-            var q = PendingQuests[i];
+            var q = Quests[i];
             if (q != null && q.Timer > 0)
             {
                 q.Timer -= 1;
@@ -116,7 +123,7 @@ public class QuestManager : SimulationEntity
         print("fail");
 
         failureCount += 1;
-        PendingQuests[slot] = null;
+        Quests[slot] = null;
         questCount -= 1;
 
         if (failureCount == maxFailureCount)
@@ -134,7 +141,7 @@ public class QuestTicket : Item
     public readonly ItemStack Stack;
 
     public override int MaxStackCount => 1;
-    public override Sprite Sprite => Resources.Load<Sprite>("Items/checklist");
+    public override Sprite Sprite => Resources.Load<Sprite>("Items/ticket");
 }
 
 [System.Serializable]

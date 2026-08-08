@@ -266,7 +266,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -538,6 +538,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemInput
       objectReference: {fileID: 0}
+    - target: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7048158525226511095, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.75
@@ -585,6 +589,10 @@ PrefabInstance:
     - target: {fileID: 7048158525226511095, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274030394607508626, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
+      propertyPath: SpriteLayer
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8274030394607508626, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: spriteLayer

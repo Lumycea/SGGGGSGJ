@@ -116,7 +116,7 @@ public class ItemManager : MonoBehaviour
 
     public int ItemPrice(FarmItemKind item)
     {
-        return item.GetTier();
+        return item.GetTier() + 1;
     }
 
     void Start()

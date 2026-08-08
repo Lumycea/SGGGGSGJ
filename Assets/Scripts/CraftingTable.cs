@@ -77,7 +77,6 @@ public class CraftingTable : MonoBehaviour, IInteractable
 
     void RefreshView()
     {
-        print(ItemManager.Instance.AvailableRecipes.Count);
         if (ItemManager.Instance.AvailableRecipes.Count == 0)
         {
             input0.gameObject.SetActive(false);
