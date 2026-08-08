@@ -103,8 +103,6 @@ public class QuestManager : SimulationEntity
             if (q != null && q.Timer > 0)
             {
                 q.Timer -= 1;
-                print(q.Timer);
-                print(q);
                 if (q.Timer == 0)
                 {
                     FailQuest(i);

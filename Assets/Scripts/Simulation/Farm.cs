@@ -27,6 +27,19 @@ public class Farm : SimulationEntity
         return true;
     }
 
+    public bool TryRemovePair(FarmItemKind a, FarmItemKind b)
+    {
+        if (a == b) { return TryRemoveItem(a, 2); }
+
+        if (!inventory.ContainsKey(a) || inventory[a] == 0) { return false; }
+        if (!inventory.ContainsKey(b) || inventory[b] == 0) { return false; }
+
+        inventory[a] -= 1;
+        inventory[b] -= 1;
+
+        return true;
+    }
+
     public void RegisterAutomatedAction(Dictionary<FarmItemKind, int> delta)
     {
         foreach (var e in delta)

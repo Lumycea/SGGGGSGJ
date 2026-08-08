@@ -193,6 +193,14 @@ PrefabInstance:
       propertyPath: playerPanelsParent
       value: 
       objectReference: {fileID: 176041961}
+    - target: {fileID: 947242558661508006, guid: 14f7fb399f8109dac87c18b7cc8fdebe, type: 3}
+      propertyPath: 'maxQuestTimer.Array.data[0]'
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 947242558661508006, guid: 14f7fb399f8109dac87c18b7cc8fdebe, type: 3}
+      propertyPath: 'minQuestTimer.Array.data[0]'
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 2442887029569310912, guid: 14f7fb399f8109dac87c18b7cc8fdebe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

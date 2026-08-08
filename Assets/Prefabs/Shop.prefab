@@ -339,7 +339,7 @@ MonoBehaviour:
   Input: {fileID: 7745232928134924839}
   WheatInput: {fileID: 5960696292551236621}
   Output: {fileID: 781284656833864320}
-  itemStackPrefab: {fileID: 0}
+  itemStackPrefab: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
 --- !u!1 &7755957878603749332
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +530,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6617945525666117725}
     m_Modifications:
+    - target: {fileID: 137502879070684590, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
       propertyPath: m_Name
       value: ItemInput
