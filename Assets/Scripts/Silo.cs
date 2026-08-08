@@ -27,6 +27,7 @@ public class Silo : MonoBehaviour, IInteractable
                 {
                     var questPackage = new QuestPackage(ticket.Stack);
                     player.heldItem.Stack.item = questPackage;
+                    StateManager.Instance.hasUsedTicket = true;
                 }
                 return true;
             }

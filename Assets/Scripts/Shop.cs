@@ -115,6 +115,7 @@ public class Shop : MonoBehaviour, IInteractable
                 var stack = itemObject.GetComponent<ItemStackDisplay>();
                 stack.Stack = item.Value;
                 playerState.SetItem(stack);
+                StateManager.Instance.hasBoughtSeeds = true;
                 return true;
             }
         }
