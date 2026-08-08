@@ -464,8 +464,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '[Garry] Hi!'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8ec466b496b896b9ca1c40db046926bd, type: 2}
-  m_sharedMaterial: {fileID: 7781544405547805069, guid: 8ec466b496b896b9ca1c40db046926bd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 04e002c2fcc6fbe708928d8179b90c92, type: 2}
+  m_sharedMaterial: {fileID: 471904218252423202, guid: 04e002c2fcc6fbe708928d8179b90c92, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -495,7 +495,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 1024
   m_textAlignment: 65535

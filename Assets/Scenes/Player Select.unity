@@ -229,6 +229,14 @@ PrefabInstance:
       propertyPath: Wheat
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1784911124420027498, guid: 14f7fb399f8109dac87c18b7cc8fdebe, type: 3}
+      propertyPath: tutorialEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784911124420027498, guid: 14f7fb399f8109dac87c18b7cc8fdebe, type: 3}
+      propertyPath: hasGrabbedBanner
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2442887029569310912, guid: 14f7fb399f8109dac87c18b7cc8fdebe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
