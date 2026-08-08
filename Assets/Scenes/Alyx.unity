@@ -411,6 +411,26 @@ PrefabInstance:
       propertyPath: itemStackPrefab
       value: 
       objectReference: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
+    - target: {fileID: 1369859242798753097, guid: d60788123eb0e7f20af04149899954b9, type: 3}
+      propertyPath: upgradeCosts.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369859242798753097, guid: d60788123eb0e7f20af04149899954b9, type: 3}
+      propertyPath: 'upgradeCosts.Array.data[0]'
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369859242798753097, guid: d60788123eb0e7f20af04149899954b9, type: 3}
+      propertyPath: 'upgradeCosts.Array.data[1]'
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369859242798753097, guid: d60788123eb0e7f20af04149899954b9, type: 3}
+      propertyPath: 'upgradeCosts.Array.data[2]'
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369859242798753097, guid: d60788123eb0e7f20af04149899954b9, type: 3}
+      propertyPath: 'upgradeCosts.Array.data[3]'
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4984222579361946591, guid: d60788123eb0e7f20af04149899954b9, type: 3}
       propertyPath: m_Name
       value: Shop
