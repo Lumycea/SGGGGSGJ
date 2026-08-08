@@ -60,6 +60,10 @@ public class ItemStackDisplay : MonoBehaviour, IInteractable
     {
         if (player.heldItem == null)
         {
+            if (Stack.item is Banner)
+            {
+                StateManager.Instance.hasGrabbedBanner = true;
+            }
             player.SetItem(this);
             return true;
         }

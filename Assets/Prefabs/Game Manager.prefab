@@ -167,6 +167,10 @@ MonoBehaviour:
   minQuestTimer: 020000003c0000003c0000001e000000
   maxQuestTimer: 020000005a0000005a0000003c000000
   maxFailureCount: 3
+  PendingQuests: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &4693202401136362293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +211,7 @@ MonoBehaviour:
   Wheat: 0
   isInPlayerSelect: 0
   isInGame: 0
-  tutorialEnabled: 0
+  tutorialEnabled: 1
   tutorialStarted: 0
   hasTilled: 0
   hasTilledTutorialDone: 0

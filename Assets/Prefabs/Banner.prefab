@@ -418,7 +418,7 @@ MonoBehaviour:
       rid: 5960411998780391497
     count: 1
   ForceBackground: 0
-  ForceNoBackground: 0
+  ForceNoBackground: 1
   SpriteLayer: 0
   backgroundRenderer: {fileID: 4114387101770663152}
   foregroundRenderer: {fileID: 4114387101770663152}

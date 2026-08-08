@@ -23,7 +23,7 @@ public class StateManager : MonoBehaviour
 
     public bool isInPlayerSelect = false;
     public bool isInGame = false;
-    public bool tutorialEnabled = false;
+    public bool tutorialEnabled = true;
 
     public bool tutorialStarted = false;
     public bool hasTilled = false;
@@ -111,11 +111,12 @@ public class StateManager : MonoBehaviour
             {
                 tutorialStarted = true;
                 SendTutorial("Salut, je suis Garry et je vais vous apprendre les bases du business de la création friandise");
-                SendTutorial("Pour commencer, il vous faut ramasser la bannière afin de bouger votre point de repère et de ne pas vous perdre");
+                SendTutorial("Pour commencer, il vous faut ramasser la bannière afin de ne pas vous perdre");
 
             }
             if (hasGrabbedBanner && !hasGrabbedBannerTutorialDone)
             {
+                hasGrabbedBannerTutorialDone = true;
                 SendTutorial("À présent ramassez cette houe et allez labourer des parcelles de terrain");
             }
             if (hasTilled && !hasTilledTutorialDone)
@@ -162,7 +163,7 @@ public class StateManager : MonoBehaviour
             {
                 hasBoughtSeedsTutorialDone = true;
                 SendTutorial("Maintenant que c'est fini je vais jouer à un meilleur jeu");
-                SendTutorial("/ a quitté la partie /");
+                SendTutorial("<span color='red'> Garry a quitté la partie </span>");
             }
             if (hasT1Quest && !hasT1QuestTutorialDone)
             {
@@ -175,7 +176,7 @@ public class StateManager : MonoBehaviour
             {
                 hasCraftedTutorialDone = true;
                 SendTutorial("Bon cette fois je pars pour de bon");
-                SendTutorial("/ a quitté la partie pour de bon /");
+                DialogManager.Instance.AddDialog("", "<span color='red'> Garry a quitté la partie pour de bon</span>");
             }
         }
     }

@@ -190,12 +190,17 @@ public class Player
         item.transform.localPosition = Vector3.zero;
         item.gameObject.layer = LayerMask.NameToLayer("Default");
         item.SpriteLayer = 21;
+        if (item.Stack.item is Hoe || item.Stack.item is Axe || item.Stack.item is Hammer)
+        {
+            item.gameObject.SetActive(false);
+        }
     }
 
     public void DropItem()
     {
         if (heldItem != null)
         {
+            heldItem.gameObject.SetActive(true);
             heldItem.SpriteLayer = 10;
             heldItem.transform.SetParent(null);
             SceneManager.MoveGameObjectToScene(heldItem.gameObject, SceneManager.GetSceneByBuildIndex(StateManager.GAME_SCENE_INDEX));
