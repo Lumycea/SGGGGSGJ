@@ -4,8 +4,8 @@ using System.Linq;
 
 public class Farm : SimulationEntity
 {
-    private readonly Dictionary<FarmItemKind, int> inventory = new();
-    private readonly Dictionary<FarmItemKind, int> delta = new();
+    public Dictionary<FarmItemKind, int> Inventory { get; private set; } = new();
+    public Dictionary<FarmItemKind, int> Delta { get; private set; } = new();
 
     public static Farm Instance { get; private set; }
 
@@ -16,14 +16,17 @@ public class Farm : SimulationEntity
 
     public void AddItem(FarmItemKind item, int count)
     {
-        if (!inventory.ContainsKey(item)) { inventory.Add(item, count); }
-        else { inventory[item] += count; }
+        if (!Inventory.ContainsKey(item)) { Inventory.Add(item, count); }
+        else { Inventory[item] += count; }
+
+        UpdateDelta(item, count);
     }
 
     public bool TryRemoveItem(FarmItemKind item, int count)
     {
-        if (!inventory.ContainsKey(item) || inventory[item] < count) return false;
-        inventory[item] -= count;
+        if (!Inventory.ContainsKey(item) || Inventory[item] < count) return false;
+        Inventory[item] -= count;
+        UpdateDelta(item, -count);
         return true;
     }
 
@@ -31,30 +34,27 @@ public class Farm : SimulationEntity
     {
         if (a == b) { return TryRemoveItem(a, 2); }
 
-        if (!inventory.ContainsKey(a) || inventory[a] == 0) { return false; }
-        if (!inventory.ContainsKey(b) || inventory[b] == 0) { return false; }
+        if (!Inventory.ContainsKey(a) || Inventory[a] == 0) { return false; }
+        if (!Inventory.ContainsKey(b) || Inventory[b] == 0) { return false; }
 
-        inventory[a] -= 1;
-        inventory[b] -= 1;
+        Inventory[a] -= 1;
+        Inventory[b] -= 1;
 
         return true;
     }
 
-    public void RegisterAutomatedAction(Dictionary<FarmItemKind, int> delta)
+    private void UpdateDelta(FarmItemKind item, int count)
     {
-        foreach (var e in delta)
-        {
-            if (!this.delta.ContainsKey(e.Key)) { this.delta.Add(e.Key, e.Value); }
-            else { this.delta[e.Key] += e.Value; }
-        }
+        if (!Delta.ContainsKey(item)) { Delta.Add(item, count); }
+        else { Delta[item] += count; }
     }
 
     public override void PreTick()
     {
         base.PreTick();
-        foreach (var i in Enum.GetValues(typeof(FarmItemKind)).Cast<FarmItemKind>())
+        foreach (var e in Delta.Keys)
         {
-            delta.Clear();
+            Delta[e] = 0;
         }
     }
     public override void Tick() { }
@@ -66,7 +66,7 @@ public class Farm : SimulationEntity
         HUD.Instance.Delta.Clear();
         HUD.Instance.ShowDelta = StateManager.Instance.showDelta;
 
-        foreach (var e in inventory) { HUD.Instance.Inventory.Add(e.Key, e.Value); }
-        foreach (var e in delta) { HUD.Instance.Delta.Add(e.Key, e.Value); }
+        foreach (var e in Inventory) { HUD.Instance.Inventory.Add(e.Key, e.Value); }
+        foreach (var e in Delta) { HUD.Instance.Delta.Add(e.Key, e.Value); }
     }
 }

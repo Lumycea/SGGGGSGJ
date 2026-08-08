@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.183, y: 1.875}
+  m_AnchoredPosition: {x: -0.206, y: 1.874}
   m_SizeDelta: {x: 2, y: 0.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1192524686643327346
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.19371903, y: 0, z: -0.46242583, w: -1.7122263}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -340,6 +340,7 @@ MonoBehaviour:
   WheatInput: {fileID: 5960696292551236621}
   Output: {fileID: 781284656833864320}
   itemStackPrefab: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
+  upgradeCosts: 
 --- !u!1 &7755957878603749332
 GameObject:
   m_ObjectHideFlags: 0

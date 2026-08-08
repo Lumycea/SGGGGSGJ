@@ -27,7 +27,7 @@ public class HUD : MonoBehaviour
 
     void Update()
     {
-        foreach (var e in Inventory)
+        foreach (var e in Farm.Instance.Inventory)
         {
             if (!displays.ContainsKey(e.Key))
             {
