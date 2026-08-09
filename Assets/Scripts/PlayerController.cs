@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public float noseDistance = 0.5f;
     public GameObject dockingPoint;
     private PlayerInput playerInput;
+    private bool isFrozen = false;
 
     void Start()
     {
@@ -29,24 +31,15 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        var device = playerInput.GetDevice<Gamepad>();
-        if (device != null)
+        if (!playerManager.players[playerId].isInZone)
         {
-            if (!playerManager.players[playerId].isInZone)
-            {
-                device.SetMotorSpeeds(0.6f, 0.2f);
-            }
-            else
-            {
-                device.SetMotorSpeeds(0f, 0f);
-            }
+            playerInput.GetDevice<Gamepad>()?.SetMotorSpeeds(0.6f, 0.2f);
         }
-
     }
 
     void FixedUpdate()
     {
-        if (stateManager.isInGame && !playerManager.players[playerId].isInJail)
+        if (stateManager.isInGame && !playerManager.players[playerId].isInJail && !isFrozen)
         {
             MovePlayer();
         }
@@ -71,6 +64,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Zone"))
         {
             playerManager.players[playerId].isInZone = true;
+            playerInput.GetDevice<Gamepad>()?.SetMotorSpeeds(0f, 0f);
             print($"Player {playerId} entered zone");
         }
     }
@@ -82,5 +76,12 @@ public class PlayerController : MonoBehaviour
             playerManager.players[playerId].isInZone = false;
             print($"Player {playerId} exited zone");
         }
+    }
+
+    public IEnumerator FreezePlayer(float duration)
+    {
+        isFrozen = true;
+        yield return new WaitForSeconds(duration);
+        isFrozen = false;
     }
 }

@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     public float outOfBoundsTime = 3f;
     public Transform jailPoint;
     public Transform releasePoint;
+    [SerializeField] private int playersRequiredToStart = 2;
 
     private readonly List<Player> jailedPlayers = new();
 
@@ -44,7 +45,7 @@ public class PlayerManager : MonoBehaviour
                         break;
                     }
                 }
-                if (allReady && players.Count > 0)
+                if (allReady && players.Count >= playersRequiredToStart)
                 {
                     foreach (var player in players.Values)
                     {

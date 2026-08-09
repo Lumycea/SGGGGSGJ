@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private LayerMask interactorLayerMask;
     private Player playerState;
     public float interactionRadius = 0.5f;
+    public float interactionFreezeTime = 0.5f;
 
     void Start()
     {
@@ -25,7 +27,13 @@ public class PlayerInteractor : MonoBehaviour
         {
             if (collider.TryGetComponent(out IInteractable interactable))
             {
-                if (interactable.Interact(playerState)) return;
+                if (interactable.Interact(playerState))
+                {
+                    var playerControler = GetComponent<PlayerController>();
+                    playerControler.StartCoroutine(playerControler.FreezePlayer(interactionFreezeTime));
+                    StartCoroutine(QuickRumble());
+                    return;
+                }
             }
         }
 
@@ -40,6 +48,10 @@ public class PlayerInteractor : MonoBehaviour
             {
                 playerState.DropItem();
             }
+
+            var playerControler = GetComponent<PlayerController>();
+            playerControler.StartCoroutine(playerControler.FreezePlayer(interactionFreezeTime));
+            StartCoroutine(QuickRumble());
             return;
         }
     }
@@ -69,6 +81,17 @@ public class PlayerInteractor : MonoBehaviour
             {
                 if (interactable.Swipe(playerState, IInteractable.Direction.Right)) return;
             }
+        }
+    }
+
+    IEnumerator QuickRumble()
+    {
+        Gamepad gamepad = GetComponent<PlayerInput>().GetDevice<Gamepad>();
+        if (gamepad != null)
+        {
+            gamepad.SetMotorSpeeds(0.25f, 0f);
+            yield return new WaitForSeconds(0.1f);
+            gamepad.SetMotorSpeeds(0f, 0f);
         }
     }
 }

@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f13baa76e654640b38db056726b72c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  playerSpeed: 4
+  playerSpeed: 3
   nose: {fileID: 8453790489174326397}
   noseDistance: 0.5
   dockingPoint: {fileID: 7637347821543357786}
@@ -275,6 +275,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   interactionRadius: 0.5
+  interactionFreezeTime: 0.1
 --- !u!95 &7603708454158818739
 Animator:
   serializedVersion: 7
