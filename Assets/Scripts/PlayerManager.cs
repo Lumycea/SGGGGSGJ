@@ -230,4 +230,11 @@ public class Player
             heldItem = null;
         }
     }
+
+    public void DestroyHeldItem()
+    {
+        var item = heldItem;
+        DropItem();
+        Object.Destroy(item.gameObject);
+    }
 }

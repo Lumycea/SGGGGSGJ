@@ -66,8 +66,7 @@ public class QuestPoint : MonoBehaviour, IInteractable
         {
             if (DepositPackage(package))
             {
-                Destroy(playerState.heldItem.gameObject);
-                playerState.heldItem = null;
+                playerState.DestroyHeldItem();
                 StateManager.Instance.hasCompletedQuest = true;
                 return true;
             }

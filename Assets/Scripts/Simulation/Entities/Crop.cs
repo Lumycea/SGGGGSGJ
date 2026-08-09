@@ -85,7 +85,7 @@ public class Crop : SimulationEntity, IInteractable
                 Plant(seed.Kind);
                 if (player.heldItem.DecreaseCount(1))
                 {
-                    player.heldItem = null;
+                    player.DestroyHeldItem();
                 }
                 return true;
             }

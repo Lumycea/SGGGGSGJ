@@ -10,15 +10,13 @@ public class Silo : MonoBehaviour, IInteractable
             {
                 Farm.Instance.AddItem(farmItem.Kind, player.heldItem.Stack.count);
                 StateManager.Instance.hasDeposited = true;
-                Destroy(player.heldItem.gameObject);
-                player.heldItem = null;
+                player.DestroyHeldItem();
                 return true;
             }
             else if (player.heldItem.Stack.item is QuestPackage package)
             {
                 Farm.Instance.AddItem((package.Stack.item as FarmItem).Kind, package.Stack.count);
-                Destroy(player.heldItem.gameObject);
-                player.heldItem = null;
+                player.DestroyHeldItem();
                 return true;
             }
             else if (player.heldItem.Stack.item is QuestTicket ticket)

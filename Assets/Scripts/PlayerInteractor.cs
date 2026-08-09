@@ -41,8 +41,7 @@ public class PlayerInteractor : MonoBehaviour
         {
             if (playerState.heldItem.Stack.item is QuestTicket)
             {
-                Destroy(playerState.heldItem.gameObject);
-                playerState.heldItem = null;
+                playerState.DestroyHeldItem();
             }
             else
             {

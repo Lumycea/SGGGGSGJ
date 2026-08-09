@@ -47,7 +47,7 @@ public class QuestManager : SimulationEntity
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (StateManager.Instance.isInGame == true)
+        if (GameObject.FindGameObjectWithTag("GameManager").GetComponent<StateManager>().isInGame)
         {
             questPanelsParent = GameObject.Find("CheckList");
         }

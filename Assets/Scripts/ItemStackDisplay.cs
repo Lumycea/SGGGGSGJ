@@ -49,7 +49,6 @@ public class ItemStackDisplay : MonoBehaviour, IInteractable
 
         if (Stack.count <= 0)
         {
-            Destroy(gameObject);
             return true;
         }
 
