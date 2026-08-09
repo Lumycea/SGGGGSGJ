@@ -17,7 +17,15 @@ public class DialogManager : MonoBehaviour
 
     public void AddDialog(string source, string line)
     {
-        dialog.Enqueue($"[{source}] {line}\n");
+        if (string.IsNullOrWhiteSpace(line)) return;
+        if (string.IsNullOrWhiteSpace(source))
+        {
+            dialog.Enqueue(line + "\n");
+        }
+        else
+        {
+            dialog.Enqueue($"[{source}] {line}\n");
+        }
         ConstructDialog();
     }
 

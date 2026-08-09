@@ -101,7 +101,6 @@ public class QuestManager : SimulationEntity
 
         if (StateManager.Instance.generateQuestNow)
         {
-            print("generating quest");
             StateManager.Instance.generateQuestNow = false;
             NewQuest();
         }

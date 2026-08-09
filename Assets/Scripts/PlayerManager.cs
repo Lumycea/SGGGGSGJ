@@ -54,7 +54,7 @@ public class PlayerManager : MonoBehaviour
                 }
             }
         }
-        else
+        else if (stateManager.isInGame)
         {
             SetJoining(false);
 
@@ -83,6 +83,25 @@ public class PlayerManager : MonoBehaviour
                     }
                 }
             }
+
+            bool allInJail = true;
+            foreach (var player in players.Values)
+            {
+                if (!player.isInJail)
+                {
+                    allInJail = false;
+                    break;
+                }
+            }
+            if (allInJail && players.Count > 0)
+            {
+                StateManager.Instance.EndGame(false);
+            }
+        }
+        else if (stateManager.isInEndScreen)
+        {
+
+            SetJoining(false);
         }
     }
 

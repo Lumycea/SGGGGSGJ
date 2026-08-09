@@ -126,6 +126,7 @@ public class Shop : MonoBehaviour, IInteractable
                 if (Buy() != null)
                 {
                     playerState.heldItem.Stack.count += 1;
+                    StateManager.Instance.hasBoughtSeeds = true;
                     return true;
                 }
             }

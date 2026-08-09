@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,6 +24,7 @@ public class StateManager : MonoBehaviour
 
     public bool isInPlayerSelect = false;
     public bool isInGame = false;
+    public bool isInEndScreen = false;
     public bool tutorialEnabled = true;
 
     public bool tutorialStarted = false;
@@ -79,6 +81,7 @@ public class StateManager : MonoBehaviour
         {
             isInPlayerSelect = false;
             isInGame = true;
+            isInEndScreen = false;
             canGenerateQuest = !tutorialEnabled;
             generateQuestNow = false;
             tutorialStarted = false;
@@ -101,6 +104,12 @@ public class StateManager : MonoBehaviour
             hasCrafted = false;
             hasCraftedTutorialDone = false;
         }
+        else if (scene.buildIndex == END_SCREEN_SCENE_INDEX)
+        {
+            isInPlayerSelect = false;
+            isInGame = false;
+            isInEndScreen = true;
+        }
     }
 
     void Update()
@@ -122,7 +131,11 @@ public class StateManager : MonoBehaviour
             if (hasTilled && !hasTilledTutorialDone)
             {
                 hasTilledTutorialDone = true;
-                SendTutorial("Maintenant, prennez des graines et semez les dans votre champ");
+                SendTutorial("Maintenant, achetez des graines et semez les dans votre champ");
+            }
+            if (hasBoughtSeeds && !hasBoughtSeedsTutorialDone)
+            {
+                hasBoughtSeedsTutorialDone = true;
             }
             if (hasPlanted && !hasPlantedTutorialDone)
             {
@@ -157,13 +170,8 @@ public class StateManager : MonoBehaviour
             {
                 hasCompletedQuestTutorialDone = true;
                 SendTutorial("Maintenant vous avez du blé");
-                SendTutorial("Allez donc dépenser cet argent durement gagner au magasin (CAPITALISME!!!)");
-            }
-            if (hasBoughtSeeds && !hasBoughtSeedsTutorialDone)
-            {
-                hasBoughtSeedsTutorialDone = true;
-                SendTutorial("Maintenant que c'est fini je vais jouer à un meilleur jeu");
-                SendTutorial("<span color='red'> Garry a quitté la partie </span>");
+                SendTutorial("Moi j'ai fini je vais jouer à un meilleur jeu");
+                DialogManager.Instance.AddDialog("", "<color=red> Garry a été tué par un zombie </color>");
             }
             if (hasRecipes && !hasT1QuestTutorialDone)
             {
@@ -176,7 +184,7 @@ public class StateManager : MonoBehaviour
             {
                 hasCraftedTutorialDone = true;
                 SendTutorial("Bon cette fois je pars pour de bon");
-                DialogManager.Instance.AddDialog("", "<span color='red'> Garry a quitté la partie pour de bon</span>");
+                DialogManager.Instance.AddDialog("", "<color=red> Garry a quitté la partie pour de bon</color>");
             }
         }
     }
@@ -187,10 +195,19 @@ public class StateManager : MonoBehaviour
 
         if (Tier == 3)
         {
-            Stats.Instance.Victory = true;
-            SceneManager.LoadScene(END_SCREEN_SCENE_INDEX);
+            EndGame(true);
         }
 
         ItemManager.Instance.UpgradeTier();
+    }
+
+    public void EndGame(bool victory)
+    {
+        foreach (Player player in PlayerManager.Instance.players.Values.ToList())
+        {
+            Destroy(player.playerObject);
+        }
+        Stats.Instance.Victory = victory;
+        SceneManager.LoadScene(END_SCREEN_SCENE_INDEX);
     }
 }

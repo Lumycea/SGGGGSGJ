@@ -59,6 +59,7 @@ public class QuestPoint : MonoBehaviour, IInteractable
             var stackDisplay = ticket.GetComponent<ItemStackDisplay>();
             stackDisplay.Stack = new ItemStack(GetTicket(), 1);
             playerState.SetItem(stackDisplay);
+            StateManager.Instance.hasPickedTicket = true;
             return true;
         }
         else if (playerState.heldItem != null && playerState.heldItem.Stack.item is QuestPackage package)

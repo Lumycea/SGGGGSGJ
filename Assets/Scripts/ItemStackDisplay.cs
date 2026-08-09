@@ -64,10 +64,6 @@ public class ItemStackDisplay : MonoBehaviour, IInteractable
             {
                 StateManager.Instance.hasGrabbedBanner = true;
             }
-            else if (Stack.item is QuestTicket)
-            {
-                StateManager.Instance.hasPickedTicket = true;
-            }
             player.SetItem(this);
             return true;
         }

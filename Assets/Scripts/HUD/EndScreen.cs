@@ -13,7 +13,7 @@ public class EndScreen : MonoBehaviour
     void Start()
     {
         var s = Stats.Instance;
-        title.text = s.Victory ? "Victoire" : "Défaite";
+        title.text = s.Victory ? "Victoire" : "Defaite";
         wheatGained.text = s.WheatGained.ToString();
         resourcesSold.text = s.ResourcesSold.ToString();
         questsCompleted.text = s.QuestsCompleted.ToString();
