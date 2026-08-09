@@ -133,11 +133,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4570782593726387990, guid: e33ebff11a0e67bf5ba5415bf25020a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.18
+      value: 10.86
       objectReference: {fileID: 0}
     - target: {fileID: 4570782593726387990, guid: e33ebff11a0e67bf5ba5415bf25020a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.25
+      value: -5.17
       objectReference: {fileID: 0}
     - target: {fileID: 4570782593726387990, guid: e33ebff11a0e67bf5ba5415bf25020a6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -175,6 +175,14 @@ PrefabInstance:
       propertyPath: slotIndex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8917624266629331479, guid: e33ebff11a0e67bf5ba5415bf25020a6, type: 3}
+      propertyPath: shopSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4c6abc3bc5c334c96a46ee7da88e18fb, type: 3}
+    - target: {fileID: 8917624266629331479, guid: e33ebff11a0e67bf5ba5415bf25020a6, type: 3}
+      propertyPath: animalSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f1c6aa2f93b98c76184b1e5682cd2183, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -489,6 +497,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3162512902847601641, guid: d60788123eb0e7f20af04149899954b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1162241028471272534, guid: d60788123eb0e7f20af04149899954b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: d60788123eb0e7f20af04149899954b9, type: 3}
 --- !u!1001 &1158364706
 PrefabInstance:
@@ -773,11 +784,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4570782593726387990, guid: e33ebff11a0e67bf5ba5415bf25020a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.75
+      value: 16.64
       objectReference: {fileID: 0}
     - target: {fileID: 4570782593726387990, guid: e33ebff11a0e67bf5ba5415bf25020a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.25
+      value: -2.89
       objectReference: {fileID: 0}
     - target: {fileID: 4570782593726387990, guid: e33ebff11a0e67bf5ba5415bf25020a6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -815,6 +826,14 @@ PrefabInstance:
       propertyPath: slotIndex
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8917624266629331479, guid: e33ebff11a0e67bf5ba5415bf25020a6, type: 3}
+      propertyPath: shopSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3de570d8acb7974ef95584900419d840, type: 3}
+    - target: {fileID: 8917624266629331479, guid: e33ebff11a0e67bf5ba5415bf25020a6, type: 3}
+      propertyPath: animalSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6f103f6fd667446b98049284fd2383c9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -6,8 +6,15 @@ public class QuestPoint : MonoBehaviour, IInteractable
     [SerializeField] GameObject itemStackPrefab;
     [SerializeField] ItemStackDisplay display;
 
+
+    [SerializeField] private Sprite animalSprite, shopSprite;
+    [SerializeField]
+    private SpriteRenderer bubbleRenderer, animalRenderer, shopRenderer;
+
     void Start()
     {
+        shopRenderer.sprite = shopSprite;
+        animalRenderer.sprite = animalSprite;
         display.gameObject.SetActive(false);
     }
 
@@ -18,10 +25,14 @@ public class QuestPoint : MonoBehaviour, IInteractable
             var quest = QuestManager.Instance.Quest(slotIndex);
             display.Stack = quest.Stack;
             display.gameObject.SetActive(true);
+            bubbleRenderer.enabled = true;
+            animalRenderer.enabled = true;
         }
         else
         {
             display.gameObject.SetActive(false);
+            bubbleRenderer.enabled = false;
+            animalRenderer.enabled = false;
         }
     }
 
