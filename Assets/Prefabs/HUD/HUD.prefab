@@ -1073,6 +1073,8 @@ MonoBehaviour:
   itemDisplayPrefab: {fileID: 2462480049178393045, guid: c18f0f4e49bb74197ba3cb3c3fa87d7b, type: 3}
   inventoryPanel: {fileID: 4476684628979242932}
   wheatCount: {fileID: 8066165166570312354}
+  playerHeadsParent: {fileID: 8492279172325345445}
+  playerHeadPrefab: {fileID: 1813334247381267289, guid: 59a3b367743cd8af4914ae2226fe3196, type: 3}
   ShowDelta: 1
 --- !u!114 &51391564015646124
 MonoBehaviour:

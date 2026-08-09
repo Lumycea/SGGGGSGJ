@@ -1,12 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
     [SerializeField] private GameObject itemDisplayPrefab;
     [SerializeField] private Transform inventoryPanel;
     [SerializeField] private TMP_Text wheatCount;
+    private Dictionary<Player, GameObject> playerHeads = new();
+    [SerializeField] private Transform playerHeadsParent;
+    [SerializeField] private GameObject playerHeadPrefab;
 
     private readonly Dictionary<FarmItemKind, ItemDisplay> displays = new();
     private readonly uint[] usedSlots = { 0, 0, 0, 0 };
@@ -42,5 +46,26 @@ public class HUD : MonoBehaviour
         }
 
         wheatCount.text = StateManager.Instance.Wheat.ToString();
+
+        foreach (var player in PlayerManager.Instance.players.Values)
+        {
+            if (player.isInJail)
+            {
+                if (!playerHeads.ContainsKey(player))
+                {
+                    var head = Instantiate(playerHeadPrefab, playerHeadsParent);
+                    head.GetComponent<Image>().color = player.playerColor;
+                    playerHeads.Add(player, head);
+                }
+            }
+            else
+            {
+                if (playerHeads.ContainsKey(player))
+                {
+                    Destroy(playerHeads[player]);
+                    playerHeads.Remove(player);
+                }
+            }
+        }
     }
 }
