@@ -22,10 +22,10 @@ public class EndScreen : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(StateManager.GAME_SCENE_INDEX);
+        SceneManager.LoadScene(StateManager.PLAYER_SELECT_SCENE_INDEX);
     }
-    public void QuitGame()
+    public void MainMenu()
     {
-        Application.Quit();
+        SceneManager.LoadScene(StateManager.MAIN_MENU_SCENE_INDEX);
     }
 }

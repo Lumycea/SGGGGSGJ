@@ -9,6 +9,9 @@ TagManager:
   - DialogManager
   - Zone
   - Shop
+  - Garry
+  - QuestUICount
+  - CheckList
   layers:
   - Default
   - TransparentFX

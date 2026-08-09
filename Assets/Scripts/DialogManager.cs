@@ -15,7 +15,7 @@ public class DialogManager : MonoBehaviour
         Instance = this;
     }
 
-    public void AddDialog(string source, string line)
+    public void AddDialog(string source, string line, string color = "white")
     {
         if (string.IsNullOrWhiteSpace(line)) return;
         if (string.IsNullOrWhiteSpace(source))
@@ -24,7 +24,7 @@ public class DialogManager : MonoBehaviour
         }
         else
         {
-            dialog.Enqueue($"[{source}] {line}\n");
+            dialog.Enqueue($"<color={color}>[{source}]</color> {line}\n");
         }
         ConstructDialog();
     }

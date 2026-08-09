@@ -142,10 +142,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   Stack:
     item:
-      rid: -2
+      rid: 118750700251382014
     count: 1
   ForceBackground: 0
   ForceNoBackground: 0
+  ForceCount: 0
   SpriteLayer: 0
   backgroundRenderer: {fileID: 1657184818333212382}
   foregroundRenderer: {fileID: 1868807287341806267}
@@ -154,8 +155,9 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 118750700251382014
+      type: {class: Hoe, ns: , asm: Assembly-CSharp}
+      data: 
 --- !u!61 &137502879070684590
 BoxCollider2D:
   m_ObjectHideFlags: 0

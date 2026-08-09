@@ -107,6 +107,7 @@ public class PlayerManager : MonoBehaviour
 
     private void KillPlayer(Player player)
     {
+        StateManager.Instance.hasPlayerDied = true;
         player.isInJail = true;
         player.DropItem();
         player.playerObject.transform.position = jailPoint.position;

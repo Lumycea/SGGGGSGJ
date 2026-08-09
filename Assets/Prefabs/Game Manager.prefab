@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 981025169982397313}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 15.2, y: 12.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -159,18 +159,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7f7678f98e36f99b398522b50d2cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  questPanelPrefab: {fileID: 3860050987828312917, guid: e9c696aaa2e2b1eeb86c836c577a262f, type: 3}
   maxQuests: 01000000020000000200000003000000
   minWeights: 01000000030000000600000008000000
   maxWeights: 01000000060000000c00000010000000
   minQuestDelay: 0a000000080000000500000002000000
   maxQuestDelay: 050000000f0000000a00000006000000
-  minQuestTimer: 020000003c0000003c0000001e000000
-  maxQuestTimer: 020000005a0000005a0000003c000000
+  minQuestTimer: 3c0000003c0000003c0000001e000000
+  maxQuestTimer: 5a0000005a0000005a0000003c000000
   maxFailureCount: 3
-  PendingQuests: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &4693202401136362293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,10 +205,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c5ecce6ca414beb810ac14a0ec441b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  Wheat: 0
+  garry: {fileID: 0}
+  _wheat: 0
   isInPlayerSelect: 0
   isInGame: 0
+  isInEndScreen: 0
   tutorialEnabled: 1
+  hasPlayerDied: 0
+  hasPlayerDiedTutorialDone: 0
   tutorialStarted: 0
   hasTilled: 0
   hasTilledTutorialDone: 0
@@ -229,13 +230,13 @@ MonoBehaviour:
   hasCompletedQuestTutorialDone: 0
   hasBoughtSeeds: 0
   hasBoughtSeedsTutorialDone: 0
-  hasT1Quest: 0
+  hasRecipes: 0
   hasT1QuestTutorialDone: 0
   hasCrafted: 0
   hasCraftedTutorialDone: 0
   showDelta: 0
   canGenerateQuest: 1
-  generateQuestNow: 0
+  generateQuestNow: 1
 --- !u!114 &9150145349395619819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,6 +261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6fb535264208bd0b6761f6fc17e906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  Victory: 0
+  WheatGained: 0
+  ResourcesSold: 0
+  QuestsCompleted: 0
+  PlayersLost: 0
 --- !u!1 &6203556814462370247
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +291,7 @@ Transform:
   m_GameObject: {fileID: 6203556814462370247}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.3, y: 4.25, z: 0}
+  m_LocalPosition: {x: -15.4, y: -19.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

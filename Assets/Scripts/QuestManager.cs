@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 [RequireComponent(typeof(StateManager))]
 [RequireComponent(typeof(Farm))]
 
@@ -9,6 +11,8 @@ public class QuestManager : SimulationEntity
 {
     public static QuestManager Instance;
 
+    [SerializeField] private GameObject questPanelPrefab;
+    private GameObject questPanelsParent;
     [SerializeField] private int[] maxQuests;
     [SerializeField] private int[] minWeights;
     [SerializeField] private int[] maxWeights;
@@ -25,6 +29,11 @@ public class QuestManager : SimulationEntity
     private int tickBeforeNextQuest = 0;
     private int failureCount;
 
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     void Start()
     {
         Instance = this;
@@ -34,6 +43,14 @@ public class QuestManager : SimulationEntity
 
         var farm = GetComponent<StateManager>();
         tickBeforeNextQuest = Random.Range(minQuestDelay[farm.Tier], maxQuestDelay[farm.Tier]);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (StateManager.Instance.isInGame == true)
+        {
+            questPanelsParent = GameObject.Find("CheckList");
+        }
     }
 
     public bool HasQuest(int slot) { return !QuestSlotAvailable[slot]; }
@@ -57,6 +74,12 @@ public class QuestManager : SimulationEntity
         var count = weight / (item.GetTier() + 1);
         var quest = new Quest(new ItemStack(new FarmItem(item), count), timer);
 
+        QuestUI questUI = Instantiate(questPanelPrefab, questPanelsParent.transform).GetComponent<QuestUI>();
+        questUI.itemImage.sprite = quest.Stack.item.Sprite;
+        questUI.countText.text = count.ToString();
+        questUI.quest = quest;
+        quest.QuestPanel = questUI.gameObject;
+
         var idx = QuestSlotAvailable.FindIndex(e => e);
         if (idx == -1) { throw new System.Exception(); }
 
@@ -68,6 +91,8 @@ public class QuestManager : SimulationEntity
     private void CompleteQuest(int slot)
     {
         var quest = Quests[slot] ?? throw new System.Exception();
+        Destroy(quest.QuestPanel);
+        quest.QuestPanel = null;
 
         Stats.Instance.QuestsCompleted++;
         Stats.Instance.ResourcesSold += quest.Stack.count;
@@ -135,6 +160,7 @@ public class QuestManager : SimulationEntity
         if (failureCount == maxFailureCount)
         {
             Stats.Instance.Victory = false;
+            print("Failed too many quests");
             UnityEngine.SceneManagement.SceneManager.LoadScene(StateManager.END_SCREEN_SCENE_INDEX);
         }
     }
@@ -175,4 +201,5 @@ public class Quest
 
     public ItemStack Stack;
     public int Timer;
+    public GameObject QuestPanel;
 }

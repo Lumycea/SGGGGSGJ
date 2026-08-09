@@ -194,6 +194,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 176041961}
     - target: {fileID: 947242558661508006, guid: 14f7fb399f8109dac87c18b7cc8fdebe, type: 3}
+      propertyPath: maxFailureCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 947242558661508006, guid: 14f7fb399f8109dac87c18b7cc8fdebe, type: 3}
       propertyPath: 'maxWeights.Array.data[0]'
       value: 4
       objectReference: {fileID: 0}
@@ -346,7 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 0.392}
+  m_Color: {r: 0.4245283, g: 0.2859175, b: 0.09812211, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

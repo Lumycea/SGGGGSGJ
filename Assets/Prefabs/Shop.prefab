@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 8188743554347808872}
   - component: {fileID: 2254537270153600535}
   - component: {fileID: 1369859242798753097}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shop
   m_TagString: Shop
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ MonoBehaviour:
   WheatInput: {fileID: 5960696292551236621}
   Output: {fileID: 781284656833864320}
   itemStackPrefab: {fileID: 220163374634567497, guid: 6b56a1f6d0293ddaea403746042c7f06, type: 3}
-  upgradeCosts: 
+  upgradeCosts: 0a000000140000002800000064000000
 --- !u!1 &7302021866312486271
 GameObject:
   m_ObjectHideFlags: 0

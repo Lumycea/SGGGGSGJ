@@ -15,14 +15,33 @@ public class PlayerController : MonoBehaviour
     public Transform nose;
     public float noseDistance = 0.5f;
     public GameObject dockingPoint;
+    private PlayerInput playerInput;
 
     void Start()
     {
-        playerId = GetComponent<PlayerInput>().playerIndex;
+        playerInput = GetComponent<PlayerInput>();
+        playerId = playerInput.playerIndex;
         playerManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerManager>();
         GetComponent<SpriteRenderer>().color = playerManager.players[playerId].playerColor;
         stateManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<StateManager>();
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        var device = playerInput.GetDevice<Gamepad>();
+        if (device != null)
+        {
+            if (!playerManager.players[playerId].isInZone)
+            {
+                device.SetMotorSpeeds(0.6f, 0.2f);
+            }
+            else
+            {
+                device.SetMotorSpeeds(0f, 0f);
+            }
+        }
+
     }
 
     void FixedUpdate()
@@ -52,6 +71,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Zone"))
         {
             playerManager.players[playerId].isInZone = true;
+            print($"Player {playerId} entered zone");
         }
     }
 
@@ -60,6 +80,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Zone"))
         {
             playerManager.players[playerId].isInZone = false;
+            print($"Player {playerId} exited zone");
         }
     }
 }
