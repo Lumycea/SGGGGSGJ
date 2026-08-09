@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         }
         if (playerManager.players[playerId].isInJail)
         {
+            print("jailed");
             playerInput.GetDevice<Gamepad>()?.SetMotorSpeeds(0f, 0f);
         }
     }

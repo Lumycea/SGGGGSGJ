@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour
                     {
                         player.playerObject.GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
                     }
-                    UnityEngine.SceneManagement.SceneManager.LoadScene(StateManager.GAME_SCENE_INDEX);
+                    SceneManager.LoadScene(StateManager.GAME_SCENE_INDEX);
                 }
             }
         }
@@ -125,13 +125,15 @@ public class PlayerManager : MonoBehaviour
 
     public void ReleasePlayer()
     {
+        print("releasing");
         var idx = Random.Range(0, jailedPlayers.Count);
 
         var p = jailedPlayers[idx];
-        jailedPlayers.RemoveAt(idx);
 
         p.isInJail = false;
         p.playerObject.transform.position = releasePoint.position;
+        p.checkedLeftZone = false;
+        jailedPlayers.RemoveAt(idx);
 
         Shop.Instance.RefreshEntries();
     }
