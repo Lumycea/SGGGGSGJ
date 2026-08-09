@@ -31,9 +31,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!playerManager.players[playerId].isInZone)
+        if (!playerManager.players[playerId].isInZone && !playerManager.players[playerId].isInJail)
         {
             playerInput.GetDevice<Gamepad>()?.SetMotorSpeeds(0.6f, 0.2f);
+        }
+        if (playerManager.players[playerId].isInJail)
+        {
+            playerInput.GetDevice<Gamepad>()?.SetMotorSpeeds(0f, 0f);
         }
     }
 

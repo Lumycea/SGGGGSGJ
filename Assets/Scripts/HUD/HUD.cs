@@ -8,9 +8,14 @@ public class HUD : MonoBehaviour
     [SerializeField] private GameObject itemDisplayPrefab;
     [SerializeField] private Transform inventoryPanel;
     [SerializeField] private TMP_Text wheatCount;
+
     private Dictionary<Player, GameObject> playerHeads = new();
     [SerializeField] private Transform playerHeadsParent;
     [SerializeField] private GameObject playerHeadPrefab;
+
+    private Dictionary<Quest, GameObject> questPanels = new();
+    [SerializeField] private Transform questPanelsParent;
+    [SerializeField] private GameObject questPanelPrefab;
 
     private readonly Dictionary<FarmItemKind, ItemDisplay> displays = new();
     private readonly uint[] usedSlots = { 0, 0, 0, 0 };
@@ -65,6 +70,22 @@ public class HUD : MonoBehaviour
                     Destroy(playerHeads[player]);
                     playerHeads.Remove(player);
                 }
+            }
+        }
+
+        for (int i = 0; i < QuestManager.Instance.MaxQuestCount; ++i)
+        {
+            if (!QuestManager.Instance.HasQuest(i)) continue;
+            var quest = QuestManager.Instance.Quest(i);
+            if (!questPanels.ContainsKey(quest))
+            {
+                var questUI = Instantiate(questPanelPrefab, questPanelsParent).GetComponent<QuestUI>();
+                questUI.itemImage.sprite = quest.Stack.item.Sprite;
+                questUI.countText.text = quest.Stack.count.ToString();
+                questUI.quest = quest;
+                quest.QuestPanel = questUI.gameObject;
+
+                questPanels.Add(quest, questUI.gameObject);
             }
         }
     }

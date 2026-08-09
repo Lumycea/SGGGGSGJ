@@ -1075,6 +1075,8 @@ MonoBehaviour:
   wheatCount: {fileID: 8066165166570312354}
   playerHeadsParent: {fileID: 8492279172325345445}
   playerHeadPrefab: {fileID: 1813334247381267289, guid: 59a3b367743cd8af4914ae2226fe3196, type: 3}
+  questPanelsParent: {fileID: 3196844203988187310}
+  questPanelPrefab: {fileID: 3860050987828312917, guid: e9c696aaa2e2b1eeb86c836c577a262f, type: 3}
   ShowDelta: 1
 --- !u!114 &51391564015646124
 MonoBehaviour:

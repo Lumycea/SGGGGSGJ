@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 [RequireComponent(typeof(StateManager))]
 [RequireComponent(typeof(Farm))]
 
@@ -11,8 +9,6 @@ public class QuestManager : SimulationEntity
 {
     public static QuestManager Instance;
 
-    [SerializeField] private GameObject questPanelPrefab;
-    private GameObject questPanelsParent;
     [SerializeField] private int[] maxQuests;
     [SerializeField] private int[] minWeights;
     [SerializeField] private int[] maxWeights;
@@ -26,13 +22,9 @@ public class QuestManager : SimulationEntity
     private List<bool> QuestSlotAvailable;
 
     private int questCount = 0;
+    public int MaxQuestCount => Quests.Count();
     private int tickBeforeNextQuest = 0;
     private int failureCount;
-
-    void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
 
     void Start()
     {
@@ -43,14 +35,6 @@ public class QuestManager : SimulationEntity
 
         var farm = GetComponent<StateManager>();
         tickBeforeNextQuest = Random.Range(minQuestDelay[farm.Tier], maxQuestDelay[farm.Tier]);
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (GameObject.FindGameObjectWithTag("GameManager").GetComponent<StateManager>().isInGame)
-        {
-            questPanelsParent = GameObject.Find("CheckList");
-        }
     }
 
     public bool HasQuest(int slot) { return !QuestSlotAvailable[slot]; }
@@ -73,12 +57,6 @@ public class QuestManager : SimulationEntity
         var timer = Random.Range(minQuestTimer[farm.Tier], maxQuestTimer[farm.Tier]);
         var count = weight / (item.GetTier() + 1);
         var quest = new Quest(new ItemStack(new FarmItem(item), count), timer);
-
-        QuestUI questUI = Instantiate(questPanelPrefab, questPanelsParent.transform).GetComponent<QuestUI>();
-        questUI.itemImage.sprite = quest.Stack.item.Sprite;
-        questUI.countText.text = count.ToString();
-        questUI.quest = quest;
-        quest.QuestPanel = questUI.gameObject;
 
         var idx = QuestSlotAvailable.FindIndex(e => e);
         if (idx == -1) { throw new System.Exception(); }
@@ -152,6 +130,10 @@ public class QuestManager : SimulationEntity
 
     private void FailQuest(int slot)
     {
+        var quest = Quests[slot] ?? throw new System.Exception();
+        Destroy(quest.QuestPanel);
+        quest.QuestPanel = null;
+
         failureCount += 1;
         Quests[slot] = null;
         QuestSlotAvailable[slot] = true;
